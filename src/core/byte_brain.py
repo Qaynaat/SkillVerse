@@ -123,6 +123,11 @@ class ByteBrain:
             return self._reply(
                 self.response_generator.generate_tools(career)
             )
+        
+        elif intent == Intent.ASK_UNIVERSITY_SUBJECTS:
+            return self._reply(
+                self.response_generator.generate_university_subjects(career)
+            )
 
         elif intent == Intent.ASK_SKILLS:
             return self._reply(

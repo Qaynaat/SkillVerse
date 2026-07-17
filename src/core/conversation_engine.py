@@ -8,8 +8,6 @@ class ConversationEngine:
         Intent.ASK_SKILLS: [
             "skill",
             "skills",
-            "learn",
-            "study",
             "required"
         ],
 
@@ -72,6 +70,15 @@ class ConversationEngine:
             "pycharm",
             "git"
 
+        ],
+
+        Intent.ASK_UNIVERSITY_SUBJECTS: [
+            "subject",
+            "subjects",
+            "course",
+            "courses",
+            "university",
+            "semester"
         ]
     }
 
@@ -100,14 +107,15 @@ class ConversationEngine:
     
 INTENT_PRIORITY = {
 
-    Intent.ASK_SKILLS: 2,
+    Intent.ASK_SKILLS: 1,
 
     Intent.ASK_CAREER_PATHS: 2,
 
     Intent.ASK_PROGRAMMING_LANGUAGES: 2,
 
-    Intent.ASK_TOOLS: 1,
+    Intent.ASK_TOOLS: 3,
 
+    Intent.ASK_UNIVERSITY_SUBJECTS: 3,
 
     Intent.ASK_FUTURE_DEMAND: 3,
 

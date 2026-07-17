@@ -151,3 +151,15 @@ class ResponseGenerator:
             "💡 Master these tools gradually. "
             "They'll make you a more productive developer."
         )
+    def generate_university_subjects(self, career):
+
+        subjects = "\n".join(
+            f"• {subject}"
+            for subject in career.university_subjects
+        )
+
+        return (
+            "📚 University Subjects\n\n"
+            f"{subjects}\n\n"
+            "🎓 These subjects build the foundation you'll need to become a successful professional."
+        )
