@@ -223,3 +223,16 @@ class ResponseGenerator:
             f"{pros}\n\n"
             "💜 Every career has strengths. Choose one that matches your goals and interests."
         )
+    
+    def generate_challenges(self, career):
+
+        challenges = "\n".join(
+            f"• {challenge}"
+            for challenge in career.challenges
+        )
+
+        return (
+            "⚠️ Challenges\n\n"
+            f"{challenges}\n\n"
+            "💪 Every career has challenges. The key is deciding which ones you're willing to overcome."
+        )

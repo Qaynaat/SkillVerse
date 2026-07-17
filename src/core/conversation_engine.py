@@ -116,6 +116,15 @@ class ConversationEngine:
             "semester"
         ],
 
+        Intent.ASK_CHALLENGES: [
+            "challenge",
+            "challenges",
+            "difficulty",
+            "difficulties",
+            "hard",
+            "cons"
+        ],
+
         Intent.ASK_PROS: [
             "advantages",
             "benefits",
@@ -174,7 +183,8 @@ INTENT_PRIORITY = {
     Intent.INTRODUCE_CAREER: 5,
 
     Intent.ASK_BEGINNER_PROJECTS : 3,
-
+ 
+    Intent.ASK_CHALLENGES:4,
 
     Intent.UNKNOWN: 999
 

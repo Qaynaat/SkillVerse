@@ -29,4 +29,6 @@ class Intent(Enum):
 
     ASK_PROS = "ask_pros"
 
+    ASK_CHALLENGES = "ask_challenges"
+
     UNKNOWN = "unknown"
