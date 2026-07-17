@@ -210,3 +210,16 @@ class ResponseGenerator:
             f"{career.salary}\n\n"
             "💡 Salary depends on your skills, experience, country, and the company you work for."
         )
+    
+    def generate_pros(self, career):
+
+        pros = "\n".join(
+            f"• {pro}"
+            for pro in career.pros
+        )
+
+        return (
+            "✅ Advantages\n\n"
+            f"{pros}\n\n"
+            "💜 Every career has strengths. Choose one that matches your goals and interests."
+        )

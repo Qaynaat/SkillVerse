@@ -158,6 +158,11 @@ class ByteBrain:
             return self._reply(
                 self.response_generator.generate_salary(career)
             )
+        
+        elif intent == Intent.ASK_PROS:
+            return self._reply(
+                self.response_generator.generate_pros(career)
+            )
 
         elif intent == Intent.ASK_FUTURE_DEMAND:
             return self._reply(

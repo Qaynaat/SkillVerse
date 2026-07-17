@@ -114,6 +114,13 @@ class ConversationEngine:
             "courses",
             "university",
             "semester"
+        ],
+
+        Intent.ASK_PROS: [
+            "advantages",
+            "benefits",
+            "pros",
+            "good things"
         ]
     }
 
@@ -160,8 +167,10 @@ INTENT_PRIORITY = {
 
     Intent.ASK_DESCRIPTION: 4,
 
-    Intent.ASK_SALARY:4,
-    
+    Intent.ASK_SALARY:2,
+
+    Intent.ASK_PROS: 4,
+
     Intent.INTRODUCE_CAREER: 5,
 
     Intent.ASK_BEGINNER_PROJECTS : 3,

@@ -37,12 +37,12 @@ brain = ByteBrain(
 )
 
 print("=" * 60)
-print("SALARY TEST")
+print("PROS TEST")
 print("=" * 60)
 
 print(
     brain.respond(
-        "Tell me about salary?",
+        "What are the pros of this field?",
         "Software Engineering"
     )
 )

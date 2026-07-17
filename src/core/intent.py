@@ -27,4 +27,6 @@ class Intent(Enum):
 
     ASK_FUTURE_DEMAND = "ask_future_demand"
 
+    ASK_PROS = "ask_pros"
+
     UNKNOWN = "unknown"
