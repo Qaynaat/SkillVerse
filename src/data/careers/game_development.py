@@ -1,0 +1,102 @@
+from src.data.career_profile import CareerProfile
+
+game_development = CareerProfile(
+
+    name="Game Development",
+
+    description="Game Development is the process of creating video games for computers, mobile devices, and gaming consoles.",
+
+    recommendation_reason="You love games, creativity, storytelling, and programming interactive experiences.",
+
+    ideal_for=[
+        "Creative Thinkers",
+        "Gamers",
+        "Problem Solvers"
+    ],
+
+    daily_tasks=[
+        "Develop game mechanics",
+        "Fix bugs",
+        "Create gameplay systems",
+        "Work with artists and designers",
+        "Test games"
+    ],
+
+    skills=[
+        "Programming",
+        "Game Physics",
+        "Problem Solving",
+        "Creativity",
+        "Mathematics"
+    ],
+
+    programming_languages=[
+        "C#",
+        "C++",
+        "Python"
+    ],
+
+    tools=[
+        "Unity",
+        "Unreal Engine",
+        "Blender",
+        "GitHub"
+    ],
+
+    university_subjects=[
+        "Programming",
+        "Computer Graphics",
+        "Game Development",
+        "Mathematics"
+    ],
+
+    career_paths=[
+        "Gameplay Programmer",
+        "Game Developer",
+        "Game Designer",
+        "Technical Artist"
+    ],
+
+    roadmap=[
+        "Learn Programming",
+        "Learn Unity or Unreal",
+        "Build Small Games",
+        "Study Game Design",
+        "Publish Projects"
+    ],
+
+    beginner_projects=[
+        "Snake Game",
+        "Flappy Bird Clone",
+        "2D Platformer",
+        "Maze Game"
+    ],
+
+    pros=[
+        "Creative work",
+        "Fun projects",
+        "Growing industry"
+    ],
+
+    challenges=[
+        "Competitive industry",
+        "Can have tight deadlines"
+    ],
+
+    remote_work=True,
+
+    future_demand="High",
+
+    salary="High",
+
+    related_careers=[
+        "Software Engineering",
+        "Mobile Development"
+    ],
+
+    learning_resources=[
+        "Unity Learn",
+        "Unreal Engine Learning",
+        "Brackeys"
+    ]
+)
