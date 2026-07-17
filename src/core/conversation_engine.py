@@ -90,6 +90,14 @@ class ConversationEngine:
             "courses"
         ],
 
+        Intent.ASK_SALARY: [
+            "salary",
+            "income",
+            "pay",
+            "earning",
+            "earnings"
+        ],
+
         Intent.ASK_RELATED_CAREERS: [
             "related",
             "similar",
@@ -152,6 +160,8 @@ INTENT_PRIORITY = {
 
     Intent.ASK_DESCRIPTION: 4,
 
+    Intent.ASK_SALARY:4,
+    
     Intent.INTRODUCE_CAREER: 5,
 
     Intent.ASK_BEGINNER_PROJECTS : 3,

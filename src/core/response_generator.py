@@ -202,3 +202,11 @@ class ResponseGenerator:
             f"{careers}\n\n"
             "💡 These careers share similar skills and interests. Feel free to explore them too!"
         )
+    
+    def generate_salary(self, career):
+
+        return (
+            "💰 Salary\n\n"
+            f"{career.salary}\n\n"
+            "💡 Salary depends on your skills, experience, country, and the company you work for."
+        )
