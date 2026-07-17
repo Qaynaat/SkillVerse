@@ -11,6 +11,8 @@ class Intent(Enum):
 
     ASK_SKILLS = "ask_skills"
 
+    ASK_BEGINNER_PROJECTS = "ask_beginner_projects"
+
     ASK_TOOLS = "ask_tools"
 
     ASK_UNIVERSITY_SUBJECTS = "ask_university_subjects"

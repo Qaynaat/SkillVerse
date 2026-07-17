@@ -163,3 +163,16 @@ class ResponseGenerator:
             f"{subjects}\n\n"
             "🎓 These subjects build the foundation you'll need to become a successful professional."
         )
+    
+    def generate_beginner_projects(self, career):
+
+        projects = "\n".join(
+            f"• {project}"
+            for project in career.beginner_projects
+        )
+
+        return (
+            "🛠 Beginner Projects\n\n"
+            f"{projects}\n\n"
+            "🚀 Build projects one by one. Every project strengthens your skills and portfolio."
+        )

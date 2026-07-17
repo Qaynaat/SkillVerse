@@ -72,6 +72,13 @@ class ConversationEngine:
 
         ],
 
+        Intent.ASK_BEGINNER_PROJECTS: [
+            "project",
+            "projects",
+            "build",
+            "portfolio"
+        ],
+
         Intent.ASK_UNIVERSITY_SUBJECTS: [
             "subject",
             "subjects",
@@ -122,6 +129,9 @@ INTENT_PRIORITY = {
     Intent.ASK_DESCRIPTION: 4,
 
     Intent.INTRODUCE_CAREER: 5,
+
+    Intent.ASK_BEGINNER_PROJECTS : 3,
+
 
     Intent.UNKNOWN: 999
 
