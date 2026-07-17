@@ -168,6 +168,11 @@ class ByteBrain:
             return self._reply(
                 self.response_generator.generate_challenges(career)
             )
+        
+        elif intent == Intent.ASK_REMOTE_WORK:
+            return self._reply(
+                self.response_generator.generate_remote_work(career)
+            )
 
         elif intent == Intent.ASK_FUTURE_DEMAND:
             return self._reply(

@@ -31,4 +31,6 @@ class Intent(Enum):
 
     ASK_CHALLENGES = "ask_challenges"
 
+    ASK_REMOTE_WORK = "ask_remote_work"
+
     UNKNOWN = "unknown"

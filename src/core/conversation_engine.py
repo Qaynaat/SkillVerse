@@ -130,6 +130,14 @@ class ConversationEngine:
             "benefits",
             "pros",
             "good things"
+        ],
+
+        Intent.ASK_REMOTE_WORK: [
+            "remote",
+            "work from home",
+            "home",
+            "online",
+            "remote work"
         ]
     }
 
@@ -185,6 +193,8 @@ INTENT_PRIORITY = {
     Intent.ASK_BEGINNER_PROJECTS : 3,
  
     Intent.ASK_CHALLENGES:4,
+
+    Intent.ASK_REMOTE_WORK:2,
 
     Intent.UNKNOWN: 999
 

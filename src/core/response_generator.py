@@ -236,3 +236,16 @@ class ResponseGenerator:
             f"{challenges}\n\n"
             "💪 Every career has challenges. The key is deciding which ones you're willing to overcome."
         )
+    
+    def generate_remote_work(self, career):
+
+        if career.remote_work:
+            status = "✅ Yes! This career offers excellent remote work opportunities."
+        else:
+            status = "❌ Remote work opportunities are limited in this career."
+
+        return (
+            "🏠 Remote Work\n\n"
+            f"{status}\n\n"
+            "🌍 The availability of remote work also depends on the company, your experience, and the type of role."
+        )
