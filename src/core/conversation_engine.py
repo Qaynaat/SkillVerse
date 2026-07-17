@@ -90,6 +90,15 @@ class ConversationEngine:
             "courses"
         ],
 
+        Intent.ASK_RELATED_CAREERS: [
+            "related",
+            "similar",
+            "alternative",
+            "alternatives",
+            "other careers",
+            "similar careers"
+        ],
+
         Intent.ASK_UNIVERSITY_SUBJECTS: [
             "subject",
             "subjects",
@@ -132,6 +141,8 @@ INTENT_PRIORITY = {
     Intent.ASK_PROGRAMMING_LANGUAGES: 2,
 
     Intent.ASK_TOOLS: 3,
+
+    Intent.ASK_RELATED_CAREERS : 3,
 
     Intent.ASK_LEARNING_RESOURCES: 3,
 

@@ -148,6 +148,11 @@ class ByteBrain:
             return self._reply(
                 self.response_generator.generate_learning_resources(career)
             )
+        
+        elif intent == Intent.ASK_RELATED_CAREERS:
+            return self._reply(
+                self.response_generator.generate_related_careers(career)
+            )
 
         elif intent == Intent.ASK_FUTURE_DEMAND:
             return self._reply(

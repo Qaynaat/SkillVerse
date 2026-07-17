@@ -189,3 +189,16 @@ class ResponseGenerator:
             f"{resources}\n\n"
             "💡 Great developers never stop learning. Pick one resource and stay consistent."
         )
+    
+    def generate_related_careers(self, career):
+
+        careers = "\n".join(
+            f"• {item}"
+            for item in career.related_careers
+        )
+
+        return (
+            "🔀 Related Careers\n\n"
+            f"{careers}\n\n"
+            "💡 These careers share similar skills and interests. Feel free to explore them too!"
+        )

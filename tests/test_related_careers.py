@@ -37,12 +37,12 @@ brain = ByteBrain(
 )
 
 print("=" * 60)
-print("LEARNING RESOURCES TEST")
+print("RELATED CAREER TEST")
 print("=" * 60)
 
 print(
     brain.respond(
-        "What learning resources do you recommend?",
+        "Which are related career to this field",
         "Software Engineering"
     )
 )
