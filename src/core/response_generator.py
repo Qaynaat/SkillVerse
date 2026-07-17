@@ -176,3 +176,16 @@ class ResponseGenerator:
             f"{projects}\n\n"
             "🚀 Build projects one by one. Every project strengthens your skills and portfolio."
         )
+    
+    def generate_learning_resources(self, career):
+
+        resources = "\n".join(
+            f"• {resource}"
+            for resource in career.learning_resources
+        )
+
+        return (
+            "📚 Learning Resources\n\n"
+            f"{resources}\n\n"
+            "💡 Great developers never stop learning. Pick one resource and stay consistent."
+        )

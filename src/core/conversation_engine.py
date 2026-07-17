@@ -79,6 +79,17 @@ class ConversationEngine:
             "portfolio"
         ],
 
+        Intent.ASK_LEARNING_RESOURCES: [
+            "resource",
+            "resources",
+            "website",
+            "websites",
+            "tutorial",
+            "tutorials",
+            "course",
+            "courses"
+        ],
+
         Intent.ASK_UNIVERSITY_SUBJECTS: [
             "subject",
             "subjects",
@@ -121,6 +132,8 @@ INTENT_PRIORITY = {
     Intent.ASK_PROGRAMMING_LANGUAGES: 2,
 
     Intent.ASK_TOOLS: 3,
+
+    Intent.ASK_LEARNING_RESOURCES: 3,
 
     Intent.ASK_UNIVERSITY_SUBJECTS: 3,
 
