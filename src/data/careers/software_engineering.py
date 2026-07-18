@@ -79,15 +79,30 @@ software_engineering = CareerProfile(
 
             "why": "Programming is the foundation of Software Engineering. Every application starts with code.",
 
-            "goal": "Write your first Python program."
-        },
+            "goal": "Write your first Python program.",
 
+            "estimated_time": 30,
+
+            "difficulty": "Beginner",
+
+            "reward_xp": 50,
+
+            "tip": "Focus on understanding the logic instead of memorizing syntax."
+        },
         {
             "title": "Learn Git & GitHub",
 
             "why": "Git allows developers to manage code changes and collaborate with teams.",
 
-            "goal": "Upload your first project to GitHub."
+            "goal": "Upload your first project to GitHub.",
+
+            "estimated_time": 45 ,
+
+            "difficulty": "Beginner",
+
+            "reward_xp": 60,
+
+            "tip": "Commit small changes often with meaningful commit messages."
         }
     ],
     

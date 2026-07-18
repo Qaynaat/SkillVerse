@@ -50,6 +50,7 @@ class ResponseGenerator:
 
     def generate_future_demand(self, career: CareerProfile):
         return self._generate_future_demand(career)
+    
 
     # --------------------------------------------------
     # Private Helpers
@@ -96,6 +97,16 @@ class ResponseGenerator:
         return (
             f"📈 Future Demand: {career.future_demand}"
         )
+    
+    def generate_mission_complete(self, reward, total_xp):
+
+        return (
+            "🎉 Mission Complete!\n\n"
+
+            f"⭐ Reward Earned:\n+{reward} XP\n\n"
+
+            f"🏆 Total XP:\n{total_xp} XP"
+        )
 
     def _generate_encouragement(self):
 
@@ -126,10 +137,20 @@ class ResponseGenerator:
 
         return (
             "🚀 Today's Mission\n\n"
-            f"📘 Learn: {step['title']}\n\n"
+
+            f"📘 Learn:\n{step['title']}\n\n"
+
+            f"⏱ Estimated Time:\n{step['estimated_time']} minutes\n\n"
+
+            f"📈 Difficulty:\n{step['difficulty']}\n\n"
+
+            f"⭐ Reward:\n{step['reward_xp']} XP\n\n"
+
             f"💡 Why?\n{step['why']}\n\n"
+
             f"🎯 Goal:\n{step['goal']}\n\n"
-            "One small step today is better than waiting for the perfect time. 💜"
+
+            f"💜 Tip:\n{step['tip']}"
         )
     def generate_programming_languages(self, career):
 

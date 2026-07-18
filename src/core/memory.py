@@ -3,6 +3,7 @@ class Memory:
     def __init__(self):
         self.current_career = None
         self.current_step = 0
+        self.total_xp = 0
         self.conversation_history = []
 
     def remember_career(self, career_name: str):
@@ -32,3 +33,12 @@ class Memory:
 
     def reset_progress(self):
         self.current_step = 0
+
+    def add_xp(self , amount):
+        self.total_xp += amount
+
+    def get_total_xp(self):
+        return self.total_xp
+    
+    def reset_xp(self):
+        self.total_xp = 0

@@ -7,7 +7,7 @@ mentor = MentorEngine()
 career = database.get_career("Software Engineering")
 
 print("=" * 60)
-print("BYTE FIRST LEARNING STEP")
+print("LEARNING MISSIONS ")
 print("=" * 60)
 print()
 

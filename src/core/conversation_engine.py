@@ -23,8 +23,7 @@ class ConversationEngine:
         Intent.ASK_FUTURE_DEMAND: [
             "future",
             "demand",
-            "scope",
-            "salary"
+            "scope"
         ],
 
         Intent.ASK_DESCRIPTION: [
@@ -60,7 +59,6 @@ class ConversationEngine:
         Intent.ASK_TOOLS: [
             "tool",
             "tools",
-            "software",
             "software used",
             "applications",
             "application",

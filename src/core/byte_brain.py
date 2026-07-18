@@ -69,16 +69,36 @@ class ByteBrain:
         )
     def complete_current_step(self):
 
-        self.memory.advance_step()
-
         career_name = self.memory.get_current_career()
 
         if career_name is None:
-            return self._reply(
-                "🥳 Progress saved!"
-            )
+            return self._reply("🥳 Progress saved!")
 
-        return self.get_current_learning_step(career_name)
+        career = self.career_database.get_career(career_name)
+
+        step = self.mentor_engine.get_step(
+            career,
+            self.memory.get_current_step()
+        )
+
+        reward = step["reward_xp"]
+
+        self.memory.add_xp(reward)
+
+        self.memory.advance_step()
+
+        total_xp = self.memory.get_total_xp()
+
+        message = self.response_generator.generate_mission_complete(
+            reward,
+            total_xp
+        )
+
+        next_mission = self.get_current_learning_step(career_name)
+
+        return self._reply(
+            message + "\n\n" + next_mission
+        )
 
     def respond(self, message: str, career_name: str = None):
 
