@@ -4,6 +4,7 @@ class Memory:
         self.current_career = None
         self.current_step = 0
         self.total_xp = 0
+        self.daily_goal = 200
         self.conversation_history = []
 
     def remember_career(self, career_name: str):
@@ -42,3 +43,14 @@ class Memory:
     
     def reset_xp(self):
         self.total_xp = 0
+
+    def get_daily_goal(self):
+        return self.daily_goal
+    
+    def get_progress(self):
+        return {
+            "current": self.total_xp,
+            "goal": self.daily_goal
+        }
+    def has_completed_daily_goal(self):
+        return self.total_xp >= self.daily_goal

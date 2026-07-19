@@ -87,15 +87,28 @@ class ByteBrain:
 
         self.memory.advance_step()
 
-        total_xp = self.memory.get_total_xp()
+        progress = self.memory.get_progress()
 
         message = self.response_generator.generate_mission_complete(
             reward,
-            total_xp
+            progress
         )
 
-        next_mission = self.get_current_learning_step(career_name)
+        if self.memory.has_completed_daily_goal():
 
+            message += "\n\n"
+
+            message += self.response_generator.generate_daily_goal_complete()
+
+        next_step = self.mentor_engine.get_step(
+            career,
+            self.memory.get_current_step()
+        )
+
+        if next_step is None:
+            next_mission = "🎉 Congratulations! You've completed this roadmap!"
+        else:
+            next_mission = self.response_generator.generate_learning_mission(next_step)
         return self._reply(
             message + "\n\n" + next_mission
         )

@@ -98,14 +98,49 @@ class ResponseGenerator:
             f"📈 Future Demand: {career.future_demand}"
         )
     
-    def generate_mission_complete(self, reward, total_xp):
+    def _generate_progress_bar(self, current, goal):
+
+        filled = min(int((current / goal) * 10), 10)
+
+        empty = 10 - filled
+
+        bar = "█" * filled + "□" * empty
+
+        return (
+            f"{bar}\n"
+            f"{current}/{goal} XP"
+        )
+    
+    def generate_daily_goal_complete(self):
+
+        return (
+            "🏆 Daily Goal Completed!\n\n"
+
+            "🎉 Amazing work!\n\n"
+
+            "You reached today's XP goal!\n\n"
+
+            "Keep up the great work! 🚀💜"
+        )
+    
+    def generate_mission_complete(self, reward, progress):
+
+        current = progress["current"]
+        goal = progress["goal"]
+
+        progress_bar = self._generate_progress_bar(
+            current,
+            goal
+        )
 
         return (
             "🎉 Mission Complete!\n\n"
 
             f"⭐ Reward Earned:\n+{reward} XP\n\n"
 
-            f"🏆 Total XP:\n{total_xp} XP"
+            f"🏆 Total XP:\n{current} XP\n\n"
+
+            f"📊 Daily Progress:\n{progress_bar}"
         )
 
     def _generate_encouragement(self):
