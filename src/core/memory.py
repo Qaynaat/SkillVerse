@@ -1,4 +1,5 @@
 from src.core.user_profile import UserProfile
+from src.core.student_profile import StudentProfile
 
 class Memory:
 
@@ -42,6 +43,13 @@ class Memory:
         # User Profile
         # -----------------------------
         self.user_profile = UserProfile()
+
+        # -----------------------------
+        # Student Profile
+        # -----------------------------
+
+
+        self.student_profile = StudentProfile()
 
         # -----------------------------
         # Reward Collection
@@ -205,7 +213,7 @@ class Memory:
         return self.user_profile.get_name()
 
     def set_dream_career(self, career):
-        self.user_profile.set_dream_career(career)
+        self.student_profile.set_dream_career(career)
 
     def get_dream_career(self):
-        return self.user_profile.get_dream_career()
+        return self.student_profile.get_dream_career()
