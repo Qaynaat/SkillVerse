@@ -22,7 +22,8 @@ class CareerProfile:
             future_demand,
             salary,
             related_careers,
-            learning_resources
+            learning_resources,
+            required_traits 
             ):
         self.name = name 
         self.description =description
@@ -31,6 +32,7 @@ class CareerProfile:
         self.daily_tasks = daily_tasks
         self.skills = skills
         self.programming_languages =programming_languages
+        self.required_traits = required_traits
         self.tools = tools
         self.university_subjects =university_subjects
         self.career_paths = career_paths
@@ -43,6 +45,7 @@ class CareerProfile:
         self.salary = salary
         self.related_careers = related_careers
         self.learning_resources = learning_resources
+
         self.validate()
 
     def validate(self):
