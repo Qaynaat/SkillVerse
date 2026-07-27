@@ -1,4 +1,5 @@
 from src.data.personality_traits import PERSONALITY_TRAITS
+from src.core.student_profile import StudentProfile
 
 class StudentAnalyzer:
 
@@ -15,19 +16,21 @@ class StudentAnalyzer:
 
     def analyze(self, answers):
 
-        profile = {}
+        trait_scores = {}
 
         for trait_id, score in answers.items():
-            profile[trait_id] = score
+            trait_scores[trait_id] = score
 
-        strongest_trait_id = max(profile, key=profile.get)
-        weakest_trait_id = min(profile, key=profile.get)
+        strongest_trait_id = max(trait_scores, key=trait_scores.get)
+        weakest_trait_id = min(trait_scores, key=trait_scores.get)
 
         strongest_trait = self.get_trait(strongest_trait_id)
         weakest_trait = self.get_trait(weakest_trait_id)
 
-        return {
-            "scores": profile,
-            "strongest_trait": strongest_trait,
-            "weakest_trait": weakest_trait
-        }
+        profile = StudentProfile()
+
+        profile.set_scores(trait_scores)
+        profile.set_strongest_trait(strongest_trait)
+        profile.set_weakest_trait(weakest_trait)
+
+        return profile

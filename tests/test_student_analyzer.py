@@ -18,25 +18,28 @@ print()
 print("Trait Scores")
 print("-" * 40)
 
-for trait, score in profile["scores"].items():
+for trait, score in profile.get_scores().items():
     print(f"{trait}: {score}")
 
-print(profile["strongest_trait"]["name"])
+print()
+print("Strongest Trait")
+print("-" * 40)
+print(profile.get_strongest_trait()["name"])
 
 print()
 print("Why It Matters")
 print("-" * 40)
-print(profile["strongest_trait"]["why_it_matters"])
+print(profile.get_strongest_trait()["why_it_matters"])
 
 print()
 print("Related Careers")
 print("-" * 40)
-print(", ".join(profile["strongest_trait"]["careers"]))
+print(", ".join(profile.get_strongest_trait()["careers"]))
 
 print()
 print("Weakest Trait")
 print("-" * 40)
-print(profile["weakest_trait"]["name"])
+print(profile.get_weakest_trait()["name"])
 
 print()
 print("=" * 60)
