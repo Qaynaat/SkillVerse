@@ -9,7 +9,7 @@ from src.core.reward_engine import RewardEngine
 from src.core.save_system import SaveSystem
 from src.core.learning_analyzer import LearningAnalyzer
 from src.core.adaptive_mentor import AdaptiveMentor
-
+from src.core.reflection_engine import ReflectionEngine
 
 class ByteBrain:
 
@@ -21,10 +21,12 @@ class ByteBrain:
         achievement_engine: AchievementEngine,
         reward_engine: RewardEngine,
         mentor_engine: MentorEngine,
+        reflection_engine: ReflectionEngine,
         memory: Memory,
         save_system: SaveSystem,
         learning_analyzer: LearningAnalyzer,
         adaptive_mentor: AdaptiveMentor,
+        
     ):
         self.career_database = career_database
         self.career_responses = career_response_generator
@@ -32,10 +34,12 @@ class ByteBrain:
         self.achievement_engine = achievement_engine
         self.reward_engine = reward_engine
         self.mentor_engine = mentor_engine
+        self.reflection_engine = reflection_engine
         self.memory = memory
         self.save_system = save_system
         self.learning_analyzer = learning_analyzer
         self.adaptive_mentor = adaptive_mentor
+        
 
         # Dispatch table for career information requests
         self.career_handlers = {
@@ -219,3 +223,10 @@ class ByteBrain:
         )
 
         return self._reply(recommendation)
+
+    def get_learning_reflection(self) -> str:
+        reflection = self.reflection_engine.generate_summary(
+            self.memory
+        )
+
+        return self._reply(reflection)

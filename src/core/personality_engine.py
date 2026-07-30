@@ -1,6 +1,7 @@
 from src.core.personality_profile import PersonalityProfile
 
 
+
 class PersonalityEngine:
 
     def __init__(self, profile: PersonalityProfile):
