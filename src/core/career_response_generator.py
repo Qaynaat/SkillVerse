@@ -2,8 +2,15 @@ from typing import Dict, Any
 from src.core.personality_engine import PersonalityEngine
 from src.data.career_profile import CareerProfile
 
+class CareerResponseGenerator:
 
-class ResponseGenerator:
+    """
+    Generates all career-related responses shown by Byte.
+
+    This class is responsible for presenting career information,
+    learning missions, achievements, rewards, and motivational
+    messages in Byte's personality.
+    """
 
     def __init__(self, personality_engine: PersonalityEngine):
         self.personality_engine = personality_engine
@@ -12,7 +19,10 @@ class ResponseGenerator:
     # Complete Career Introduction
     # --------------------------------------------------
 
-    def generate(self, career: CareerProfile) :
+    def generate_complete_career(
+    self,
+    career: CareerProfile
+) -> str:
         sections = [
             self._generate_greeting(),
             self._generate_intro(career),
@@ -26,6 +36,12 @@ class ResponseGenerator:
 
         return "\n\n".join(sections)
 
+
+    def _bullet_list(self, items):
+        return "\n".join(
+            f"• {item}"
+            for item in items
+        )
     # --------------------------------------------------
     # Career Details Public Methods
     # --------------------------------------------------
@@ -41,6 +57,16 @@ class ResponseGenerator:
 
     def generate_future_demand(self, career: CareerProfile) -> str:
         return self._generate_future_demand(career)
+
+
+    def _bullet_list(self, items) -> str:
+        """
+        Converts a list into a bullet-point string.
+        """
+        return "\n".join(
+            f"• {item}"
+            for item in items
+        )
 
     def generate_programming_languages(self, career: CareerProfile) -> str:
         languages = "\n• ".join(career.programming_languages)
@@ -61,10 +87,10 @@ class ResponseGenerator:
         )
 
     def generate_university_subjects(self, career: CareerProfile) -> str:
-        subjects = "\n".join(
-            f"• {subject}"
-            for subject in career.university_subjects
+        subjects = self._bullet_list(
+            career.university_subjects
         )
+        
         return (
             "📚 University Subjects\n\n"
             f"{subjects}\n\n"
@@ -72,9 +98,8 @@ class ResponseGenerator:
         )
 
     def generate_beginner_projects(self, career: CareerProfile) -> str:
-        projects = "\n".join(
-            f"• {project}"
-            for project in career.beginner_projects
+        projects = self._bullet_list(
+            career.beginner_projects
         )
         return (
             "🛠 Beginner Projects\n\n"
@@ -83,9 +108,8 @@ class ResponseGenerator:
         )
 
     def generate_learning_resources(self, career: CareerProfile) -> str:
-        resources = "\n".join(
-            f"• {resource}"
-            for resource in career.learning_resources
+        resources = self._bullet_list(
+            career.learning_resources
         )
         return (
             "📚 Learning Resources\n\n"
@@ -94,9 +118,8 @@ class ResponseGenerator:
         )
 
     def generate_related_careers(self, career: CareerProfile) -> str:
-        careers = "\n".join(
-            f"• {item}"
-            for item in career.related_careers
+        careers = self._bullet_list(
+            career.related_careers
         )
         return (
             "🔀 Related Careers\n\n"
@@ -112,9 +135,8 @@ class ResponseGenerator:
         )
 
     def generate_pros(self, career: CareerProfile) -> str:
-        pros = "\n".join(
-            f"• {pro}"
-            for pro in career.pros
+        pros = self._bullet_list(
+            career.pros
         )
         return (
             "✅ Advantages\n\n"
@@ -123,9 +145,8 @@ class ResponseGenerator:
         )
 
     def generate_challenges(self, career: CareerProfile) -> str:
-        challenges = "\n".join(
-            f"• {challenge}"
-            for challenge in career.challenges
+        challenges = self._bullet_list(
+            career.challenges
         )
         return (
             "⚠️ Challenges\n\n"
@@ -192,7 +213,10 @@ class ResponseGenerator:
             f"+{reward.get('xp', 0)} XP"
         )
 
-    def generate_reward_unlock(self, reward):
+    def generate_reward_unlock(
+    self,
+    reward: Dict[str, Any]
+) -> str:
 
         return (
             "🎁 Reward Unlocked!\n\n"
@@ -208,7 +232,6 @@ class ResponseGenerator:
             "You reached today's XP goal!\n\n"
             "Keep up the great work! 🚀💜"
         )
-
     # --------------------------------------------------
     # Private Helpers
     # --------------------------------------------------

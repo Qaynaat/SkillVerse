@@ -15,17 +15,17 @@ We help students navigate education with clarity.
 
 # 🧭 Our Vision
 
-Discover Yourself
+> Discover Yourself
         ↓
-Understand Yourself
+> Understand Yourself
         ↓
-Understand Careers
+> Understand Careers
         ↓
-Find Your Path
+> Find Your Path
         ↓
-Build Your Future
+> Build Your Future
         ↓
-Never Learn Alone
+> Never Learn Alone
 
 ---
 
@@ -35,12 +35,12 @@ SkillVerse is an AI-powered Career Navigation Platform.
 
 It helps students:
 
-• Discover careers that match their interests.
-• Learn what every technology career actually involves.
-• Understand required skills and technologies.
-• Follow personalised career roadmaps.
-• Track their learning journey.
-• Stay motivated with Byte.
+* Discover careers that match their interests.
+* Learn what every technology career actually involves.
+* Understand required skills and technologies.
+* Follow personalised career roadmaps.
+*  Track their learning journey.
+* Stay motivated with Byte.
 
 Byte is not just an assistant.
 
@@ -88,37 +88,37 @@ We help them stay consistent.
 
 # 🤖 Byte's Purpose
 
-Byte thinks before speaking.
+* Byte thinks before speaking.
 
-Byte understands the student.
+* Byte understands the student.
 
-Byte understands careers.
+* Byte understands careers.
 
-Byte connects both.
+* Byte connects both.
 
-Byte mentors, not teaches.
+* Byte mentors, not teaches.
 
-Instead of saying:
+**Instead of saying:**
 
-"Here's my Python course."
+> "Here's my Python course."
 
-Byte says:
+**Byte says:**
 
-"Python is your next milestone because it is essential for Cybersecurity.
+> "Python is your next milestone because it is essential for Cybersecurity.
 
-Here are the best resources to learn it."
+> Here are the best resources to learn it."
 
 ---
 
 # 🌍 Our Core Philosophy
 
-The internet already has millions of learning resources.
+* The internet already has millions of learning resources.
 
-The real problem is not lack of information.
+* The real problem is not lack of information.
 
-The real problem is lack of guidance.
+* The real problem is lack of guidance.
 
-SkillVerse solves guidance.
+* SkillVerse solves guidance.
 
 ---
 
@@ -142,14 +142,14 @@ Am I making progress?
 
 If SkillVerse answers those questions well,
 
-we have succeeded.
+> we have succeeded.
 
 ---
 
 # ❤️ Motto
 
-Discover Yourself.
+* Discover Yourself.
 
-Build Your Future.
+* Build Your Future.
 
-Never Learn Alone.
+* Never Learn Alone.

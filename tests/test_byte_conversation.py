@@ -2,7 +2,7 @@ from src.core.byte_brain import ByteBrain
 from src.core.career_database import CareerDatabase
 from src.core.personality_engine import PersonalityEngine
 from src.core.personality_profile import PersonalityProfile
-from src.core.response_generator import ResponseGenerator
+from src.core.career_response_generator import CareerResponseGenerator
 from src.core.conversation_engine import ConversationEngine
 from src.core.memory import Memory
 # -----------------------------
@@ -60,7 +60,7 @@ byte_profile = PersonalityProfile(
 
 personality_engine =PersonalityEngine(byte_profile)
 career_database = CareerDatabase()
-response_generator = ResponseGenerator(personality_engine)
+response_generator = CareerResponseGenerator(personality_engine)
 conversation_engine = ConversationEngine()
 memory = Memory()
 

@@ -23,7 +23,7 @@ class CareerProfile:
             salary,
             related_careers,
             learning_resources,
-            required_traits 
+            required_traits = None
             ):
         self.name = name 
         self.description =description
@@ -32,7 +32,7 @@ class CareerProfile:
         self.daily_tasks = daily_tasks
         self.skills = skills
         self.programming_languages =programming_languages
-        self.required_traits = required_traits
+        self.required_traits = required_traits or {}
         self.tools = tools
         self.university_subjects =university_subjects
         self.career_paths = career_paths
