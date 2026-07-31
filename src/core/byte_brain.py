@@ -11,6 +11,7 @@ from src.core.learning_analyzer import LearningAnalyzer
 from src.core.adaptive_mentor import AdaptiveMentor
 from src.core.reflection_engine import ReflectionEngine
 from src.core.learning_insights import LearningInsights
+from src.core.progress_dashboard import ProgressDashboard
 
 class ByteBrain:
 
@@ -28,6 +29,7 @@ class ByteBrain:
         learning_analyzer: LearningAnalyzer,
         adaptive_mentor: AdaptiveMentor,
         learning_insights: LearningInsights,
+        progress_dashboard: ProgressDashboard,
         
     ):
         self.career_database = career_database
@@ -42,6 +44,7 @@ class ByteBrain:
         self.learning_analyzer = learning_analyzer
         self.adaptive_mentor = adaptive_mentor
         self.learning_insights = learning_insights
+        self.progress_dashboard = progress_dashboard
         
 
         # Dispatch table for career information requests
@@ -240,5 +243,20 @@ class ByteBrain:
             f"📖 Current Step: {report['current_step']}\n"
             f"🎓 Level: {report['level']}\n\n"
             f"{report['advice']}"
+        )
+        return self._reply(response)
+
+    def get_progress_dashboard(self):
+        report = self.progress_dashboard.generate(
+            self.memory
+        )
+        response = (
+            "📊 SkillVerse Progress Dashboard\n\n"
+            f"⭐ XP: {report['xp']}\n"
+            f"🎓 Level: {report['level']}\n"
+            f"✅ Missions: {report['missions']}\n"
+            f"📖 Current Step: {report['current_step']}\n"
+            f"🏆 Achievements: {report['achievements']}\n"
+            f"🎁 Rewards: {report['rewards']}"
         )
         return self._reply(response)
