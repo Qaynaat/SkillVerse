@@ -12,6 +12,7 @@ from src.core.adaptive_mentor import AdaptiveMentor
 from src.core.reflection_engine import ReflectionEngine
 from src.core.learning_insights import LearningInsights
 from src.core.progress_dashboard import ProgressDashboard
+from src.core.study_planner import StudyPlanner
 
 class ByteBrain:
 
@@ -30,7 +31,7 @@ class ByteBrain:
         adaptive_mentor: AdaptiveMentor,
         learning_insights: LearningInsights,
         progress_dashboard: ProgressDashboard,
-        
+        study_planner: StudyPlanner,
     ):
         self.career_database = career_database
         self.career_responses = career_response_generator
@@ -45,6 +46,7 @@ class ByteBrain:
         self.adaptive_mentor = adaptive_mentor
         self.learning_insights = learning_insights
         self.progress_dashboard = progress_dashboard
+        self.study_planner = study_planner
         
 
         # Dispatch table for career information requests
@@ -259,4 +261,23 @@ class ByteBrain:
             f"🏆 Achievements: {report['achievements']}\n"
             f"🎁 Rewards: {report['rewards']}"
         )
+        return self._reply(response)
+
+
+    def get_study_plan(self):
+
+        plan = self.study_planner.generate_plan(
+            self.memory
+        )
+
+        response = (
+            "📅 Today's Study Plan\n\n"
+            f"⭐ XP: {plan['xp']}\n"
+            f"📖 Current Step: {plan['current_step']}\n\n"
+            "📋 Tasks:\n"
+        )
+
+        for task in plan["tasks"]:
+            response += f"• {task}\n"
+
         return self._reply(response)
