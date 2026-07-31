@@ -13,6 +13,7 @@ from src.core.reflection_engine import ReflectionEngine
 from src.core.learning_insights import LearningInsights
 from src.core.progress_dashboard import ProgressDashboard
 from src.core.study_planner import StudyPlanner
+from src.core.daily_goal_engine import DailyGoalEngine
 
 class ByteBrain:
 
@@ -32,6 +33,7 @@ class ByteBrain:
         learning_insights: LearningInsights,
         progress_dashboard: ProgressDashboard,
         study_planner: StudyPlanner,
+        daily_goal_engine: DailyGoalEngine,
     ):
         self.career_database = career_database
         self.career_responses = career_response_generator
@@ -47,7 +49,7 @@ class ByteBrain:
         self.learning_insights = learning_insights
         self.progress_dashboard = progress_dashboard
         self.study_planner = study_planner
-        
+        self.daily_goal_engine = daily_goal_engine
 
         # Dispatch table for career information requests
         self.career_handlers = {
@@ -279,5 +281,21 @@ class ByteBrain:
 
         for task in plan["tasks"]:
             response += f"• {task}\n"
+
+        return self._reply(response)
+
+    def get_daily_goals(self):
+
+        report = self.daily_goal_engine.generate_goals(
+            self.memory
+        )
+
+        response = (
+            "🎯 Today's Goals\n\n"
+            f"⭐ XP: {report['xp']}\n\n"
+        )
+
+        for goal in report["goals"]:
+            response += f"• {goal}\n"
 
         return self._reply(response)
