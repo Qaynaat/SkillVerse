@@ -17,6 +17,7 @@ from src.core.engine.daily_goal_engine import DailyGoalEngine
 from src.core.engine.smart_reminder_engine import SmartReminderEngine
 from src.core.engine.motivation_engine import MotivationEngine
 from src.core.engine.encouragement_engine import EncouragementEngine
+from src.core.engine.celebration_engine import CelebrationEngine
 
 class ByteBrain:
 
@@ -40,6 +41,7 @@ class ByteBrain:
         smart_reminder_engine: SmartReminderEngine,
         motivation_engine: MotivationEngine,
         encouragement_engine: EncouragementEngine,
+        celebration_engine: CelebrationEngine,
     ):
         self.career_database = career_database
         self.career_responses = career_response_generator
@@ -59,6 +61,7 @@ class ByteBrain:
         self.smart_reminder_engine = smart_reminder_engine
         self.motivation_engine = motivation_engine
         self.encouragement_engine = encouragement_engine
+        self.celebration_engine = celebration_engine
         
 
         # Dispatch table for career information requests
@@ -324,6 +327,19 @@ class ByteBrain:
         )
         response = (
             "🌟 Encouragement\n\n"
+            f"⭐ XP: {report['xp']}\n"
+            f"✅ Missions: {report['missions']}\n\n"
+            f"{report['message']}"
+        )
+        return self._reply(response)
+
+
+    def get_celebration(self):
+        report = self.celebration_engine.celebrate(
+            self.memory
+        )
+        response = (
+            "🎉 Celebration\n\n"
             f"⭐ XP: {report['xp']}\n"
             f"✅ Missions: {report['missions']}\n\n"
             f"{report['message']}"
