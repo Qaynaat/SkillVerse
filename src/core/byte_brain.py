@@ -16,6 +16,7 @@ from src.core.study_planner import StudyPlanner
 from src.core.engine.daily_goal_engine import DailyGoalEngine
 from src.core.engine.smart_reminder_engine import SmartReminderEngine
 from src.core.engine.motivation_engine import MotivationEngine
+from src.core.engine.encouragement_engine import EncouragementEngine
 
 class ByteBrain:
 
@@ -38,6 +39,7 @@ class ByteBrain:
         daily_goal_engine: DailyGoalEngine,
         smart_reminder_engine: SmartReminderEngine,
         motivation_engine: MotivationEngine,
+        encouragement_engine: EncouragementEngine,
     ):
         self.career_database = career_database
         self.career_responses = career_response_generator
@@ -56,6 +58,7 @@ class ByteBrain:
         self.daily_goal_engine = daily_goal_engine
         self.smart_reminder_engine = smart_reminder_engine
         self.motivation_engine = motivation_engine
+        self.encouragement_engine = encouragement_engine
         
 
         # Dispatch table for career information requests
@@ -118,26 +121,20 @@ class ByteBrain:
         step = self.mentor_engine.get_step(
             career, self.memory.get_current_step()
         )
-
         if step is None:
             return self._reply(
                 "🎉 Congratulations! You've completed this roadmap!"
             )
-
         return self._reply(self.career_responses.generate_learning_mission(step))
 
     def complete_current_step(self) -> str:
         career_name = self.memory.get_current_career()
-
         if career_name is None:
             return self._reply("🥳 Progress saved!")
-
         career = self._get_career(career_name)
-
         step = self.mentor_engine.get_step(
             career, self.memory.get_current_step()
         )
-
         reward = step["reward_xp"]
 
         self.memory.add_xp(reward)
@@ -317,6 +314,18 @@ class ByteBrain:
         response = (
             "💜 Motivation\n\n"
             f"⭐ XP: {report['xp']}\n\n"
+            f"{report['message']}"
+        )
+        return self._reply(response)
+
+    def get_encouragement(self):
+        report = self.encouragement_engine.generate_encouragement(
+            self.memory
+        )
+        response = (
+            "🌟 Encouragement\n\n"
+            f"⭐ XP: {report['xp']}\n"
+            f"✅ Missions: {report['missions']}\n\n"
             f"{report['message']}"
         )
         return self._reply(response)
