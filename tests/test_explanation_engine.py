@@ -1,4 +1,4 @@
-from src.core.explanation_engine import ExplanationEngine
+from src.core.engine.explanation_engine import ExplanationEngine
 from src.core.student_profile import StudentProfile
 
 

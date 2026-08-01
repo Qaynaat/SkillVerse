@@ -1,4 +1,4 @@
-from src.core.dialogue_engine import DialogueEngine
+from src.core.engine.dialogue_engine import DialogueEngine
 
 engine = DialogueEngine()
 

@@ -1,4 +1,4 @@
-from src.core.assessment_engine import AssessmentEngine
+from src.core.engine.assessment_engine import AssessmentEngine
 
 print("=" * 60)
 print("MISSION 017 - ASSESSMENT ENGINE TEST")

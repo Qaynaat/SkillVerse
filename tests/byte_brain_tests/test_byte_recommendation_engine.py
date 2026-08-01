@@ -1,4 +1,4 @@
-from src.core.byte_recommendation_engine import ByteRecommendationEngine
+from src.core.engine.byte_recommendation_engine import ByteRecommendationEngine
 
 
 # Fake Career Class

@@ -1,9 +1,9 @@
 from src.core.byte_brain import ByteBrain
 from src.core.career_database import CareerDatabase
-from src.core.personality_engine import PersonalityEngine
+from src.core.engine.personality_engine import PersonalityEngine
 from src.core.personality_profile import PersonalityProfile
 from src.core.career_response_generator import CareerResponseGenerator
-from src.core.conversation_engine import ConversationEngine
+from src.core.engine.conversation_engine import ConversationEngine
 from src.core.memory import Memory
 # -----------------------------
 # Create Byte Personality

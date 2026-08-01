@@ -1,31 +1,34 @@
 from src.core.byte_brain import ByteBrain
 from src.core.memory import Memory
-from src.core.smart_reminder_engine import SmartReminderEngine
-from src.core.daily_goal_engine import DailyGoalEngine
 from src.core.study_planner import StudyPlanner
 from src.core.progress_dashboard import ProgressDashboard
 from src.core.learning_insights import LearningInsights
 from src.core.learning_analyzer import LearningAnalyzer
 from src.core.adaptive_mentor import AdaptiveMentor
-from src.core.reflection_engine import ReflectionEngine
-from src.core.achievement_engine import AchievementEngine
+from src.core.engine.reflection_engine import ReflectionEngine
+from src.core.engine.achievement_engine import AchievementEngine
 from src.core.achievement_database import AchievementDatabase
-from src.core.reward_engine import RewardEngine
-from src.core.mentor_engine import MentorEngine
+from src.core.engine.reward_engine import RewardEngine
+from src.core.engine.mentor_engine import MentorEngine
 from src.core.career_database import CareerDatabase
 from src.core.career_response_generator import CareerResponseGenerator
-from src.core.conversation_engine import ConversationEngine
+from src.core.engine.conversation_engine import ConversationEngine
 from src.core.save_system import SaveSystem
-from src.core.personality_engine import PersonalityEngine
+from src.core.engine.personality_engine import PersonalityEngine
 from src.data.byte_personality import BYTE_PERSONALITY
 
 print("=" * 60)
-print("      BYTE SMART REMINDER TEST")
+print("      BYTE STUDY PLANNER TEST")
 print("=" * 60)
 
 memory = Memory()
 
-memory.add_xp(180)
+memory.add_xp(220)
+
+for _ in range(6):
+    memory.increment_completed_missions()
+
+memory.advance_step()
 
 personality = PersonalityEngine(BYTE_PERSONALITY)
 
@@ -44,13 +47,11 @@ brain = ByteBrain(
     learning_insights=LearningInsights(),
     progress_dashboard=ProgressDashboard(),
     study_planner=StudyPlanner(),
-    daily_goal_engine=DailyGoalEngine(),
-    smart_reminder_engine=SmartReminderEngine(),
 )
 
 print()
-print(brain.get_smart_reminder())
+print(brain.get_study_plan())
 
 print()
 print("=" * 60)
-print("✅ Byte Smart Reminder Test Completed Successfully!")
+print("✅ Byte Study Planner Test Completed Successfully!")

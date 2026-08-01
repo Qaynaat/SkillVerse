@@ -1,5 +1,5 @@
 from typing import Dict, Any
-from src.core.personality_engine import PersonalityEngine
+from src.core.engine.personality_engine import PersonalityEngine
 from src.data.career_profile import CareerProfile
 
 class CareerResponseGenerator:

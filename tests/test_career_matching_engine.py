@@ -1,4 +1,4 @@
-from src.core.career_matching_engine import CareerMatchingEngine
+from src.core.engine.career_matching_engine import CareerMatchingEngine
 from src.core.student_profile import StudentProfile
 
 class FakeCareer:

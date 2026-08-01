@@ -1,6 +1,6 @@
 from src.core.memory import Memory
 from src.core.achievement_database import AchievementDatabase
-from src.core.achievement_engine import AchievementEngine
+from src.core.engine.achievement_engine import AchievementEngine
 
 
 memory = Memory()

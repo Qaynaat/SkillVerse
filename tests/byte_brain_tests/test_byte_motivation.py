@@ -1,5 +1,9 @@
 from src.core.byte_brain import ByteBrain
 from src.core.memory import Memory
+from src.core.engine.motivation_engine import MotivationEngine
+from src.core.engine.smart_reminder_engine import SmartReminderEngine
+from src.core.engine.daily_goal_engine import DailyGoalEngine
+from src.core.study_planner import StudyPlanner
 from src.core.progress_dashboard import ProgressDashboard
 from src.core.learning_insights import LearningInsights
 from src.core.learning_analyzer import LearningAnalyzer
@@ -17,17 +21,12 @@ from src.core.engine.personality_engine import PersonalityEngine
 from src.data.byte_personality import BYTE_PERSONALITY
 
 print("=" * 60)
-print("      BYTE PROGRESS DASHBOARD TEST")
+print("      BYTE MOTIVATION TEST")
 print("=" * 60)
 
 memory = Memory()
 
-memory.add_xp(350)
-
-for _ in range(9):
-    memory.increment_completed_missions()
-
-memory.advance_step()
+memory.add_xp(250)
 
 personality = PersonalityEngine(BYTE_PERSONALITY)
 
@@ -45,11 +44,15 @@ brain = ByteBrain(
     adaptive_mentor=AdaptiveMentor(),
     learning_insights=LearningInsights(),
     progress_dashboard=ProgressDashboard(),
+    study_planner=StudyPlanner(),
+    daily_goal_engine=DailyGoalEngine(),
+    smart_reminder_engine=SmartReminderEngine(),
+    motivation_engine=MotivationEngine(),
 )
 
 print()
-print(brain.get_progress_dashboard())
+print(brain.get_motivation())
 
 print()
 print("=" * 60)
-print("✅ Byte Progress Dashboard Test Completed Successfully!")
+print("✅ Byte Motivation Test Completed Successfully!")

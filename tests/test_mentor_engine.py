@@ -1,4 +1,4 @@
-from src.core.mentor_engine import MentorEngine
+from src.core.engine.mentor_engine import MentorEngine
 from src.core.career_database import CareerDatabase
 
 database = CareerDatabase()

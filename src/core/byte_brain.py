@@ -1,20 +1,21 @@
-from src.core.achievement_engine import AchievementEngine
+from src.core.engine.achievement_engine import AchievementEngine
 from src.core.career_database import CareerDatabase
 from src.core.career_response_generator import CareerResponseGenerator
-from src.core.conversation_engine import ConversationEngine
+from src.core.engine.conversation_engine import ConversationEngine
 from src.core.intent import Intent
 from src.core.memory import Memory
-from src.core.mentor_engine import MentorEngine
-from src.core.reward_engine import RewardEngine
+from src.core.engine.mentor_engine import MentorEngine
+from src.core.engine.reward_engine import RewardEngine
 from src.core.save_system import SaveSystem
 from src.core.learning_analyzer import LearningAnalyzer
 from src.core.adaptive_mentor import AdaptiveMentor
-from src.core.reflection_engine import ReflectionEngine
+from src.core.engine.reflection_engine import ReflectionEngine
 from src.core.learning_insights import LearningInsights
 from src.core.progress_dashboard import ProgressDashboard
 from src.core.study_planner import StudyPlanner
-from src.core.daily_goal_engine import DailyGoalEngine
-from src.core.smart_reminder_engine import SmartReminderEngine
+from src.core.engine.daily_goal_engine import DailyGoalEngine
+from src.core.engine.smart_reminder_engine import SmartReminderEngine
+from src.core.engine.motivation_engine import MotivationEngine
 
 class ByteBrain:
 
@@ -36,6 +37,7 @@ class ByteBrain:
         study_planner: StudyPlanner,
         daily_goal_engine: DailyGoalEngine,
         smart_reminder_engine: SmartReminderEngine,
+        motivation_engine: MotivationEngine,
     ):
         self.career_database = career_database
         self.career_responses = career_response_generator
@@ -53,6 +55,7 @@ class ByteBrain:
         self.study_planner = study_planner
         self.daily_goal_engine = daily_goal_engine
         self.smart_reminder_engine = smart_reminder_engine
+        self.motivation_engine = motivation_engine
         
 
         # Dispatch table for career information requests
@@ -304,5 +307,16 @@ class ByteBrain:
             "⏰ Smart Reminder\n\n"
             f"⭐ XP: {report['xp']}\n\n"
             f"{report['reminder']}"
+        )
+        return self._reply(response)
+
+    def get_motivation(self):
+        report = self.motivation_engine.generate_message(
+            self.memory
+        )
+        response = (
+            "💜 Motivation\n\n"
+            f"⭐ XP: {report['xp']}\n\n"
+            f"{report['message']}"
         )
         return self._reply(response)

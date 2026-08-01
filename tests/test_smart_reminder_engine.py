@@ -1,4 +1,4 @@
-from src.core.smart_reminder_engine import SmartReminderEngine
+from src.core.engine.smart_reminder_engine import SmartReminderEngine
 from src.core.memory import Memory
 
 print("=" * 60)

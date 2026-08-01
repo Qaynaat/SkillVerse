@@ -1,4 +1,4 @@
-from src.core.daily_goal_engine import DailyGoalEngine
+from src.core.engine.daily_goal_engine import DailyGoalEngine
 from src.core.memory import Memory
 
 print("=" * 60)

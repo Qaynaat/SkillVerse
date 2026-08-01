@@ -3,7 +3,7 @@ import os
 
 sys.path.append(os.path.abspath("src"))
 
-from src.core.career_recommendation_engine import CareerRecommendationEngine
+from src.core.engine.career_recommendation_engine import CareerRecommendationEngine
 
 student_profile = {
     "personality": {

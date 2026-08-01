@@ -1,4 +1,4 @@
-from src.core.conversation_engine import ConversationEngine
+from src.core.engine.conversation_engine import ConversationEngine
 from src.core.intent import Intent
 
 engine = ConversationEngine()

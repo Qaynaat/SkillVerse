@@ -1,5 +1,5 @@
 from src.core.memory import Memory
-from src.core.reflection_engine import ReflectionEngine
+from src.core.engine.reflection_engine import ReflectionEngine
 
 print("=" * 60)
 print("        REFLECTION ENGINE TEST")
