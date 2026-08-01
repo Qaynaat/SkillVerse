@@ -14,6 +14,7 @@ from src.core.learning_insights import LearningInsights
 from src.core.progress_dashboard import ProgressDashboard
 from src.core.study_planner import StudyPlanner
 from src.core.daily_goal_engine import DailyGoalEngine
+from src.core.smart_reminder_engine import SmartReminderEngine
 
 class ByteBrain:
 
@@ -34,6 +35,7 @@ class ByteBrain:
         progress_dashboard: ProgressDashboard,
         study_planner: StudyPlanner,
         daily_goal_engine: DailyGoalEngine,
+        smart_reminder_engine: SmartReminderEngine,
     ):
         self.career_database = career_database
         self.career_responses = career_response_generator
@@ -50,6 +52,8 @@ class ByteBrain:
         self.progress_dashboard = progress_dashboard
         self.study_planner = study_planner
         self.daily_goal_engine = daily_goal_engine
+        self.smart_reminder_engine = smart_reminder_engine
+        
 
         # Dispatch table for career information requests
         self.career_handlers = {
@@ -267,35 +271,38 @@ class ByteBrain:
 
 
     def get_study_plan(self):
-
         plan = self.study_planner.generate_plan(
             self.memory
         )
-
         response = (
             "📅 Today's Study Plan\n\n"
             f"⭐ XP: {plan['xp']}\n"
             f"📖 Current Step: {plan['current_step']}\n\n"
             "📋 Tasks:\n"
         )
-
         for task in plan["tasks"]:
             response += f"• {task}\n"
-
         return self._reply(response)
 
     def get_daily_goals(self):
-
         report = self.daily_goal_engine.generate_goals(
             self.memory
         )
-
         response = (
             "🎯 Today's Goals\n\n"
             f"⭐ XP: {report['xp']}\n\n"
         )
-
         for goal in report["goals"]:
             response += f"• {goal}\n"
+        return self._reply(response)
 
+    def get_smart_reminder(self):
+        report = self.smart_reminder_engine.generate_reminder(
+            self.memory
+        )
+        response = (
+            "⏰ Smart Reminder\n\n"
+            f"⭐ XP: {report['xp']}\n\n"
+            f"{report['reminder']}"
+        )
         return self._reply(response)
