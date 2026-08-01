@@ -18,6 +18,7 @@ from src.core.engine.smart_reminder_engine import SmartReminderEngine
 from src.core.engine.motivation_engine import MotivationEngine
 from src.core.engine.encouragement_engine import EncouragementEngine
 from src.core.engine.celebration_engine import CelebrationEngine
+from src.core.engine.quote_engine import QuoteEngine
 
 class ByteBrain:
 
@@ -42,6 +43,7 @@ class ByteBrain:
         motivation_engine: MotivationEngine,
         encouragement_engine: EncouragementEngine,
         celebration_engine: CelebrationEngine,
+        quote_engine: QuoteEngine,
     ):
         self.career_database = career_database
         self.career_responses = career_response_generator
@@ -62,6 +64,7 @@ class ByteBrain:
         self.motivation_engine = motivation_engine
         self.encouragement_engine = encouragement_engine
         self.celebration_engine = celebration_engine
+        self.quote_engine = quote_engine
         
 
         # Dispatch table for career information requests
@@ -344,4 +347,16 @@ class ByteBrain:
             f"✅ Missions: {report['missions']}\n\n"
             f"{report['message']}"
         )
+        return self._reply(response)
+
+    def get_daily_quote(self):
+        report = self.quote_engine.get_quote(
+            self.memory
+        )
+
+        response = (
+            "💬 Today's Quote\n\n"
+            f"{report['quote']}"
+        )
+
         return self._reply(response)
