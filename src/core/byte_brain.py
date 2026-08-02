@@ -20,6 +20,7 @@ from src.core.engine.encouragement_engine import EncouragementEngine
 from src.core.engine.celebration_engine import CelebrationEngine
 from src.core.engine.quote_engine import QuoteEngine
 from src.core.engine.learning_tip_engine import LearningTipEngine
+from src.core.engine.success_prediction_engine import SuccessPredictionEngine
 
 class ByteBrain:
 
@@ -46,6 +47,7 @@ class ByteBrain:
         celebration_engine: CelebrationEngine,
         quote_engine: QuoteEngine,
         learning_tip_engine: LearningTipEngine,
+        success_prediction_engine: SuccessPredictionEngine,
     ):
         self.career_database = career_database
         self.career_responses = career_response_generator
@@ -68,6 +70,7 @@ class ByteBrain:
         self.celebration_engine = celebration_engine
         self.quote_engine = quote_engine
         self.learning_tip_engine = learning_tip_engine
+        self.success_prediction_engine = success_prediction_engine
         
 
         # Dispatch table for career information requests
@@ -372,5 +375,17 @@ class ByteBrain:
         response = (
             "💡 Today's Learning Tip\n\n"
             f"{report['tip']}"
+        )
+        return self._reply(response)
+
+    def get_success_prediction(self):
+        report = self.success_prediction_engine.predict(
+            self.memory
+        )
+        response = (
+            "🔮 Success Prediction\n\n"
+            f"⭐ XP: {report['xp']}\n"
+            f"✅ Missions: {report['missions']}\n"
+            f"📈 Prediction: {report['prediction']}"
         )
         return self._reply(response)
