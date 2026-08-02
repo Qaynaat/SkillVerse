@@ -1,77 +1,40 @@
-from src.core.engine.achievement_engine import AchievementEngine
-from src.core.career_database import CareerDatabase
-from src.core.career_response_generator import CareerResponseGenerator
-from src.core.engine.conversation_engine import ConversationEngine
-from src.core.intent import Intent
+from src.core.brain_services import BrainServices
 from src.core.memory import Memory
-from src.core.engine.mentor_engine import MentorEngine
-from src.core.engine.reward_engine import RewardEngine
 from src.core.save_system import SaveSystem
-from src.core.learning_analyzer import LearningAnalyzer
-from src.core.adaptive_mentor import AdaptiveMentor
-from src.core.engine.reflection_engine import ReflectionEngine
-from src.core.learning_insights import LearningInsights
-from src.core.progress_dashboard import ProgressDashboard
-from src.core.study_planner import StudyPlanner
-from src.core.engine.daily_goal_engine import DailyGoalEngine
-from src.core.engine.smart_reminder_engine import SmartReminderEngine
-from src.core.engine.motivation_engine import MotivationEngine
-from src.core.engine.encouragement_engine import EncouragementEngine
-from src.core.engine.celebration_engine import CelebrationEngine
-from src.core.engine.quote_engine import QuoteEngine
-from src.core.engine.learning_tip_engine import LearningTipEngine
-from src.core.engine.success_prediction_engine import SuccessPredictionEngine
+from src.core.intent import Intent
 
 class ByteBrain:
 
     def __init__(
         self,
-        career_database: CareerDatabase,
-        career_response_generator: CareerResponseGenerator,
-        conversation_engine: ConversationEngine,
-        achievement_engine: AchievementEngine,
-        reward_engine: RewardEngine,
-        mentor_engine: MentorEngine,
-        reflection_engine: ReflectionEngine,
+        services: BrainServices,
         memory: Memory,
         save_system: SaveSystem,
-        learning_analyzer: LearningAnalyzer,
-        adaptive_mentor: AdaptiveMentor,
-        learning_insights: LearningInsights,
-        progress_dashboard: ProgressDashboard,
-        study_planner: StudyPlanner,
-        daily_goal_engine: DailyGoalEngine,
-        smart_reminder_engine: SmartReminderEngine,
-        motivation_engine: MotivationEngine,
-        encouragement_engine: EncouragementEngine,
-        celebration_engine: CelebrationEngine,
-        quote_engine: QuoteEngine,
-        learning_tip_engine: LearningTipEngine,
-        success_prediction_engine: SuccessPredictionEngine,
     ):
-        self.career_database = career_database
-        self.career_responses = career_response_generator
-        self.conversation_engine = conversation_engine
-        self.achievement_engine = achievement_engine
-        self.reward_engine = reward_engine
-        self.mentor_engine = mentor_engine
-        self.reflection_engine = reflection_engine
+        self.career_database = services.career_database
+        self.career_responses = services.career_response_generator
+        self.conversation_engine = services.conversation_engine
+        self.achievement_engine = services.achievement_engine
+        self.reward_engine = services.reward_engine
+        self.mentor_engine = services.mentor_engine
+        self.reflection_engine = services.reflection_engine
+        self.learning_analyzer = services.learning_analyzer
+        self.adaptive_mentor = services.adaptive_mentor
+        self.learning_insights = services.learning_insights
+        self.progress_dashboard = services.progress_dashboard
+        self.study_planner = services.study_planner
+        self.daily_goal_engine = services.daily_goal_engine
+        self.smart_reminder_engine = services.smart_reminder_engine
+        self.motivation_engine = services.motivation_engine
+        self.encouragement_engine = services.encouragement_engine
+        self.celebration_engine = services.celebration_engine
+        self.quote_engine = services.quote_engine
+        self.learning_tip_engine = services.learning_tip_engine
+        self.success_prediction_engine = services.success_prediction_engine
+
         self.memory = memory
         self.save_system = save_system
-        self.learning_analyzer = learning_analyzer
-        self.adaptive_mentor = adaptive_mentor
-        self.learning_insights = learning_insights
-        self.progress_dashboard = progress_dashboard
-        self.study_planner = study_planner
-        self.daily_goal_engine = daily_goal_engine
-        self.smart_reminder_engine = smart_reminder_engine
-        self.motivation_engine = motivation_engine
-        self.encouragement_engine = encouragement_engine
-        self.celebration_engine = celebration_engine
-        self.quote_engine = quote_engine
-        self.learning_tip_engine = learning_tip_engine
-        self.success_prediction_engine = success_prediction_engine
-        
+                
 
         # Dispatch table for career information requests
         self.career_handlers = {
