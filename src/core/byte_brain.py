@@ -19,6 +19,7 @@ from src.core.engine.motivation_engine import MotivationEngine
 from src.core.engine.encouragement_engine import EncouragementEngine
 from src.core.engine.celebration_engine import CelebrationEngine
 from src.core.engine.quote_engine import QuoteEngine
+from src.core.engine.learning_tip_engine import LearningTipEngine
 
 class ByteBrain:
 
@@ -44,6 +45,7 @@ class ByteBrain:
         encouragement_engine: EncouragementEngine,
         celebration_engine: CelebrationEngine,
         quote_engine: QuoteEngine,
+        learning_tip_engine: LearningTipEngine,
     ):
         self.career_database = career_database
         self.career_responses = career_response_generator
@@ -65,6 +67,7 @@ class ByteBrain:
         self.encouragement_engine = encouragement_engine
         self.celebration_engine = celebration_engine
         self.quote_engine = quote_engine
+        self.learning_tip_engine = learning_tip_engine
         
 
         # Dispatch table for career information requests
@@ -359,4 +362,15 @@ class ByteBrain:
             f"{report['quote']}"
         )
 
+        return self._reply(response)
+
+
+    def get_learning_tip(self):
+        report = self.learning_tip_engine.get_tip(
+            self.memory
+        )
+        response = (
+            "💡 Today's Learning Tip\n\n"
+            f"{report['tip']}"
+        )
         return self._reply(response)
