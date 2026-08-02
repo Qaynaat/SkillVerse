@@ -1,4 +1,4 @@
-from src.core.brain_services import BrainServices
+from src.core.services.brain_services import BrainServices
 from src.core.memory import Memory
 from src.core.save_system import SaveSystem
 from src.core.intent import Intent
