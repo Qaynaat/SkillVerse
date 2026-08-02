@@ -1,5 +1,10 @@
 from src.core.user_profile import UserProfile
 from src.core.student_profile import StudentProfile
+from src.core.config.settings import (
+    DEFAULT_XP,
+    DEFAULT_MISSIONS,
+    DEFAULT_STEP,
+)
 
 class Memory:
 
@@ -8,12 +13,12 @@ class Memory:
         # Current Learning State
         # -----------------------------
         self.current_career = None
-        self.current_step = 0
+        self.current_step = DEFAULT_STEP
 
         # -----------------------------
         # XP System
         # -----------------------------
-        self.total_xp = 0
+        self.total_xp = DEFAULT_XP
         self.daily_goal = 200
 
         # -----------------------------
@@ -24,7 +29,7 @@ class Memory:
         # -----------------------------
         # Achievement Progress
         # -----------------------------
-        self.completed_missions = 0
+        self.completed_missions = DEFAULT_MISSIONS
         self.completed_careers = 0
         self.modules_read = 0
         self.learning_streak = 0
@@ -90,7 +95,7 @@ class Memory:
         self.current_step += 1
 
     def reset_progress(self):
-        self.current_step = 0
+        self.current_step = DEFAULT_STEP
 
     # ==================================================
     # XP
@@ -101,9 +106,9 @@ class Memory:
 
     def get_total_xp(self):
         return self.total_xp
-
+    
     def reset_xp(self):
-        self.total_xp = 0
+        self.total_xp = DEFAULT_XP
 
     def get_daily_goal(self):
         return self.daily_goal

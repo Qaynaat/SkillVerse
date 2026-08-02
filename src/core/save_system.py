@@ -1,21 +1,27 @@
 import json
 from pathlib import Path
+from src.core.config.settings import (
+    SAVE_FILE,
+    DEFAULT_XP,
+    DEFAULT_STEP,
+    DEFAULT_MISSIONS,
+    DEFAULT_DAILY_GOAL
+)
 
 
 class SaveSystem:
-    DEFAULT_SAVE_PATH = "saves/save_data.json"
 
-    def __init__(self, save_path=DEFAULT_SAVE_PATH):
+    def __init__(self, save_path=SAVE_FILE):
         self.save_path = Path(save_path)
 
     def _get_default_data(self):
 
         return {
             "current_career": None,
-            "current_step": 0,
-            "total_xp": 0,
-            "daily_goal": 200,
-            "completed_missions": 0,
+            "current_step": DEFAULT_STEP,
+            "total_xp": DEFAULT_XP,
+            "completed_missions": DEFAULT_MISSIONS,
+            "daily_goal": DEFAULT_DAILY_GOAL,
             "completed_careers": 0,
             "modules_read": 0,
             "learning_streak": 0,
@@ -87,10 +93,16 @@ class SaveSystem:
         memory.categories_explored = data.get("categories_explored", defaults["categories_explored"])
         memory.bug_reports = data.get("bug_reports", defaults["bug_reports"])
         memory.unlocked_achievements = data.get("unlocked_achievements", defaults["unlocked_achievements"])
-        memory.unlocked_rewards = data.get("unlocked_rewards",defaults["unlocked_rewards"])
+        memory.unlocked_rewards = data.get(
+    "unlocked_rewards", defaults["unlocked_rewards"]
+)
 
-        memory.set_user_name (data.get("user_name",defaults["user_name"]))
-        memory.set_dream_career (data.get("dream_career",defaults["dream_career"]))
+        memory.set_user_name(
+    data.get("user_name", defaults["user_name"])
+)
+        memory.set_dream_career(
+    data.get("dream_career", defaults["dream_career"])
+)
 
     def load(self, memory):
         if not self._save_exists():
