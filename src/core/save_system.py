@@ -32,6 +32,13 @@ class SaveSystem:
             "unlocked_rewards": [],
             "user_name": "",
             "dream_career": "",
+            "completed_lessons": [],
+            "visited_careers": [],
+            "favorite_careers": [],
+            "career_history": [],
+            "last_message": "",
+            "last_login": "",
+            "daily_streak_history": [],
         }
 
     def _save_exists(self):
@@ -62,6 +69,13 @@ class SaveSystem:
             "unlocked_rewards": memory.get_unlocked_rewards(),
             "user_name": memory.get_user_name(),
             "dream_career": memory.get_dream_career(),
+            "completed_lessons": memory.get_completed_lessons(),
+            "visited_careers": memory.get_visited_careers(),
+            "favorite_careers": memory.get_favorite_careers(),
+            "career_history": memory.get_career_history(),
+            "last_message": memory.get_last_message(),
+            "last_login": memory.get_last_login(),
+            "daily_streak_history": memory.get_daily_streak_history(),
         }
         return data
 
@@ -94,7 +108,35 @@ class SaveSystem:
         memory.unlocked_rewards = data.get(
     "unlocked_rewards", defaults["unlocked_rewards"]
 )
-
+        memory.completed_lessons = data.get(
+    "completed_lessons",
+    defaults["completed_lessons"]
+)
+        memory.visited_careers = data.get(
+            "visited_careers",
+            defaults["visited_careers"]
+        )
+        memory.favorite_careers = data.get(
+            "favorite_careers",
+            defaults["favorite_careers"]
+        )
+        memory.career_history = data.get(
+            "career_history",
+            defaults["career_history"]
+        )
+        memory.last_message = data.get(
+            "last_message",
+            defaults["last_message"]
+        )
+        memory.last_login = data.get(
+            "last_login",
+            defaults["last_login"]
+        )
+        memory.daily_streak_history = data.get(
+            "daily_streak_history",
+            defaults["daily_streak_history"]
+        )
+        
         memory.set_user_name(
     data.get("user_name", defaults["user_name"])
 )

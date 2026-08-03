@@ -1,9 +1,9 @@
 {
-    "current_career": null,
-    "current_step": 0,
-    "total_xp": 0,
-    "completed_missions": 0,
+    "current_career": "Cybersecurity",
+    "current_step": 1,
+    "total_xp": 200,
     "daily_goal": 200,
+    "completed_missions": 1,
     "completed_careers": 0,
     "modules_read": 0,
     "learning_streak": 0,
@@ -14,5 +14,16 @@
     "unlocked_achievements": [],
     "unlocked_rewards": [],
     "user_name": "",
-    "dream_career": ""
+    "dream_career": null,
+    "completed_lessons": [],
+    "visited_careers": [
+        "Cybersecurity"
+    ],
+    "favorite_careers": [],
+    "career_history": [
+        "Cybersecurity"
+    ],
+    "last_message": "",
+    "last_login": "",
+    "daily_streak_history": []
 }

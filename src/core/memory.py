@@ -61,6 +61,17 @@ class Memory:
         # -----------------------------
         self.unlocked_rewards = []
 
+        # -----------------------------
+        # Learning Journey
+        # -----------------------------
+        self.completed_lessons = []
+        self.visited_careers = []
+        self.favorite_careers = []
+        self.career_history = []
+        self.last_message = ""
+        self.last_login = ""
+        self.daily_streak_history = []
+
     # -----------------------------
     # Career
     # -----------------------------
@@ -68,6 +79,8 @@ class Memory:
     def remember_career(self, career_name: str):
         if self.current_career != career_name:
             self.current_career = career_name
+            self.visit_career(career_name)
+            self.add_career_history(career_name)
             self.reset_progress()
 
     def get_current_career(self):
@@ -178,7 +191,6 @@ class Memory:
     # -----------------------------
 
     def unlock_achievement(self, achievement_id):
-
         if achievement_id not in self.unlocked_achievements:
             self.unlocked_achievements.append(achievement_id)
 
@@ -193,14 +205,11 @@ class Memory:
     # -----------------------------
 
     def unlock_reward(self, reward_id):
-
         if reward_id not in self.unlocked_rewards:
             self.unlocked_rewards.append(reward_id)
 
-
     def has_unlocked_reward(self, reward_id):
         return reward_id in self.unlocked_rewards
-
 
     def get_unlocked_rewards(self):
         return self.unlocked_rewards
@@ -221,3 +230,75 @@ class Memory:
 
     def get_dream_career(self):
         return self.student_profile.get_dream_career()
+
+    # -----------------------------
+    # Completed Lessons
+    # -----------------------------
+    def complete_lesson(self, lesson):
+        if lesson not in self.completed_lessons:
+            self.completed_lessons.append(lesson)
+
+    def get_completed_lessons(self):
+        return self.completed_lessons.copy()
+
+    # -----------------------------
+    # Visited Careers
+    # -----------------------------    
+
+    def visit_career(self, career):
+        if career not in self.visited_careers:
+            self.visited_careers.append(career)
+
+    def get_visited_careers(self):
+        return self.visited_careers.copy()
+
+    # -----------------------------
+    # Favorite Careers
+    # -----------------------------   
+    
+    def add_favorite_career(self, career):
+        if career not in self.favorite_careers:
+            self.favorite_careers.append(career)
+
+    def get_favorite_careers(self):
+        return self.favorite_careers.copy()
+
+    # -----------------------------
+    # Career History
+    # -----------------------------  
+
+    def add_career_history(self, career):
+        self.career_history.append(career)
+
+    def get_career_history(self):
+        return self.career_history.copy()
+    
+    # -----------------------------
+    # Last Message
+    # ----------------------------- 
+
+    def set_last_message(self, message):
+        self.last_message = message
+
+    def get_last_message(self):
+        return self.last_message
+
+    # -----------------------------
+    # Last Login
+    # ----------------------------- 
+
+    def set_last_login(self, date):
+        self.last_login = date
+
+    def get_last_login(self):
+        return self.last_login
+
+    # -----------------------------
+    # Daily Streak History
+    # ----------------------------- 
+
+    def add_streak_day(self, day):
+        self.daily_streak_history.append(day)
+
+    def get_daily_streak_history(self):
+        return self.daily_streak_history.copy()
