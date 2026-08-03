@@ -50,7 +50,6 @@ class BrainServices:
 
     @classmethod
     def default(cls):
-
         personality = PersonalityEngine(BYTE_PERSONALITY)
 
         return cls(

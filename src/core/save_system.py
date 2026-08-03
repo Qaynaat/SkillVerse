@@ -15,7 +15,6 @@ class SaveSystem:
         self.save_path = Path(save_path)
 
     def _get_default_data(self):
-
         return {
             "current_career": None,
             "current_step": DEFAULT_STEP,
@@ -46,7 +45,6 @@ class SaveSystem:
             json.dump(data, file, indent=4)
 
     def _memory_to_dict(self, memory):
-
         data = {
             "current_career": memory.get_current_career(),
             "current_step": memory.get_current_step(),

@@ -61,12 +61,11 @@ class Memory:
         # -----------------------------
         self.unlocked_rewards = []
 
-    # ==================================================
+    # -----------------------------
     # Career
-    # ==================================================
+    # -----------------------------
 
     def remember_career(self, career_name: str):
-
         if self.current_career != career_name:
             self.current_career = career_name
             self.reset_progress()
@@ -74,9 +73,9 @@ class Memory:
     def get_current_career(self):
         return self.current_career
 
-    # ==================================================
+    # -----------------------------
     # Conversation History
-    # ==================================================
+    # -----------------------------
 
     def add_message(self, speaker: str, message: str):
         self.conversation_history.append((speaker, message))
@@ -84,9 +83,9 @@ class Memory:
     def get_history(self):
         return self.conversation_history
 
-    # ==================================================
+    # -----------------------------
     # Learning Progress
-    # ==================================================
+    # -----------------------------
 
     def get_current_step(self):
         return self.current_step
@@ -97,9 +96,9 @@ class Memory:
     def reset_progress(self):
         self.current_step = DEFAULT_STEP
 
-    # ==================================================
+    # -----------------------------
     # XP
-    # ==================================================
+    # -----------------------------
 
     def add_xp(self, amount):
         self.total_xp += amount
@@ -122,9 +121,9 @@ class Memory:
     def has_completed_daily_goal(self):
         return self.total_xp >= self.daily_goal
 
-    # ==================================================
+    # -----------------------------
     # Achievement Progress Counters
-    # ==================================================
+    # -----------------------------
 
     def increment_completed_missions(self):
         self.completed_missions += 1
@@ -174,9 +173,9 @@ class Memory:
     def get_bug_reports(self):
         return self.bug_reports
 
-    # ==================================================
+    # -----------------------------
     # Achievements
-    # ==================================================
+    # -----------------------------
 
     def unlock_achievement(self, achievement_id):
 
@@ -188,10 +187,10 @@ class Memory:
 
     def get_unlocked_achievements(self):
         return self.unlocked_achievements
-
-    # ==================================================
+    
+    # -----------------------------
     # Reward
-    # ==================================================
+    # -----------------------------
 
     def unlock_reward(self, reward_id):
 
@@ -207,9 +206,9 @@ class Memory:
         return self.unlocked_rewards
 
 
-    # ==================================================
+    # -----------------------------
     # User Profile
-    # ==================================================
+    # -----------------------------
 
     def set_user_name(self, name):
         self.user_profile.set_name(name)

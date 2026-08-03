@@ -31,10 +31,8 @@ class ByteBrain:
         self.quote_engine = services.quote_engine
         self.learning_tip_engine = services.learning_tip_engine
         self.success_prediction_engine = services.success_prediction_engine
-
         self.memory = memory
-        self.save_system = save_system
-                
+        self.save_system = save_system       
 
         # Dispatch table for career information requests
         self.career_handlers = {
@@ -70,7 +68,6 @@ class ByteBrain:
         career = self._get_career(career_name)
         self.memory.remember_career(career_name)
         self.save_system.save(self.memory)
-
         return self._reply(self.career_responses.generate_complete_career(career))
 
     def set_user_name(self, name: str) -> str:
@@ -88,7 +85,6 @@ class ByteBrain:
     def get_first_learning_step(self, career_name: str) -> str:
         career = self._get_career(career_name)
         step = self.mentor_engine.get_first_step(career)
-
         return self._reply(self.career_responses.generate_learning_mission(step))
 
     def get_current_learning_step(self, career_name: str) -> str:
@@ -118,11 +114,8 @@ class ByteBrain:
 
         new_achievements = self.achievement_engine.check_unlocks(self.memory)
         new_rewards = self.reward_engine.check_unlocks(self.memory)
-
         self.save_system.save(self.memory)
-
         progress = self.memory.get_progress()
-
         response = self.career_responses.generate_mission_complete(
             reward, progress
         )
@@ -157,30 +150,25 @@ class ByteBrain:
     def respond(self, message: str, career_name: str = None) -> str:
         # Save user's message
         self.memory.add_message("User", message)
-
         # Detect intent
         intent = self.conversation_engine.detect_intent(message)
-
         # Remember current career
         if career_name:
             self.memory.remember_career(career_name)
             self.save_system.save(self.memory)
         else:
             career_name = self.memory.get_current_career()
-
         # No career selected
         if career_name is None:
             return self._reply(
                 "🤔 I don't know which career you're asking about yet.\n"
                 "Please tell me a career first."
             )
-
         career = self._get_career(career_name)
         handler = self.career_handlers.get(intent)
 
         if handler is not None:
             return self._reply(handler(career))
-
         return self._reply(
             "🤔 I'm not sure what you mean yet.\n"
             "Could you rephrase your question?"
@@ -215,7 +203,6 @@ class ByteBrain:
 
 
     def get_learning_insights(self):
-
         report = self.learning_insights.generate(
             self.memory
         )
@@ -322,12 +309,10 @@ class ByteBrain:
         report = self.quote_engine.get_quote(
             self.memory
         )
-
         response = (
             "💬 Today's Quote\n\n"
             f"{report['quote']}"
         )
-
         return self._reply(response)
 
 

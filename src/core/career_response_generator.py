@@ -6,7 +6,6 @@ class CareerResponseGenerator:
 
     """
     Generates all career-related responses shown by Byte.
-
     This class is responsible for presenting career information,
     learning missions, achievements, rewards, and motivational
     messages in Byte's personality.
