@@ -2,6 +2,9 @@ from src.core.services.brain_services import BrainServices
 from src.core.memory import Memory
 from src.core.save_system import SaveSystem
 from src.core.intent import Intent
+from src.core.services.learning_service import LearningService
+from src.core.services.progress_service import ProgressService
+from src.core.services.profile_service import ProfileService
 
 class ByteBrain:
 
@@ -32,7 +35,10 @@ class ByteBrain:
         self.learning_tip_engine = services.learning_tip_engine
         self.success_prediction_engine = services.success_prediction_engine
         self.memory = memory
-        self.save_system = save_system       
+        self.save_system = save_system  
+        self.learning_service = LearningService(self.memory)
+        self.progress_service = ProgressService(self.memory)
+        self.profile_service = ProfileService(self.memory)     
 
         # Dispatch table for career information requests
         self.career_handlers = {
@@ -66,17 +72,17 @@ class ByteBrain:
 
     def introduce_career(self, career_name: str) -> str:
         career = self._get_career(career_name)
-        self.memory.remember_career(career_name)
+        self.learning_service.remember_career(career_name)
         self.save_system.save(self.memory)
         return self._reply(self.career_responses.generate_complete_career(career))
 
     def set_user_name(self, name: str) -> str:
-        self.memory.set_user_name(name)
+        self.profile_service.set_user_name(name)
         self.save_system.save(self.memory)
         return self._reply(f"😊 Nice to meet you, {name}!")
 
     def set_dream_career(self, career: str) -> str:
-        self.memory.set_dream_career(career)
+        self.profile_service.set_dream_career(career)
         self.save_system.save(self.memory)
         return self._reply(
             f"🎯 Awesome! I'll remember that your dream career is {career}."
@@ -108,9 +114,9 @@ class ByteBrain:
         )
         reward = step["reward_xp"]
 
-        self.memory.add_xp(reward)
-        self.memory.increment_completed_missions()
-        self.memory.advance_step()
+        self.learning_service.add_xp(reward)
+        self.progress_service.increment_completed_missions()
+        self.learning_service.advance_step()
 
         new_achievements = self.achievement_engine.check_unlocks(self.memory)
         new_rewards = self.reward_engine.check_unlocks(self.memory)
@@ -154,7 +160,7 @@ class ByteBrain:
         intent = self.conversation_engine.detect_intent(message)
         # Remember current career
         if career_name:
-            self.memory.remember_career(career_name)
+            self.learning_service.remember_career(career_name)
             self.save_system.save(self.memory)
         else:
             career_name = self.memory.get_current_career()
