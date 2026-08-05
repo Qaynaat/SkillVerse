@@ -73,4 +73,4 @@ class BrainServices:
             quote_engine=QuoteEngine(),
             learning_tip_engine=LearningTipEngine(),
             success_prediction_engine=SuccessPredictionEngine(),
-        )
+)       

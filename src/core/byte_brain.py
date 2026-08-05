@@ -6,6 +6,11 @@ from src.core.services.learning_service import LearningService
 from src.core.services.progress_service import ProgressService
 from src.core.services.profile_service import ProfileService
 
+from src.core.services.learning_engine_service import LearningEngineService
+from src.core.services.dashboard_service import DashboardService
+from src.core.services.motivation_service import MotivationService
+from src.core.services.reflection_service import ReflectionService
+
 class ByteBrain:
 
     def __init__(
@@ -21,24 +26,16 @@ class ByteBrain:
         self.reward_engine = services.reward_engine
         self.mentor_engine = services.mentor_engine
         self.reflection_engine = services.reflection_engine
-        self.learning_analyzer = services.learning_analyzer
-        self.adaptive_mentor = services.adaptive_mentor
-        self.learning_insights = services.learning_insights
-        self.progress_dashboard = services.progress_dashboard
-        self.study_planner = services.study_planner
-        self.daily_goal_engine = services.daily_goal_engine
-        self.smart_reminder_engine = services.smart_reminder_engine
-        self.motivation_engine = services.motivation_engine
-        self.encouragement_engine = services.encouragement_engine
-        self.celebration_engine = services.celebration_engine
-        self.quote_engine = services.quote_engine
-        self.learning_tip_engine = services.learning_tip_engine
-        self.success_prediction_engine = services.success_prediction_engine
         self.memory = memory
         self.save_system = save_system  
-        self.learning_service = LearningService(self.memory)
-        self.progress_service = ProgressService(self.memory)
-        self.profile_service = ProfileService(self.memory)     
+        self.learning_service = LearningService(memory)
+        self.progress_service = ProgressService(memory)
+        self.profile_service = ProfileService(memory)
+
+        self.learning_engine_service = LearningEngineService(services)
+        self.dashboard_service = DashboardService(services)
+        self.motivation_service = MotivationService(services)
+        self.reflection_service = ReflectionService(services)
 
         # Dispatch table for career information requests
         self.career_handlers = {
@@ -90,13 +87,14 @@ class ByteBrain:
 
     def get_first_learning_step(self, career_name: str) -> str:
         career = self._get_career(career_name)
-        step = self.mentor_engine.get_first_step(career)
+        step = self.learning_engine_service.get_first_step(career)
         return self._reply(self.career_responses.generate_learning_mission(step))
 
     def get_current_learning_step(self, career_name: str) -> str:
         career = self._get_career(career_name)
-        step = self.mentor_engine.get_step(
-            career, self.memory.get_current_step()
+        step = self.learning_engine_service.get_step(
+            career,
+            self.memory.get_current_step()
         )
         if step is None:
             return self._reply(
@@ -109,8 +107,9 @@ class ByteBrain:
         if career_name is None:
             return self._reply("🥳 Progress saved!")
         career = self._get_career(career_name)
-        step = self.mentor_engine.get_step(
-            career, self.memory.get_current_step()
+        step = self.learning_engine_service.get_step(
+            career,
+            self.memory.get_current_step()
         )
         reward = step["reward_xp"]
 
@@ -140,10 +139,10 @@ class ByteBrain:
             response += "\n\n"
             response += self.career_responses.generate_daily_goal_complete()
 
-        next_step = self.mentor_engine.get_step(
-            career, self.memory.get_current_step()
+        next_step = self.learning_engine_service.get_step(
+            career,
+            self.memory.get_current_step()
         )
-
         if next_step is None:
             next_mission = "🎉 Congratulations! You've completed this roadmap!"
         else:
@@ -182,34 +181,28 @@ class ByteBrain:
 
 
     def generate_learning_summary(self) -> str:
-        report = self.learning_analyzer.analyze(
-            self.memory
-        )
-        summary = self.learning_analyzer.generate_summary(
-            report
-        )
+        report = self.learning_engine_service.analyze(self.memory)
+
+        summary = self.learning_engine_service.generate_summary(report)
         return self._reply(summary)
 
 
     def get_personalized_recommendation(self, profile) -> str:
-        report = self.learning_analyzer.analyze(
-            self.memory
-        )
-        recommendation = self.adaptive_mentor.recommend(
+        recommendation = self.reflection_service.recommend(
             profile,
-            report
+            self.memory
         )
         return self._reply(recommendation)
 
     def get_learning_reflection(self) -> str:
-        reflection = self.reflection_engine.generate_summary(
+        reflection = self.reflection_service.generate_reflection(
             self.memory
         )
         return self._reply(reflection)
 
 
-    def get_learning_insights(self):
-        report = self.learning_insights.generate(
+    def get_learning_insights(self) -> str:
+        report = self.learning_engine_service.generate_insights(
             self.memory
         )
         response = (
@@ -222,8 +215,8 @@ class ByteBrain:
         )
         return self._reply(response)
 
-    def get_progress_dashboard(self):
-        report = self.progress_dashboard.generate(
+    def get_progress_dashboard(self) -> str:
+        report = self.dashboard_service.generate_dashboard(
             self.memory
         )
         response = (
@@ -238,8 +231,8 @@ class ByteBrain:
         return self._reply(response)
 
 
-    def get_study_plan(self):
-        plan = self.study_planner.generate_plan(
+    def get_study_plan(self) -> str:
+        plan = self.dashboard_service.generate_plan(
             self.memory
         )
         response = (
@@ -252,8 +245,8 @@ class ByteBrain:
             response += f"• {task}\n"
         return self._reply(response)
 
-    def get_daily_goals(self):
-        report = self.daily_goal_engine.generate_goals(
+    def get_daily_goals(self) -> str:
+        report = self.dashboard_service.generate_goals(
             self.memory
         )
         response = (
@@ -264,8 +257,8 @@ class ByteBrain:
             response += f"• {goal}\n"
         return self._reply(response)
 
-    def get_smart_reminder(self):
-        report = self.smart_reminder_engine.generate_reminder(
+    def get_smart_reminder(self) -> str:
+        report = self.motivation_service.reminder(
             self.memory
         )
         response = (
@@ -275,8 +268,8 @@ class ByteBrain:
         )
         return self._reply(response)
 
-    def get_motivation(self):
-        report = self.motivation_engine.generate_message(
+    def get_motivation(self) -> str:
+        report = self.motivation_service.motivation(
             self.memory
         )
         response = (
@@ -286,8 +279,8 @@ class ByteBrain:
         )
         return self._reply(response)
 
-    def get_encouragement(self):
-        report = self.encouragement_engine.generate_encouragement(
+    def get_encouragement(self) -> str:
+        report = self.motivation_service.encouragement(
             self.memory
         )
         response = (
@@ -299,8 +292,8 @@ class ByteBrain:
         return self._reply(response)
 
 
-    def get_celebration(self):
-        report = self.celebration_engine.celebrate(
+    def get_celebration(self) -> str:
+        report = self.motivation_service.celebration(
             self.memory
         )
         response = (
@@ -311,8 +304,8 @@ class ByteBrain:
         )
         return self._reply(response)
 
-    def get_daily_quote(self):
-        report = self.quote_engine.get_quote(
+    def get_daily_quote(self) -> str:
+        report = self.motivation_service.quote(
             self.memory
         )
         response = (
@@ -322,8 +315,8 @@ class ByteBrain:
         return self._reply(response)
 
 
-    def get_learning_tip(self):
-        report = self.learning_tip_engine.get_tip(
+    def get_learning_tip(self) -> str:
+        report = self.motivation_service.learning_tip(
             self.memory
         )
         response = (
@@ -332,8 +325,8 @@ class ByteBrain:
         )
         return self._reply(response)
 
-    def get_success_prediction(self):
-        report = self.success_prediction_engine.predict(
+    def get_success_prediction(self) -> str:
+        report = self.motivation_service.success_prediction(
             self.memory
         )
         response = (
