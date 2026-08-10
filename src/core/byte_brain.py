@@ -31,6 +31,7 @@ class ByteBrain:
         self.learning_service = LearningService(memory)
         self.progress_service = ProgressService(memory)
         self.profile_service = ProfileService(memory)
+        self.habit_analyzer = services.habit_analyzer
 
         self.learning_engine_service = LearningEngineService(services)
         self.dashboard_service = DashboardService(services)
@@ -179,7 +180,19 @@ class ByteBrain:
             "Could you rephrase your question?"
         )
 
-
+    def get_habit_analysis(self) -> str:
+        report = self.habit_analyzer.analyze(self.memory)
+        response = (
+            "📊 Your Learning Habit Analysis\n\n"
+            f"🔥 Learning Streak: {report['learning_streak']}\n"
+            f"✅ Missions: {report['completed_missions']}\n"
+            f"🎯 Daily Goals: {report['completed_daily_goals']}\n"
+            f"📚 Lessons: {report['completed_lessons']}\n"
+            f"📈 Habit Status: {report['habit_status']}\n\n"
+            f"💡 {report['observation']}"
+        )
+        return self._reply(response)
+    
     def generate_learning_summary(self) -> str:
         report = self.learning_engine_service.analyze(self.memory)
 

@@ -22,6 +22,7 @@ from src.core.engine.quote_engine import QuoteEngine
 from src.core.engine.learning_tip_engine import LearningTipEngine
 from src.core.engine.success_prediction_engine import SuccessPredictionEngine
 from src.data.byte_personality import BYTE_PERSONALITY
+from src.core.habit_analyzer import HabitAnalyzer
 
 
 @dataclass
@@ -47,6 +48,7 @@ class BrainServices:
     quote_engine: QuoteEngine
     learning_tip_engine: LearningTipEngine
     success_prediction_engine: SuccessPredictionEngine
+    habit_analyzer: HabitAnalyzer
 
     @classmethod
     def default(cls):
@@ -73,4 +75,5 @@ class BrainServices:
             quote_engine=QuoteEngine(),
             learning_tip_engine=LearningTipEngine(),
             success_prediction_engine=SuccessPredictionEngine(),
+            habit_analyzer=HabitAnalyzer(),
 )       
