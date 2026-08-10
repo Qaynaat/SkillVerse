@@ -4,6 +4,12 @@ from src.core.memory import Memory
 from src.core.save_system import SaveSystem
 
 
+class TestSaveSystem(SaveSystem):
+
+    def load(self, memory):
+        pass
+
+
 def create_test_byte(memory: Memory | None = None):
 
     if memory is None:
@@ -14,5 +20,5 @@ def create_test_byte(memory: Memory | None = None):
     return ByteBrain(
         services=services,
         memory=memory,
-        save_system=SaveSystem(),
+        save_system=TestSaveSystem(),
     )

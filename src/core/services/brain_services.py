@@ -23,6 +23,7 @@ from src.core.engine.learning_tip_engine import LearningTipEngine
 from src.core.engine.success_prediction_engine import SuccessPredictionEngine
 from src.data.byte_personality import BYTE_PERSONALITY
 from src.core.habit_analyzer import HabitAnalyzer
+from src.core.consistency_analyzer import ConsistencyAnalyzer
 
 
 @dataclass
@@ -49,6 +50,7 @@ class BrainServices:
     learning_tip_engine: LearningTipEngine
     success_prediction_engine: SuccessPredictionEngine
     habit_analyzer: HabitAnalyzer
+    consistency_analyzer: ConsistencyAnalyzer
 
     @classmethod
     def default(cls):
@@ -76,4 +78,5 @@ class BrainServices:
             learning_tip_engine=LearningTipEngine(),
             success_prediction_engine=SuccessPredictionEngine(),
             habit_analyzer=HabitAnalyzer(),
+            consistency_analyzer=ConsistencyAnalyzer(),
 )       

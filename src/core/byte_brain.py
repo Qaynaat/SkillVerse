@@ -10,6 +10,7 @@ from src.core.services.learning_engine_service import LearningEngineService
 from src.core.services.dashboard_service import DashboardService
 from src.core.services.motivation_service import MotivationService
 from src.core.services.reflection_service import ReflectionService
+from src.core.consistency_analyzer import ConsistencyAnalyzer
 
 class ByteBrain:
 
@@ -26,6 +27,7 @@ class ByteBrain:
         self.reward_engine = services.reward_engine
         self.mentor_engine = services.mentor_engine
         self.reflection_engine = services.reflection_engine
+        self.consistency_analyzer = services.consistency_analyzer
         self.memory = memory
         self.save_system = save_system  
         self.learning_service = LearningService(memory)
@@ -152,6 +154,18 @@ class ByteBrain:
             )
 
         return self._reply(response + "\n\n" + next_mission)
+
+    def get_consistency_analysis(self) -> str:
+        report = self.consistency_analyzer.analyze(self.memory)
+        response = (
+            "📈 Your Learning Consistency Analysis\n\n"
+            f"🔥 Learning Streak: {report['learning_streak']}\n"
+            f"🎯 Daily Goals: {report['completed_daily_goals']}\n"
+            f"📅 Streak Days Recorded: {report['streak_days_recorded']}\n"
+            f"📈 Consistency Status: {report['consistency_status']}\n\n"
+            f"💡 {report['advice']}"
+        )
+        return self._reply(response)
 
     def respond(self, message: str, career_name: str = None) -> str:
         # Save user's message

@@ -29,7 +29,7 @@ response = brain.get_habit_analysis()
 print("\n" + response)
 
 assert "Learning Streak: 3" in response
-assert "Missions: 3" in response
+assert "Missions: 2" in response
 assert "Daily Goals: 2" in response
 assert "Lessons: 2" in response
 assert "Habit Status: Consistent" in response
