@@ -10,7 +10,6 @@ from src.core.services.learning_engine_service import LearningEngineService
 from src.core.services.dashboard_service import DashboardService
 from src.core.services.motivation_service import MotivationService
 from src.core.services.reflection_service import ReflectionService
-from src.core.consistency_analyzer import ConsistencyAnalyzer
 
 class ByteBrain:
 
@@ -34,6 +33,7 @@ class ByteBrain:
         self.progress_service = ProgressService(memory)
         self.profile_service = ProfileService(memory)
         self.habit_analyzer = services.habit_analyzer
+        self.weakness_detector = services.weakness_detector
 
         self.learning_engine_service = LearningEngineService(services)
         self.dashboard_service = DashboardService(services)
@@ -163,6 +163,31 @@ class ByteBrain:
             f"🎯 Daily Goals: {report['completed_daily_goals']}\n"
             f"📅 Streak Days Recorded: {report['streak_days_recorded']}\n"
             f"📈 Consistency Status: {report['consistency_status']}\n\n"
+            f"💡 {report['advice']}"
+        )
+        return self._reply(response)
+
+    def get_weakness_analysis(self) -> str:
+        report = self.weakness_detector.analyze(self.memory)
+        weaknesses = report["weaknesses"]
+
+        if weaknesses:
+            weakness_text = "\n".join(
+                f"• {weakness}" for weakness in weaknesses
+            )
+        else:
+            weakness_text = "• No major weaknesses detected."
+
+        response = (
+            "⚠️ Your Learning Weakness Analysis\n\n"
+            f"🔥 Learning Streak: {report['learning_streak']}\n"
+            f"🎯 Daily Goals: {report['completed_daily_goals']}\n"
+            f"✅ Missions: {report['completed_missions']}\n"
+            f"📚 Lessons: {report['completed_lessons']}\n"
+            f"📖 Modules Read: {report['modules_read']}\n"
+            f"🔁 Retries: {report['retries_completed']}\n\n"
+            f"⚠️ Weaknesses:\n{weakness_text}\n\n"
+            f"📈 Weakness Status: {report['weakness_status']}\n\n"
             f"💡 {report['advice']}"
         )
         return self._reply(response)
