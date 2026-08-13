@@ -34,6 +34,7 @@ class ByteBrain:
         self.profile_service = ProfileService(memory)
         self.habit_analyzer = services.habit_analyzer
         self.weakness_detector = services.weakness_detector
+        self.strength_detector = services.strength_detector
 
         self.learning_engine_service = LearningEngineService(services)
         self.dashboard_service = DashboardService(services)
@@ -188,6 +189,26 @@ class ByteBrain:
             f"🔁 Retries: {report['retries_completed']}\n\n"
             f"⚠️ Weaknesses:\n{weakness_text}\n\n"
             f"📈 Weakness Status: {report['weakness_status']}\n\n"
+            f"💡 {report['advice']}"
+        )
+        return self._reply(response)
+
+    def get_strength_analysis(self) -> str:
+        report = self.strength_detector.analyze(self.memory)
+        response = (
+            "💪 Your Learning Strength Analysis\n\n"
+            f"🔥 Learning Streak: {report['learning_streak']}\n"
+            f"🎯 Daily Goals: {report['completed_daily_goals']}\n"
+            f"✅ Missions: {report['completed_missions']}\n"
+            f"📚 Lessons: {report['completed_lessons']}\n"
+            f"📖 Modules Read: {report['modules_read']}\n"
+            f"🔁 Retries: {report['retries_completed']}\n\n"
+            "💪 Strengths:\n"
+        )
+        for strength in report["strengths"]:
+            response += f"• {strength}\n"
+        response += (
+            f"\n📈 Strength Status: {report['strength_status']}\n\n"
             f"💡 {report['advice']}"
         )
         return self._reply(response)

@@ -25,6 +25,7 @@ from src.data.byte_personality import BYTE_PERSONALITY
 from src.core.habit_analyzer import HabitAnalyzer
 from src.core.consistency_analyzer import ConsistencyAnalyzer
 from src.core.weakness_detector import WeaknessDetector
+from src.core.strength_detector import StrengthDetector
 
 
 @dataclass
@@ -53,6 +54,7 @@ class BrainServices:
     habit_analyzer: HabitAnalyzer
     consistency_analyzer: ConsistencyAnalyzer
     weakness_detector: WeaknessDetector
+    strength_detector: StrengthDetector
 
     @classmethod
     def default(cls):
@@ -82,4 +84,5 @@ class BrainServices:
             habit_analyzer=HabitAnalyzer(),
             consistency_analyzer=ConsistencyAnalyzer(),
             weakness_detector=WeaknessDetector(),
+            strength_detector=StrengthDetector(),
 )       
