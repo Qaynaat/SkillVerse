@@ -26,6 +26,7 @@ from src.core.habit_analyzer import HabitAnalyzer
 from src.core.consistency_analyzer import ConsistencyAnalyzer
 from src.core.weakness_detector import WeaknessDetector
 from src.core.strength_detector import StrengthDetector
+from src.core.learning_style_detector import LearningStyleDetector
 
 
 @dataclass
@@ -55,6 +56,7 @@ class BrainServices:
     consistency_analyzer: ConsistencyAnalyzer
     weakness_detector: WeaknessDetector
     strength_detector: StrengthDetector
+    learning_style_detector: LearningStyleDetector
 
     @classmethod
     def default(cls):
@@ -85,4 +87,5 @@ class BrainServices:
             consistency_analyzer=ConsistencyAnalyzer(),
             weakness_detector=WeaknessDetector(),
             strength_detector=StrengthDetector(),
+            learning_style_detector=LearningStyleDetector(),
 )       

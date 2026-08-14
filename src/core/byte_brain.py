@@ -35,6 +35,7 @@ class ByteBrain:
         self.habit_analyzer = services.habit_analyzer
         self.weakness_detector = services.weakness_detector
         self.strength_detector = services.strength_detector
+        self.learning_style_detector = services.learning_style_detector
 
         self.learning_engine_service = LearningEngineService(services)
         self.dashboard_service = DashboardService(services)
@@ -213,6 +214,20 @@ class ByteBrain:
         )
         return self._reply(response)
 
+    def get_learning_style_analysis(self) -> str:
+        report = self.learning_style_detector.analyze(self.memory)
+        response = (
+            "🧠 Your Learning Style Analysis\n\n"
+            f"📚 Learning Style: {report['learning_style']}\n"
+            f"📖 Reading Score: {report['reading_score']}\n"
+            f"💻 Practice Score: {report['practice_score']}\n"
+            f"🎯 Goal Score: {report['goal_score']}\n"
+            f"🔎 Exploration Score: {report['exploration_score']}\n"
+            f"💬 Interactive Score: {report['interactive_score']}\n\n"
+            f"💡 {report['observation']}"
+        )
+        return self._reply(response)
+    
     def respond(self, message: str, career_name: str = None) -> str:
         # Save user's message
         self.memory.add_message("User", message)
