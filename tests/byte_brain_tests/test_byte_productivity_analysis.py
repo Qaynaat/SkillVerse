@@ -1,0 +1,56 @@
+from src.core.memory import Memory
+from tests.helpers.create_test_byte import create_test_byte
+
+
+print("=" * 60)
+print("MISSION 055 - BYTE PRODUCTIVITY ANALYSIS TEST")
+print("=" * 60)
+
+
+memory = Memory()
+
+# ==================================================
+# Simulate productive learning activity
+# ==================================================
+
+memory.increment_learning_streak()
+memory.increment_learning_streak()
+memory.increment_learning_streak()
+
+memory.increment_completed_daily_goals()
+memory.increment_completed_daily_goals()
+
+memory.increment_completed_missions()
+memory.increment_completed_missions()
+memory.increment_completed_missions()
+memory.increment_completed_missions()
+memory.increment_completed_missions()
+
+memory.complete_lesson("Python Basics")
+memory.complete_lesson("Python Functions")
+
+memory.increment_modules_read()
+memory.increment_modules_read()
+
+memory.increment_retries_completed()
+memory.increment_retries_completed()
+memory.increment_retries_completed()
+
+
+byte = create_test_byte(memory)
+
+
+response = byte.get_productivity_analysis()
+
+
+print("\n📊 Your Learning Productivity Analysis\n")
+print(response)
+
+
+assert "Productivity Status: Productive" in response
+assert "Productivity Score: 17" in response
+
+
+print("\n" + "=" * 60)
+print("✅ Byte Productivity Analysis Test Completed Successfully!")
+print("=" * 60)
