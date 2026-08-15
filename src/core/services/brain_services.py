@@ -28,6 +28,7 @@ from src.core.weakness_detector import WeaknessDetector
 from src.core.strength_detector import StrengthDetector
 from src.core.learning_style_detector import LearningStyleDetector
 from src.core.burnout_detector import BurnoutDetector
+from src.core.confidence_estimator import ConfidenceEstimator
 
 @dataclass
 class BrainServices:
@@ -58,6 +59,7 @@ class BrainServices:
     strength_detector: StrengthDetector
     learning_style_detector: LearningStyleDetector
     burnout_detector: BurnoutDetector
+    confidence_estimator: ConfidenceEstimator
 
     @classmethod
     def default(cls):
@@ -90,4 +92,5 @@ class BrainServices:
             strength_detector=StrengthDetector(),
             learning_style_detector=LearningStyleDetector(),
             burnout_detector=BurnoutDetector(),
+            confidence_estimator=ConfidenceEstimator(),
 )       
