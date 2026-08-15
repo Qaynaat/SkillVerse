@@ -27,7 +27,7 @@ from src.core.consistency_analyzer import ConsistencyAnalyzer
 from src.core.weakness_detector import WeaknessDetector
 from src.core.strength_detector import StrengthDetector
 from src.core.learning_style_detector import LearningStyleDetector
-
+from src.core.burnout_detector import BurnoutDetector
 
 @dataclass
 class BrainServices:
@@ -57,6 +57,7 @@ class BrainServices:
     weakness_detector: WeaknessDetector
     strength_detector: StrengthDetector
     learning_style_detector: LearningStyleDetector
+    burnout_detector: BurnoutDetector
 
     @classmethod
     def default(cls):
@@ -88,4 +89,5 @@ class BrainServices:
             weakness_detector=WeaknessDetector(),
             strength_detector=StrengthDetector(),
             learning_style_detector=LearningStyleDetector(),
+            burnout_detector=BurnoutDetector(),
 )       

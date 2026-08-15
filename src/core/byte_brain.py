@@ -36,6 +36,7 @@ class ByteBrain:
         self.weakness_detector = services.weakness_detector
         self.strength_detector = services.strength_detector
         self.learning_style_detector = services.learning_style_detector
+        self.burnout_detector = services.burnout_detector
 
         self.learning_engine_service = LearningEngineService(services)
         self.dashboard_service = DashboardService(services)
@@ -224,6 +225,26 @@ class ByteBrain:
             f"🎯 Goal Score: {report['goal_score']}\n"
             f"🔎 Exploration Score: {report['exploration_score']}\n"
             f"💬 Interactive Score: {report['interactive_score']}\n\n"
+            f"💡 {report['observation']}"
+        )
+        return self._reply(response)
+    
+    def get_burnout_analysis(self) -> str:
+        report = self.burnout_detector.analyze(self.memory)
+        response = (
+            "🔥 Your Learning Burnout Analysis\n\n"
+            f"🔥 Learning Streak: {report['learning_streak']}\n"
+            f"🎯 Daily Goals: {report['completed_daily_goals']}\n"
+            f"✅ Missions: {report['completed_missions']}\n"
+            f"📖 Modules Read: {report['modules_read']}\n"
+            f"🔁 Retries: {report['retries']}\n\n"
+            "⚠️ Burnout Signals:\n"
+            + "\n".join(
+                f"• {signal}"
+                for signal in report["burnout_signals"]
+            )
+            + "\n\n"
+            f"📈 Burnout Status: {report['burnout_status']}\n\n"
             f"💡 {report['observation']}"
         )
         return self._reply(response)
