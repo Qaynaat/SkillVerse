@@ -39,6 +39,7 @@ class ByteBrain:
         self.burnout_detector = services.burnout_detector
         self.confidence_estimator = services.confidence_estimator
         self.productivity_analyzer = services.productivity_analyzer
+        self.smart_goal_generator = services.smart_goal_generator
 
         self.learning_engine_service = LearningEngineService(services)
         self.dashboard_service = DashboardService(services)
@@ -280,6 +281,22 @@ class ByteBrain:
             f"⚡ Productivity Score: {report['productivity_score']}\n"
             f"📈 Productivity Status: {report['productivity_status']}\n\n"
             f"💡 {report['observation']}"
+        )
+        return self._reply(response)
+
+    def get_smart_goal(self) -> str:
+        report = self.smart_goal_generator.generate(self.memory)
+        response = (
+            "🎯 Your Smart Learning Goal\n\n"
+            f"🎯 Goal: {report['goal']}\n"
+            f"📈 Priority: {report['priority']}\n\n"
+            f"🔥 Learning Streak: {report['learning_streak']}\n"
+            f"🎯 Daily Goals: {report['completed_daily_goals']}\n"
+            f"✅ Missions: {report['completed_missions']}\n"
+            f"📚 Lessons: {report['completed_lessons']}\n"
+            f"📖 Modules Read: {report['modules_read']}\n"
+            f"🔁 Retries: {report['retries']}\n\n"
+            f"💡 {report['reason']}"
         )
         return self._reply(response)
     
