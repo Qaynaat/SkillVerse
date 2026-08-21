@@ -31,6 +31,7 @@ from src.core.burnout_detector import BurnoutDetector
 from src.core.confidence_estimator import ConfidenceEstimator
 from src.core.productivity_analyzer import ProductivityAnalyzer
 from src.core.smart_goal_generator import SmartGoalGenerator
+from src.core.personalized_roadmap_engine import PersonalizedRoadmapEngine
 
 @dataclass
 class BrainServices:
@@ -64,6 +65,7 @@ class BrainServices:
     confidence_estimator: ConfidenceEstimator
     productivity_analyzer: ProductivityAnalyzer
     smart_goal_generator: SmartGoalGenerator
+    personalized_roadmap_engine: PersonalizedRoadmapEngine
 
     @classmethod
     def default(cls):
@@ -99,4 +101,5 @@ class BrainServices:
             confidence_estimator=ConfidenceEstimator(),
             productivity_analyzer=ProductivityAnalyzer(),
             smart_goal_generator=SmartGoalGenerator(),
+            personalized_roadmap_engine=PersonalizedRoadmapEngine(),
 )       

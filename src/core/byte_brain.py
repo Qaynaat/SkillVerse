@@ -40,6 +40,7 @@ class ByteBrain:
         self.confidence_estimator = services.confidence_estimator
         self.productivity_analyzer = services.productivity_analyzer
         self.smart_goal_generator = services.smart_goal_generator
+        self.personalized_roadmap_engine = services.personalized_roadmap_engine
 
         self.learning_engine_service = LearningEngineService(services)
         self.dashboard_service = DashboardService(services)
@@ -296,6 +297,24 @@ class ByteBrain:
             f"📚 Lessons: {report['completed_lessons']}\n"
             f"📖 Modules Read: {report['modules_read']}\n"
             f"🔁 Retries: {report['retries']}\n\n"
+            f"💡 {report['reason']}"
+        )
+        return self._reply(response)
+
+    def get_personalized_roadmap(self) -> str:
+        report = self.personalized_roadmap_engine.generate(self.memory)
+        roadmap_steps = "\n".join(
+            f"{index}. {step}"
+            for index, step in enumerate(report["roadmap"], start=1)
+        )
+        response = (
+            "🧭 Your Personalized Learning Roadmap\n\n"
+            f"📍 Current Stage: {report['current_stage']}\n\n"
+            f"🎯 Main Goal:\n"
+            f"{report['main_goal']}\n\n"
+            f"🛣 Roadmap:\n"
+            f"{roadmap_steps}\n\n"
+            f"📈 Priority: {report['priority']}\n\n"
             f"💡 {report['reason']}"
         )
         return self._reply(response)
