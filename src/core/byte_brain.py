@@ -41,6 +41,7 @@ class ByteBrain:
         self.productivity_analyzer = services.productivity_analyzer
         self.smart_goal_generator = services.smart_goal_generator
         self.personalized_roadmap_engine = services.personalized_roadmap_engine
+        self.adaptive_difficulty = services.adaptive_difficulty
 
         self.learning_engine_service = LearningEngineService(services)
         self.dashboard_service = DashboardService(services)
@@ -269,6 +270,7 @@ class ByteBrain:
             f"💡 {report['observation']}"
         )
         return self._reply(response)
+    
     def get_productivity_analysis(self) -> str:
         report = self.productivity_analyzer.analyze(self.memory)
         response = (
@@ -315,6 +317,22 @@ class ByteBrain:
             f"🛣 Roadmap:\n"
             f"{roadmap_steps}\n\n"
             f"📈 Priority: {report['priority']}\n\n"
+            f"💡 {report['reason']}"
+        )
+        return self._reply(response)
+
+    def get_adaptive_difficulty(self) -> str:
+        report = self.adaptive_difficulty.analyze(self.memory)
+        response = (
+            "⚙️ Your Adaptive Difficulty Analysis\n\n"
+            f"🎚 Difficulty: {report['difficulty']}\n\n"
+            f"🔥 Learning Streak: {report['learning_streak']}\n"
+            f"🎯 Daily Goals: {report['completed_daily_goals']}\n"
+            f"✅ Missions: {report['completed_missions']}\n"
+            f"📚 Lessons: {report['completed_lessons']}\n"
+            f"🔁 Retries: {report['retries']}\n\n"
+            f"📊 Positive Signals: {report['positive_signals']}\n"
+            f"⚠️ Difficulty Signals: {report['difficulty_signals']}\n\n"
             f"💡 {report['reason']}"
         )
         return self._reply(response)

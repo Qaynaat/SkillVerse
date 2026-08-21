@@ -32,6 +32,7 @@ from src.core.confidence_estimator import ConfidenceEstimator
 from src.core.productivity_analyzer import ProductivityAnalyzer
 from src.core.smart_goal_generator import SmartGoalGenerator
 from src.core.personalized_roadmap_engine import PersonalizedRoadmapEngine
+from src.core.adaptive_difficulty import AdaptiveDifficulty
 
 @dataclass
 class BrainServices:
@@ -66,6 +67,7 @@ class BrainServices:
     productivity_analyzer: ProductivityAnalyzer
     smart_goal_generator: SmartGoalGenerator
     personalized_roadmap_engine: PersonalizedRoadmapEngine
+    adaptive_difficulty: AdaptiveDifficulty
 
     @classmethod
     def default(cls):
@@ -102,4 +104,5 @@ class BrainServices:
             productivity_analyzer=ProductivityAnalyzer(),
             smart_goal_generator=SmartGoalGenerator(),
             personalized_roadmap_engine=PersonalizedRoadmapEngine(),
+            adaptive_difficulty=AdaptiveDifficulty(),
 )       
