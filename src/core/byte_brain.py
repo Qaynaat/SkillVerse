@@ -43,6 +43,7 @@ class ByteBrain:
         self.personalized_roadmap_engine = services.personalized_roadmap_engine
         self.adaptive_difficulty = services.adaptive_difficulty
         self.mission_recommendation = services.mission_recommendation
+        self.smart_revision_planner = services.smart_revision_planner
 
         self.learning_engine_service = LearningEngineService(services)
         self.dashboard_service = DashboardService(services)
@@ -351,6 +352,28 @@ class ByteBrain:
             f"📖 Modules Read: {report['modules_read']}\n"
             f"🔁 Retries: {report['retries']}\n\n"
             f"💡 {report['reason']}"
+        )
+        return self._reply(response)
+
+    def get_smart_revision_plan(self) -> str:
+        report = self.smart_revision_planner.analyze(self.memory)
+        revision_plan = "\n".join(
+            f"{index}. {plan}"
+            for index, plan in enumerate(
+                report["revision_plan"],
+                start=1
+            )
+        )
+        response = (
+            "🧠 Your Smart Revision Plan\n\n"
+            f"🎯 Revision Focus: {report['revision_focus']}\n"
+            f"📈 Priority: {report['priority']}\n\n"
+            f"📚 Lessons: {report['completed_lessons']}\n"
+            f"📖 Modules Read: {report['modules_read']}\n"
+            f"🔁 Retries: {report['retries']}\n\n"
+            f"📝 Revision Plan:\n"
+            f"{revision_plan}\n\n"
+            f"💡 {report['observation']}"
         )
         return self._reply(response)
     
