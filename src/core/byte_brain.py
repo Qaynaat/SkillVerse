@@ -42,6 +42,7 @@ class ByteBrain:
         self.smart_goal_generator = services.smart_goal_generator
         self.personalized_roadmap_engine = services.personalized_roadmap_engine
         self.adaptive_difficulty = services.adaptive_difficulty
+        self.mission_recommendation = services.mission_recommendation
 
         self.learning_engine_service = LearningEngineService(services)
         self.dashboard_service = DashboardService(services)
@@ -333,6 +334,22 @@ class ByteBrain:
             f"🔁 Retries: {report['retries']}\n\n"
             f"📊 Positive Signals: {report['positive_signals']}\n"
             f"⚠️ Difficulty Signals: {report['difficulty_signals']}\n\n"
+            f"💡 {report['reason']}"
+        )
+        return self._reply(response)
+
+    def get_mission_recommendation(self) -> str:
+        report = self.mission_recommendation.analyze(self.memory)
+        response = (
+            "🎯 Your Mission Recommendation\n\n"
+            f"🎯 Recommendation: {report['recommendation']}\n"
+            f"📈 Priority: {report['priority']}\n\n"
+            f"🔥 Learning Streak: {report['learning_streak']}\n"
+            f"🎯 Daily Goals: {report['completed_daily_goals']}\n"
+            f"✅ Missions: {report['completed_missions']}\n"
+            f"📚 Lessons: {report['completed_lessons']}\n"
+            f"📖 Modules Read: {report['modules_read']}\n"
+            f"🔁 Retries: {report['retries']}\n\n"
             f"💡 {report['reason']}"
         )
         return self._reply(response)

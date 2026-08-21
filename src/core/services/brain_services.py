@@ -33,6 +33,7 @@ from src.core.productivity_analyzer import ProductivityAnalyzer
 from src.core.smart_goal_generator import SmartGoalGenerator
 from src.core.personalized_roadmap_engine import PersonalizedRoadmapEngine
 from src.core.adaptive_difficulty import AdaptiveDifficulty
+from src.core.mission_recommendation import MissionRecommendation
 
 @dataclass
 class BrainServices:
@@ -68,6 +69,7 @@ class BrainServices:
     smart_goal_generator: SmartGoalGenerator
     personalized_roadmap_engine: PersonalizedRoadmapEngine
     adaptive_difficulty: AdaptiveDifficulty
+    mission_recommendation: MissionRecommendation
 
     @classmethod
     def default(cls):
@@ -105,4 +107,5 @@ class BrainServices:
             smart_goal_generator=SmartGoalGenerator(),
             personalized_roadmap_engine=PersonalizedRoadmapEngine(),
             adaptive_difficulty=AdaptiveDifficulty(),
+            mission_recommendation=MissionRecommendation(),
 )       
