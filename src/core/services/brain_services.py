@@ -37,6 +37,8 @@ from src.core.mission_recommendation import MissionRecommendation
 from src.core.smart_revision_planner import SmartRevisionPlanner
 from src.core.next_best_action_engine import NextBestActionEngine
 from src.core.learning_velocity_tracker import LearningVelocityTracker
+from src.core.performance_trend_analyzer import PerformanceTrendAnalyzer
+
 
 @dataclass
 class BrainServices:
@@ -76,6 +78,7 @@ class BrainServices:
     smart_revision_planner: SmartRevisionPlanner
     next_best_action_engine: NextBestActionEngine
     learning_velocity_tracker: LearningVelocityTracker
+    performance_trend_analyzer: PerformanceTrendAnalyzer
 
     @classmethod
     def default(cls):
@@ -117,4 +120,5 @@ class BrainServices:
             smart_revision_planner=SmartRevisionPlanner(),
             next_best_action_engine=NextBestActionEngine(),
             learning_velocity_tracker=LearningVelocityTracker(),
+            performance_trend_analyzer=PerformanceTrendAnalyzer(),
 )       

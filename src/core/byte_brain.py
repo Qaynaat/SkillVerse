@@ -46,6 +46,7 @@ class ByteBrain:
         self.smart_revision_planner = services.smart_revision_planner
         self.next_best_action_engine = services.next_best_action_engine
         self.learning_velocity_tracker = services.learning_velocity_tracker
+        self.performance_trend_analyzer = services.performance_trend_analyzer
 
         self.learning_engine_service = LearningEngineService(services)
         self.dashboard_service = DashboardService(services)
@@ -406,6 +407,24 @@ class ByteBrain:
             f"🔁 Retries: {report['retries']}\n\n"
             f"📊 Velocity Score: {report['velocity_score']}\n"
             f"📈 Velocity Status: {report['velocity_status']}\n\n"
+            f"💡 {report['observation']}"
+        )
+        return self._reply(response)
+
+    def get_performance_trend_analysis(self) -> str:
+        report = self.performance_trend_analyzer.analyze(self.memory)
+        response = (
+            "📊 Your Performance Trend Analysis\n\n"
+            f"🔥 Learning Streak: {report['learning_streak']}\n"
+            f"🎯 Daily Goals: {report['completed_daily_goals']}\n"
+            f"✅ Missions: {report['completed_missions']}\n"
+            f"📚 Lessons: {report['completed_lessons']}\n"
+            f"📖 Modules Read: {report['modules_read']}\n"
+            f"🔁 Retries: {report['retries']}\n\n"
+            f"📈 Positive Signals: {report['positive_signals']}\n"
+            f"⚠️ Difficulty Signals: {report['difficulty_signals']}\n"
+            f"📊 Performance Score: {report['performance_score']}\n"
+            f"📈 Trend Status: {report['trend_status']}\n\n"
             f"💡 {report['observation']}"
         )
         return self._reply(response)
