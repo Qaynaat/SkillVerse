@@ -44,6 +44,7 @@ class ByteBrain:
         self.adaptive_difficulty = services.adaptive_difficulty
         self.mission_recommendation = services.mission_recommendation
         self.smart_revision_planner = services.smart_revision_planner
+        self.next_best_action_engine = services.next_best_action_engine
 
         self.learning_engine_service = LearningEngineService(services)
         self.dashboard_service = DashboardService(services)
@@ -376,6 +377,22 @@ class ByteBrain:
             f"💡 {report['observation']}"
         )
         return self._reply(response)
+
+    def get_next_best_action_analysis(self) -> str:
+        report = self.next_best_action_engine.analyze(self.memory)
+        response = (
+            "🎯 Your Next Best Learning Action\n\n"
+            f"🎯 Next Action: {report['next_action']}\n"
+            f"📈 Priority: {report['priority']}\n\n"
+            f"🔥 Missions: {report['completed_missions']}\n"
+            f"📚 Lessons: {report['completed_lessons']}\n"
+            f"🔁 Retries: {report['retries']}\n"
+            f"🎯 Daily Goals: {report['completed_daily_goals']}\n"
+            f"📖 Modules Read: {report['modules_read']}\n\n"
+            f"💡 {report['reason']}"
+        )
+        return self._reply(response)
+    
     
     def respond(self, message: str, career_name: str = None) -> str:
         # Save user's message

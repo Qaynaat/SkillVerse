@@ -35,6 +35,7 @@ from src.core.personalized_roadmap_engine import PersonalizedRoadmapEngine
 from src.core.adaptive_difficulty import AdaptiveDifficulty
 from src.core.mission_recommendation import MissionRecommendation
 from src.core.smart_revision_planner import SmartRevisionPlanner
+from src.core.next_best_action_engine import NextBestActionEngine
 
 @dataclass
 class BrainServices:
@@ -72,6 +73,7 @@ class BrainServices:
     adaptive_difficulty: AdaptiveDifficulty
     mission_recommendation: MissionRecommendation
     smart_revision_planner: SmartRevisionPlanner
+    next_best_action_engine: NextBestActionEngine
 
     @classmethod
     def default(cls):
@@ -111,4 +113,5 @@ class BrainServices:
             adaptive_difficulty=AdaptiveDifficulty(),
             mission_recommendation=MissionRecommendation(),
             smart_revision_planner=SmartRevisionPlanner(),
+            next_best_action_engine=NextBestActionEngine(),
 )       
