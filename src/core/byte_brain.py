@@ -45,6 +45,7 @@ class ByteBrain:
         self.mission_recommendation = services.mission_recommendation
         self.smart_revision_planner = services.smart_revision_planner
         self.next_best_action_engine = services.next_best_action_engine
+        self.learning_velocity_tracker = services.learning_velocity_tracker
 
         self.learning_engine_service = LearningEngineService(services)
         self.dashboard_service = DashboardService(services)
@@ -390,6 +391,22 @@ class ByteBrain:
             f"🎯 Daily Goals: {report['completed_daily_goals']}\n"
             f"📖 Modules Read: {report['modules_read']}\n\n"
             f"💡 {report['reason']}"
+        )
+        return self._reply(response)
+
+    def get_learning_velocity_analysis(self) -> str:
+        report = self.learning_velocity_tracker.analyze(self.memory)
+        response = (
+            "📈 Your Learning Velocity Analysis\n\n"
+            f"🔥 Learning Streak: {report['learning_streak']}\n"
+            f"🎯 Daily Goals: {report['completed_daily_goals']}\n"
+            f"✅ Missions: {report['completed_missions']}\n"
+            f"📚 Lessons: {report['completed_lessons']}\n"
+            f"📖 Modules Read: {report['modules_read']}\n"
+            f"🔁 Retries: {report['retries']}\n\n"
+            f"📊 Velocity Score: {report['velocity_score']}\n"
+            f"📈 Velocity Status: {report['velocity_status']}\n\n"
+            f"💡 {report['observation']}"
         )
         return self._reply(response)
     

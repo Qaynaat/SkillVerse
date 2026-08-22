@@ -36,6 +36,7 @@ from src.core.adaptive_difficulty import AdaptiveDifficulty
 from src.core.mission_recommendation import MissionRecommendation
 from src.core.smart_revision_planner import SmartRevisionPlanner
 from src.core.next_best_action_engine import NextBestActionEngine
+from src.core.learning_velocity_tracker import LearningVelocityTracker
 
 @dataclass
 class BrainServices:
@@ -74,6 +75,7 @@ class BrainServices:
     mission_recommendation: MissionRecommendation
     smart_revision_planner: SmartRevisionPlanner
     next_best_action_engine: NextBestActionEngine
+    learning_velocity_tracker: LearningVelocityTracker
 
     @classmethod
     def default(cls):
@@ -114,4 +116,5 @@ class BrainServices:
             mission_recommendation=MissionRecommendation(),
             smart_revision_planner=SmartRevisionPlanner(),
             next_best_action_engine=NextBestActionEngine(),
+            learning_velocity_tracker=LearningVelocityTracker(),
 )       
