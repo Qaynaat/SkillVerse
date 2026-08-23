@@ -43,6 +43,7 @@ from src.core.learning_recovery_strategist import LearningRecoveryStrategist
 from src.core.learning_intervention_engine import LearningInterventionEngine
 from src.core.intervention_prioritizer import InterventionPrioritizer
 from src.core.learning_decision_engine import LearningDecisionEngine
+from src.core.learning_state_engine import LearningStateEngine
 
 @dataclass
 class BrainServices:
@@ -88,6 +89,7 @@ class BrainServices:
     learning_intervention_engine: LearningInterventionEngine
     intervention_prioritizer: InterventionPrioritizer
     learning_decision_engine: LearningDecisionEngine
+    learning_state_engine: LearningStateEngine
 
     @classmethod
     def default(cls):
@@ -135,4 +137,5 @@ class BrainServices:
             learning_intervention_engine=LearningInterventionEngine(),
             intervention_prioritizer=InterventionPrioritizer(),
             learning_decision_engine=LearningDecisionEngine(),
+            learning_state_engine=LearningStateEngine(),
 )       

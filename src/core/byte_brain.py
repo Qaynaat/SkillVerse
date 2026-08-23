@@ -52,6 +52,7 @@ class ByteBrain:
         self.learning_intervention_engine = services.learning_intervention_engine
         self.intervention_prioritizer = services.intervention_prioritizer
         self.learning_decision_engine = services.learning_decision_engine
+        self.learning_state_engine = services.learning_state_engine
 
         self.learning_engine_service = LearningEngineService(services)
         self.dashboard_service = DashboardService(services)
@@ -582,6 +583,30 @@ class ByteBrain:
             f"🔎 Reason:\n{report['reason']}\n\n"
             f"🎯 Action:\n{report['action']}\n\n"
             f"💡 {report['observation']}"
+        )
+        return self._reply(response)
+
+    def get_learning_state(self) -> str:
+        report = self.learning_state_engine.analyze(self.memory)
+        response = (
+            "🧠 Your Learning State\n\n"
+            f"🔥 Learning Streak: {report['learning_streak']}\n"
+            f"🎯 Daily Goals: {report['completed_daily_goals']}\n"
+            f"✅ Missions: {report['completed_missions']}\n"
+            f"📚 Lessons: {report['completed_lessons']}\n"
+            f"📖 Modules Read: {report['modules_read']}\n"
+            f"🔁 Retries: {report['retries']}\n\n"
+            f"🧠 Current State: {report['state']}\n"
+            f"📈 Priority: {report['priority']}\n\n"
+
+            "📊 State Signals:\n"
+            + "\n".join(
+                f"• {signal}"
+                for signal in report["signals"]
+            )
+            + "\n\n"
+
+            f"💡 {report['description']}"
         )
         return self._reply(response)
 
