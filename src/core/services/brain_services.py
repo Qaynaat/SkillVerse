@@ -41,6 +41,7 @@ from src.core.performance_trend_analyzer import PerformanceTrendAnalyzer
 from src.core.learning_risk_predictor import LearningRiskPredictor
 from src.core.learning_recovery_strategist import LearningRecoveryStrategist
 from src.core.learning_intervention_engine import LearningInterventionEngine
+from src.core.intervention_prioritizer import InterventionPrioritizer
 
 @dataclass
 class BrainServices:
@@ -84,6 +85,7 @@ class BrainServices:
     learning_risk_predictor: LearningRiskPredictor
     learning_recovery_strategist: LearningRecoveryStrategist
     learning_intervention_engine: LearningInterventionEngine
+    intervention_prioritizer: InterventionPrioritizer
 
     @classmethod
     def default(cls):
@@ -129,4 +131,5 @@ class BrainServices:
             learning_risk_predictor=LearningRiskPredictor(),
             learning_recovery_strategist=LearningRecoveryStrategist(),
             learning_intervention_engine=LearningInterventionEngine(),
+            intervention_prioritizer=InterventionPrioritizer(),
 )       

@@ -50,6 +50,7 @@ class ByteBrain:
         self.learning_risk_predictor = services.learning_risk_predictor
         self.learning_recovery_strategist = services.learning_recovery_strategist
         self.learning_intervention_engine = services.learning_intervention_engine
+        self.intervention_prioritizer = services.intervention_prioritizer
 
         self.learning_engine_service = LearningEngineService(services)
         self.dashboard_service = DashboardService(services)
@@ -514,6 +515,46 @@ class ByteBrain:
             f"{report['action']}\n\n"
             "🌱 Expected Outcome:\n"
             f"{report['expected_outcome']}"
+        )
+        return self._reply(response)
+
+    def get_intervention_priority_analysis(self) -> str:
+        report = self.intervention_prioritizer.analyze(
+            self.memory
+        )
+        priority_lines = "\n".join(
+            f"{index}. "
+            f"{item['type']} "
+            f"({item['priority']})"
+            for index, item in enumerate(
+                report["interventions"],
+                start=1,
+            )
+        )
+        primary = report["primary_intervention"]
+        response = (
+            "🎯 Your Intervention Priority Analysis\n\n"
+            f"🔥 Learning Streak: "
+            f"{report['learning_streak']}\n"
+            f"🎯 Daily Goals: "
+            f"{report['completed_daily_goals']}\n"
+            f"✅ Missions: "
+            f"{report['completed_missions']}\n"
+            f"📚 Lessons: "
+            f"{report['completed_lessons']}\n"
+            f"📖 Modules Read: "
+            f"{report['modules_read']}\n"
+            f"🔁 Retries: "
+            f"{report['retries']}\n\n"
+            f"📊 Total Interventions: "
+            f"{report['total_interventions']}\n\n"
+            "🛠 Intervention Priority:\n"
+            f"{priority_lines}\n\n"
+            "🚨 Primary Intervention:\n\n"
+            f"🎯 {primary['type']}\n"
+            f"📈 Priority: {primary['priority']}\n"
+            f"💡 Reason: {primary['reason']}\n"
+            f"➡️ Action: {primary['action']}"
         )
         return self._reply(response)
 
