@@ -47,6 +47,7 @@ class ByteBrain:
         self.next_best_action_engine = services.next_best_action_engine
         self.learning_velocity_tracker = services.learning_velocity_tracker
         self.performance_trend_analyzer = services.performance_trend_analyzer
+        self.learning_risk_predictor = services.learning_risk_predictor
 
         self.learning_engine_service = LearningEngineService(services)
         self.dashboard_service = DashboardService(services)
@@ -425,6 +426,29 @@ class ByteBrain:
             f"⚠️ Difficulty Signals: {report['difficulty_signals']}\n"
             f"📊 Performance Score: {report['performance_score']}\n"
             f"📈 Trend Status: {report['trend_status']}\n\n"
+            f"💡 {report['observation']}"
+        )
+        return self._reply(response)
+
+    def get_learning_risk_analysis(self) -> str:
+        report = self.learning_risk_predictor.analyze(self.memory)
+        response = (
+            "🚨 Your Learning Risk Analysis\n\n"
+            f"🔥 Learning Streak: {report['learning_streak']}\n"
+            f"🎯 Daily Goals: {report['completed_daily_goals']}\n"
+            f"✅ Missions: {report['completed_missions']}\n"
+            f"📚 Lessons: {report['completed_lessons']}\n"
+            f"📖 Modules Read: {report['modules_read']}\n"
+            f"🔁 Retries: {report['retries']}\n\n"
+            "⚠️ Risk Signals:\n"
+            + "\n".join(
+                f"• {signal}"
+                for signal in report["risk_signals"]
+            )
+            + "\n\n"
+            f"🟢 Positive Signals: {report['positive_signals']}\n"
+            f"📊 Risk Score: {report['risk_score']}\n"
+            f"📈 Risk Status: {report['risk_status']}\n\n"
             f"💡 {report['observation']}"
         )
         return self._reply(response)

@@ -38,7 +38,7 @@ from src.core.smart_revision_planner import SmartRevisionPlanner
 from src.core.next_best_action_engine import NextBestActionEngine
 from src.core.learning_velocity_tracker import LearningVelocityTracker
 from src.core.performance_trend_analyzer import PerformanceTrendAnalyzer
-
+from src.core.learning_risk_predictor import LearningRiskPredictor
 
 @dataclass
 class BrainServices:
@@ -79,6 +79,7 @@ class BrainServices:
     next_best_action_engine: NextBestActionEngine
     learning_velocity_tracker: LearningVelocityTracker
     performance_trend_analyzer: PerformanceTrendAnalyzer
+    learning_risk_predictor: LearningRiskPredictor
 
     @classmethod
     def default(cls):
@@ -121,4 +122,5 @@ class BrainServices:
             next_best_action_engine=NextBestActionEngine(),
             learning_velocity_tracker=LearningVelocityTracker(),
             performance_trend_analyzer=PerformanceTrendAnalyzer(),
+            learning_risk_predictor=LearningRiskPredictor(),
 )       
