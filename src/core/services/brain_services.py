@@ -42,6 +42,7 @@ from src.core.learning_risk_predictor import LearningRiskPredictor
 from src.core.learning_recovery_strategist import LearningRecoveryStrategist
 from src.core.learning_intervention_engine import LearningInterventionEngine
 from src.core.intervention_prioritizer import InterventionPrioritizer
+from src.core.learning_decision_engine import LearningDecisionEngine
 
 @dataclass
 class BrainServices:
@@ -86,6 +87,7 @@ class BrainServices:
     learning_recovery_strategist: LearningRecoveryStrategist
     learning_intervention_engine: LearningInterventionEngine
     intervention_prioritizer: InterventionPrioritizer
+    learning_decision_engine: LearningDecisionEngine
 
     @classmethod
     def default(cls):
@@ -132,4 +134,5 @@ class BrainServices:
             learning_recovery_strategist=LearningRecoveryStrategist(),
             learning_intervention_engine=LearningInterventionEngine(),
             intervention_prioritizer=InterventionPrioritizer(),
+            learning_decision_engine=LearningDecisionEngine(),
 )       
