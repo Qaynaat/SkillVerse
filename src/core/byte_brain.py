@@ -49,6 +49,7 @@ class ByteBrain:
         self.performance_trend_analyzer = services.performance_trend_analyzer
         self.learning_risk_predictor = services.learning_risk_predictor
         self.learning_recovery_strategist = services.learning_recovery_strategist
+        self.learning_intervention_engine = services.learning_intervention_engine
 
         self.learning_engine_service = LearningEngineService(services)
         self.dashboard_service = DashboardService(services)
@@ -484,6 +485,35 @@ class ByteBrain:
             "🎯 Primary Strategy:\n"
             f"{report['primary_strategy']}\n\n"
             f"💡 {report['observation']}"
+        )
+        return self._reply(response)
+
+    def get_learning_intervention_analysis(self) -> str:
+        report = self.learning_intervention_engine.analyze(
+            self.memory
+        )
+        signals = "\n".join(
+            f"• {signal}"
+            for signal in report["signals"]
+        )
+        response = (
+            "🎯 Your Learning Intervention Analysis\n\n"
+            f"🔥 Learning Streak: {report['learning_streak']}\n"
+            f"🎯 Daily Goals: {report['completed_daily_goals']}\n"
+            f"✅ Missions: {report['completed_missions']}\n"
+            f"📚 Lessons: {report['completed_lessons']}\n"
+            f"📖 Modules Read: {report['modules_read']}\n"
+            f"🔁 Retries: {report['retries']}\n\n"
+            "⚠️ Intervention Signals:\n"
+            f"{signals}\n\n"
+            f"🛠 Intervention: {report['intervention_type']}\n"
+            f"📈 Priority: {report['priority']}\n\n"
+            "🔎 Reason:\n"
+            f"{report['reason']}\n\n"
+            "🎯 Action:\n"
+            f"{report['action']}\n\n"
+            "🌱 Expected Outcome:\n"
+            f"{report['expected_outcome']}"
         )
         return self._reply(response)
 
