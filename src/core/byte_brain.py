@@ -48,6 +48,7 @@ class ByteBrain:
         self.learning_velocity_tracker = services.learning_velocity_tracker
         self.performance_trend_analyzer = services.performance_trend_analyzer
         self.learning_risk_predictor = services.learning_risk_predictor
+        self.learning_recovery_strategist = services.learning_recovery_strategist
 
         self.learning_engine_service = LearningEngineService(services)
         self.dashboard_service = DashboardService(services)
@@ -453,7 +454,39 @@ class ByteBrain:
         )
         return self._reply(response)
     
-    
+    def get_learning_recovery_analysis(self) -> str:
+        report = self.learning_recovery_strategist.analyze(self.memory)
+        recovery_plan = "\n".join(
+            f"{index}. {step}"
+            for index, step in enumerate(
+                report["recovery_plan"],
+                start=1,
+            )
+        )
+        response = (
+            "🛟 Your Learning Recovery Analysis\n\n"
+            f"🔥 Learning Streak: {report['learning_streak']}\n"
+            f"🎯 Daily Goals: {report['completed_daily_goals']}\n"
+            f"✅ Missions: {report['completed_missions']}\n"
+            f"📚 Lessons: {report['completed_lessons']}\n"
+            f"📖 Modules Read: {report['modules_read']}\n"
+            f"🔁 Retries: {report['retries']}\n\n"
+            "⚠️ Recovery Signals:\n"
+            + "\n".join(
+                f"• {signal}"
+                for signal in report["recovery_signals"]
+            )
+            + "\n\n"
+            f"📊 Recovery Score: {report['recovery_score']}\n"
+            f"📈 Recovery Level: {report['recovery_level']}\n\n"
+            "🛟 Recovery Plan:\n"
+            f"{recovery_plan}\n\n"
+            "🎯 Primary Strategy:\n"
+            f"{report['primary_strategy']}\n\n"
+            f"💡 {report['observation']}"
+        )
+        return self._reply(response)
+
     def respond(self, message: str, career_name: str = None) -> str:
         # Save user's message
         self.memory.add_message("User", message)

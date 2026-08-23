@@ -39,6 +39,7 @@ from src.core.next_best_action_engine import NextBestActionEngine
 from src.core.learning_velocity_tracker import LearningVelocityTracker
 from src.core.performance_trend_analyzer import PerformanceTrendAnalyzer
 from src.core.learning_risk_predictor import LearningRiskPredictor
+from src.core.learning_recovery_strategist import LearningRecoveryStrategist
 
 @dataclass
 class BrainServices:
@@ -80,6 +81,7 @@ class BrainServices:
     learning_velocity_tracker: LearningVelocityTracker
     performance_trend_analyzer: PerformanceTrendAnalyzer
     learning_risk_predictor: LearningRiskPredictor
+    learning_recovery_strategist: LearningRecoveryStrategist
 
     @classmethod
     def default(cls):
@@ -123,4 +125,5 @@ class BrainServices:
             learning_velocity_tracker=LearningVelocityTracker(),
             performance_trend_analyzer=PerformanceTrendAnalyzer(),
             learning_risk_predictor=LearningRiskPredictor(),
+            learning_recovery_strategist=LearningRecoveryStrategist(),
 )       
