@@ -52,6 +52,7 @@ from src.core.intervention_prioritizer import InterventionPrioritizer
 from src.core.learning_decision_engine import LearningDecisionEngine
 from src.core.learning_state_engine import LearningStateEngine
 from src.core.learner_profile_snapshot import LearnerProfileSnapshot
+from src.core.learning_profile_interpreter import LearningProfileInterpreter
 
 
 @dataclass
@@ -134,6 +135,7 @@ class BrainServices:
     # ==================================================
 
     learner_profile_snapshot: LearnerProfileSnapshot
+    learning_profile_interpreter: LearningProfileInterpreter
 
     # ==================================================
     # Default Service Factory
@@ -337,4 +339,5 @@ class BrainServices:
             learner_profile_snapshot=(
                 learner_profile_snapshot
             ),
+            learning_profile_interpreter=LearningProfileInterpreter(),
         )

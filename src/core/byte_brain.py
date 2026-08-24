@@ -54,6 +54,7 @@ class ByteBrain:
         self.learning_decision_engine = services.learning_decision_engine
         self.learning_state_engine = services.learning_state_engine
         self.learner_profile_snapshot = services.learner_profile_snapshot
+        self.learning_profile_interpreter = services.learning_profile_interpreter
 
         self.learning_engine_service = LearningEngineService(services)
         self.dashboard_service = DashboardService(services)
@@ -632,6 +633,24 @@ class ByteBrain:
 
             f"📌 Overall Priority: "
             f"{report['overall_priority']}"
+        )
+        return self._reply(response)
+
+    def get_learning_profile_interpretation(self) -> str:
+        snapshot = self.learner_profile_snapshot.analyze(
+            self.memory
+        )
+        report = self.learning_profile_interpreter.analyze(
+            snapshot
+        )
+        response = (
+            "🧠 Your Learning Profile\n\n"
+            f"📍 Profile Type: {report['profile_type']}\n"
+            f"🎯 Dominant Pattern: {report['dominant_pattern']}\n\n"
+            f"🛠 Primary Need: {report['primary_need']}\n\n"
+            f"🧭 Recommended Direction:\n"
+            f"{report['recommended_direction']}\n\n"
+            f"💡 {report['profile_summary']}"
         )
         return self._reply(response)
 
