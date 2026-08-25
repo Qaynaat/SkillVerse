@@ -55,6 +55,7 @@ class ByteBrain:
         self.learning_state_engine = services.learning_state_engine
         self.learner_profile_snapshot = services.learner_profile_snapshot
         self.learning_profile_interpreter = services.learning_profile_interpreter
+        self.learning_profile_advisor = services.learning_profile_advisor
 
         self.learning_engine_service = LearningEngineService(services)
         self.dashboard_service = DashboardService(services)
@@ -651,6 +652,29 @@ class ByteBrain:
             f"🧭 Recommended Direction:\n"
             f"{report['recommended_direction']}\n\n"
             f"💡 {report['profile_summary']}"
+        )
+        return self._reply(response)
+
+    def get_learning_profile_advice(self) -> str:
+        snapshot = self.learner_profile_snapshot.analyze(
+            self.memory
+        )
+        interpretation = self.learning_profile_interpreter.analyze(
+            snapshot
+        )
+        advice = self.learning_profile_advisor.analyze(
+            interpretation
+        )
+        response = (
+            "🧭 Your Learning Profile Advice\n\n"
+            f"📍 Profile: {advice['profile_type']}\n"
+            f"🎯 Focus: {advice['focus']}\n"
+            f"📈 Urgency: {advice['urgency']}\n\n"
+            f"🛠 What You Should Do:\n"
+            f"{advice['action']}\n\n"
+            f"➡️ Next Step:\n"
+            f"{advice['next_step']}\n\n"
+            f"💡 {advice['reason']}"
         )
         return self._reply(response)
 
