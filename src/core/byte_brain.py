@@ -58,8 +58,7 @@ class ByteBrain:
         self.learning_profile_advisor = services.learning_profile_advisor
         self.learning_profile_action_planner = services.learning_profile_action_planner
         self.learning_action_execution_engine = services.learning_action_execution_engine
-
-
+        self.learning_action_followup_engine = services.learning_action_followup_engine
 
         self.learning_engine_service = LearningEngineService(services)
         self.dashboard_service = DashboardService(services)
@@ -741,6 +740,25 @@ class ByteBrain:
             f"{execution['guidance']}\n\n"
             f"✅ Completion Rule:\n"
             f"{execution['expected_completion']}"
+        )
+        return self._reply(response)
+
+    def get_learning_action_followup(self) -> str:
+        report = self.learning_action_followup_engine.analyze(
+            self.memory
+        )
+        response = (
+            "🔄 Your Learning Action Follow-Up\n\n"
+            f"📍 Profile: {report['profile']}\n"
+            f"🎯 Focus: {report['focus']}\n"
+            f"📈 Priority: {report['priority']}\n\n"
+            "➡️ Next Step:\n"
+            f"{report['next_step']}\n\n"
+            "💡 Follow-Up:\n"
+            f"{report['follow_up']}\n\n"
+            "✅ Completion Rule:\n"
+            f"{report['completion_rule']}\n\n"
+            f"💡 {report['observation']}"
         )
         return self._reply(response)
 
