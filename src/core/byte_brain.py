@@ -56,6 +56,8 @@ class ByteBrain:
         self.learner_profile_snapshot = services.learner_profile_snapshot
         self.learning_profile_interpreter = services.learning_profile_interpreter
         self.learning_profile_advisor = services.learning_profile_advisor
+        self.learning_profile_action_planner = services.learning_profile_action_planner
+
 
         self.learning_engine_service = LearningEngineService(services)
         self.dashboard_service = DashboardService(services)
@@ -675,6 +677,36 @@ class ByteBrain:
             f"➡️ Next Step:\n"
             f"{advice['next_step']}\n\n"
             f"💡 {advice['reason']}"
+        )
+        return self._reply(response)
+
+    def get_learning_profile_action_plan(self) -> str:
+        snapshot = self.learner_profile_snapshot.analyze(
+            self.memory
+        )
+        interpretation = self.learning_profile_interpreter.analyze(
+            snapshot
+        )
+        advice = self.learning_profile_advisor.analyze(
+            interpretation
+        )
+        plan = self.learning_profile_action_planner.analyze(
+            advice
+        )
+        response = (
+            "🧭 Your Learning Action Plan\n\n"
+            f"📍 Profile: {plan['profile_type']}\n"
+            f"🎯 Focus: {plan['focus']}\n"
+            f"📈 Priority: {plan['priority']}\n"
+            f"⏱ Duration: {plan['duration']}\n\n"
+            f"🛠 Plan: {plan['plan_type']}\n\n"
+            "📝 Today's Steps:\n"
+        )
+        for index, step in enumerate(plan["steps"], start=1):
+            response += f"{index}. {step}\n"
+
+        response += (
+            f"\n💡 {plan['summary']}"
         )
         return self._reply(response)
 
