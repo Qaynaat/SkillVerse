@@ -57,6 +57,8 @@ class ByteBrain:
         self.learning_profile_interpreter = services.learning_profile_interpreter
         self.learning_profile_advisor = services.learning_profile_advisor
         self.learning_profile_action_planner = services.learning_profile_action_planner
+        self.learning_action_execution_engine = services.learning_action_execution_engine
+
 
 
         self.learning_engine_service = LearningEngineService(services)
@@ -707,6 +709,38 @@ class ByteBrain:
 
         response += (
             f"\n💡 {plan['summary']}"
+        )
+        return self._reply(response)
+
+    def get_learning_action_execution(self) -> str:
+        snapshot = self.learner_profile_snapshot.analyze(
+            self.memory
+        )
+        interpretation = self.learning_profile_interpreter.analyze(
+            snapshot
+        )
+        advice = self.learning_profile_advisor.analyze(
+            interpretation
+        )
+        action_plan = self.learning_profile_action_planner.analyze(
+            advice
+        )
+        execution = self.learning_action_execution_engine.analyze(
+            action_plan
+        )
+        response = (
+            "⚡ Your Learning Action Execution\n\n"
+            f"📍 Profile: {execution['profile_type']}\n"
+            f"🎯 Focus: {execution['focus']}\n"
+            f"📈 Priority: {execution['execution_priority']}\n"
+            f"🚦 State: {execution['execution_state']}\n"
+            f"⏱ Duration: {execution['duration']}\n\n"
+            f"▶️ Start Here:\n"
+            f"{execution['first_action']}\n\n"
+            f"💡 Guidance:\n"
+            f"{execution['guidance']}\n\n"
+            f"✅ Completion Rule:\n"
+            f"{execution['expected_completion']}"
         )
         return self._reply(response)
 
