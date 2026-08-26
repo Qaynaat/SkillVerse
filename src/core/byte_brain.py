@@ -22,6 +22,7 @@ class ByteBrain:
         self.career_database = services.career_database
         self.career_comparison_engine = services.career_comparison_engine
         self.career_roadmap_engine = services.career_roadmap_engine
+        self.career_readiness_score_engine = services.career_readiness_score_engine
 
         self.career_responses = services.career_response_generator
         self.conversation_engine = services.conversation_engine
@@ -1047,5 +1048,19 @@ class ByteBrain:
         )
 
         return self.career_roadmap_engine.format_report(
+            report
+        )
+
+    def get_career_readiness_score(
+        self,
+        career_name,
+        learner_skills
+    ):
+        report = self.career_readiness_score_engine.analyze(
+            career_name,
+            learner_skills
+        )
+
+        return self.career_readiness_score_engine.format_report(
             report
         )
