@@ -20,6 +20,7 @@ class ByteBrain:
         save_system: SaveSystem,
     ):
         self.career_database = services.career_database
+        self.career_comparison_engine = services.career_comparison_engine
         self.career_responses = services.career_response_generator
         self.conversation_engine = services.conversation_engine
         self.achievement_engine = services.achievement_engine
@@ -63,6 +64,7 @@ class ByteBrain:
         self.learning_outcome_interpreter = services.learning_outcome_interpreter
         self.learning_outcome_decision_engine =  services.learning_outcome_decision_engine
         self.learning_outcome_action_planner = services.learning_outcome_action_planner
+
 
 
         self.learning_engine_service = LearningEngineService(services)
@@ -1018,3 +1020,16 @@ class ByteBrain:
         return self.learning_outcome_action_planner.format_report(
             report
         )
+
+    def compare_careers(self, career_one, career_two):
+        """
+        Mission 080
+        Compare two careers using the CareerComparisonEngine.
+        """
+
+        report = self.career_comparison_engine.analyze(
+            career_one,
+            career_two
+        )
+
+        return self.career_comparison_engine.format_report(report)

@@ -61,6 +61,7 @@ from src.core.learning_action_outcome_tracker import LearningActionOutcomeTracke
 from src.core.learning_outcome_interpreter import LearningOutcomeInterpreter
 from src.core.learning_outcome_decision_engine import LearningOutcomeDecisionEngine
 from src.core.learning_outcome_action_planner import LearningOutcomeActionPlanner
+from src.core.career_comparison_engine import CareerComparisonEngine
 
 
 @dataclass
@@ -73,6 +74,7 @@ class BrainServices:
     career_database: CareerDatabase
     career_response_generator: CareerResponseGenerator
     conversation_engine: ConversationEngine
+    career_comparison_engine: CareerComparisonEngine
 
     # ==================================================
     # Mentor / Achievement Services
@@ -152,6 +154,7 @@ class BrainServices:
     learning_outcome_interpreter: LearningOutcomeInterpreter
     learning_outcome_decision_engine: LearningOutcomeDecisionEngine
     learning_outcome_action_planner: LearningOutcomeActionPlanner
+    
 
     # ==================================================
     # Default Service Factory
@@ -161,7 +164,7 @@ class BrainServices:
     def default(cls):
 
         personality = PersonalityEngine(BYTE_PERSONALITY)
-
+        career_database = CareerDatabase()
         # ==================================================
         # Create Intelligence Engines Once
         # ==================================================
@@ -226,7 +229,7 @@ class BrainServices:
             # Core / Career
             # --------------------------------------------------
 
-            career_database=CareerDatabase(),
+            career_database=career_database,
 
             career_response_generator=(
                 CareerResponseGenerator(personality)
@@ -234,6 +237,9 @@ class BrainServices:
 
             conversation_engine=ConversationEngine(),
 
+            career_comparison_engine=CareerComparisonEngine(
+                career_database
+),
             # --------------------------------------------------
             # Achievement / Mentor
             # --------------------------------------------------
