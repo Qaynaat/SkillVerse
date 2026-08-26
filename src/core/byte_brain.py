@@ -60,6 +60,7 @@ class ByteBrain:
         self.learning_action_execution_engine = services.learning_action_execution_engine
         self.learning_action_followup_engine = services.learning_action_followup_engine
         self.learning_action_outcome_tracker =  services.learning_action_outcome_tracker
+        self.learning_outcome_interpreter = services.learning_outcome_interpreter
 
         self.learning_engine_service = LearningEngineService(services)
         self.dashboard_service = DashboardService(services)
@@ -986,3 +987,11 @@ class ByteBrain:
             f"📈 Prediction: {report['prediction']}"
         )
         return self._reply(response)
+
+    def analyze_learning_outcome(self, outcome=None):
+        report = self.learning_outcome_interpreter.analyze(
+            self.memory,
+            outcome
+        )
+
+        return self.learning_outcome_interpreter.format_report(report)

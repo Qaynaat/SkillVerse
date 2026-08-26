@@ -58,6 +58,7 @@ from src.core.learning_profile_action_planner import LearningProfileActionPlanne
 from src.core.learning_action_execution_engine import LearningActionExecutionEngine
 from src.core.learning_action_followup_engine import LearningActionFollowUpEngine
 from src.core.learning_action_outcome_tracker import LearningActionOutcomeTracker
+from src.core.learning_outcome_interpreter import LearningOutcomeInterpreter
 
 
 @dataclass
@@ -146,6 +147,7 @@ class BrainServices:
     learning_action_execution_engine: LearningActionExecutionEngine
     learning_action_followup_engine: LearningActionFollowUpEngine
     learning_action_outcome_tracker: LearningActionOutcomeTracker
+    learning_outcome_interpreter: LearningOutcomeInterpreter
 
     # ==================================================
     # Default Service Factory
@@ -355,4 +357,5 @@ class BrainServices:
             learning_action_execution_engine=LearningActionExecutionEngine(),
             learning_action_followup_engine=LearningActionFollowUpEngine(),
             learning_action_outcome_tracker=LearningActionOutcomeTracker(),
+            learning_outcome_interpreter=LearningOutcomeInterpreter(),
         )
