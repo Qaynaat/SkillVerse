@@ -59,6 +59,7 @@ class ByteBrain:
         self.learning_profile_action_planner = services.learning_profile_action_planner
         self.learning_action_execution_engine = services.learning_action_execution_engine
         self.learning_action_followup_engine = services.learning_action_followup_engine
+        self.learning_action_outcome_tracker =  services.learning_action_outcome_tracker
 
         self.learning_engine_service = LearningEngineService(services)
         self.dashboard_service = DashboardService(services)
@@ -760,6 +761,33 @@ class ByteBrain:
             f"{report['completion_rule']}\n\n"
             f"💡 {report['observation']}"
         )
+        return self._reply(response)
+
+    def get_learning_action_outcome(self) -> str:
+        report = self.learning_action_outcome_tracker.analyze(
+            self.memory
+        )
+
+        signals = "\n".join(
+            f"• {signal}"
+            for signal in report["signals"]
+        )
+
+        response = (
+            "📊 Your Learning Action Outcome\n\n"
+            f"🔥 Learning Streak: {report['learning_streak']}\n"
+            f"🎯 Daily Goals: {report['completed_daily_goals']}\n"
+            f"✅ Missions: {report['completed_missions']}\n"
+            f"📚 Lessons: {report['completed_lessons']}\n"
+            f"📖 Modules Read: {report['modules_read']}\n"
+            f"🔁 Retries: {report['retries']}\n\n"
+            f"📊 Outcome: {report['outcome']}\n"
+            f"📈 Status: {report['status']}\n\n"
+            f"📌 Signals:\n{signals}\n\n"
+            f"➡️ Recommendation:\n"
+            f"{report['recommendation']}"
+        )
+
         return self._reply(response)
 
     def respond(self, message: str, career_name: str = None) -> str:
