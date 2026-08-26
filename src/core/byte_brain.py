@@ -61,6 +61,8 @@ class ByteBrain:
         self.learning_action_followup_engine = services.learning_action_followup_engine
         self.learning_action_outcome_tracker =  services.learning_action_outcome_tracker
         self.learning_outcome_interpreter = services.learning_outcome_interpreter
+        self.learning_outcome_decision_engine =  services.learning_outcome_decision_engine
+
 
         self.learning_engine_service = LearningEngineService(services)
         self.dashboard_service = DashboardService(services)
@@ -995,3 +997,15 @@ class ByteBrain:
         )
 
         return self.learning_outcome_interpreter.format_report(report)
+
+    def analyze_learning_outcome_decision(self, outcome_report):
+        interpretation = self.learning_outcome_interpreter.analyze(
+            self.memory,
+            outcome_report.get("outcome", "No Recent Outcome")
+        )
+        report = self.learning_outcome_decision_engine.analyze(
+                outcome_report,
+                interpretation
+            )
+        return self.learning_outcome_decision_engine.format_report(report)
+    
