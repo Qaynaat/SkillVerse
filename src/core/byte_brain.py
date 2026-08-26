@@ -21,6 +21,8 @@ class ByteBrain:
     ):
         self.career_database = services.career_database
         self.career_comparison_engine = services.career_comparison_engine
+        self.career_roadmap_engine = services.career_roadmap_engine
+
         self.career_responses = services.career_response_generator
         self.conversation_engine = services.conversation_engine
         self.achievement_engine = services.achievement_engine
@@ -65,8 +67,6 @@ class ByteBrain:
         self.learning_outcome_decision_engine =  services.learning_outcome_decision_engine
         self.learning_outcome_action_planner = services.learning_outcome_action_planner
 
-
-
         self.learning_engine_service = LearningEngineService(services)
         self.dashboard_service = DashboardService(services)
         self.motivation_service = MotivationService(services)
@@ -92,7 +92,8 @@ class ByteBrain:
         }
 
         # Load existing save state into memory
-        self.save_system.load(self.memory)
+        if self.save_system is not None:
+            self.save_system.load(self.memory)
 
     def _get_career(self, career_name: str):
         return self.career_database.get_career(career_name)
@@ -1033,3 +1034,18 @@ class ByteBrain:
         )
 
         return self.career_comparison_engine.format_report(report)
+
+    def get_career_roadmap(self, career_name):
+        """
+        Mission 081
+        Generate a career roadmap using the existing
+        CareerRoadmapEngine.
+        """
+
+        report = self.career_roadmap_engine.analyze(
+            career_name
+        )
+
+        return self.career_roadmap_engine.format_report(
+            report
+        )

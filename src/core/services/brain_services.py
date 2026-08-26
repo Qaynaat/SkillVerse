@@ -62,6 +62,7 @@ from src.core.learning_outcome_interpreter import LearningOutcomeInterpreter
 from src.core.learning_outcome_decision_engine import LearningOutcomeDecisionEngine
 from src.core.learning_outcome_action_planner import LearningOutcomeActionPlanner
 from src.core.career_comparison_engine import CareerComparisonEngine
+from src.core.career_roadmap_engine import CareerRoadmapEngine
 
 
 @dataclass
@@ -75,6 +76,7 @@ class BrainServices:
     career_response_generator: CareerResponseGenerator
     conversation_engine: ConversationEngine
     career_comparison_engine: CareerComparisonEngine
+    career_roadmap_engine:CareerRoadmapEngine
 
     # ==================================================
     # Mentor / Achievement Services
@@ -239,7 +241,11 @@ class BrainServices:
 
             career_comparison_engine=CareerComparisonEngine(
                 career_database
-),
+            ),
+
+            career_roadmap_engine=CareerRoadmapEngine(
+                career_database
+            ),
             # --------------------------------------------------
             # Achievement / Mentor
             # --------------------------------------------------
