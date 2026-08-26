@@ -60,6 +60,7 @@ from src.core.learning_action_followup_engine import LearningActionFollowUpEngin
 from src.core.learning_action_outcome_tracker import LearningActionOutcomeTracker
 from src.core.learning_outcome_interpreter import LearningOutcomeInterpreter
 from src.core.learning_outcome_decision_engine import LearningOutcomeDecisionEngine
+from src.core.learning_outcome_action_planner import LearningOutcomeActionPlanner
 
 
 @dataclass
@@ -150,6 +151,7 @@ class BrainServices:
     learning_action_outcome_tracker: LearningActionOutcomeTracker
     learning_outcome_interpreter: LearningOutcomeInterpreter
     learning_outcome_decision_engine: LearningOutcomeDecisionEngine
+    learning_outcome_action_planner: LearningOutcomeActionPlanner
 
     # ==================================================
     # Default Service Factory
@@ -361,4 +363,5 @@ class BrainServices:
             learning_action_outcome_tracker=LearningActionOutcomeTracker(),
             learning_outcome_interpreter=LearningOutcomeInterpreter(),
             learning_outcome_decision_engine=LearningOutcomeDecisionEngine(),
+            learning_outcome_action_planner=LearningOutcomeActionPlanner(),
         )

@@ -62,6 +62,7 @@ class ByteBrain:
         self.learning_action_outcome_tracker =  services.learning_action_outcome_tracker
         self.learning_outcome_interpreter = services.learning_outcome_interpreter
         self.learning_outcome_decision_engine =  services.learning_outcome_decision_engine
+        self.learning_outcome_action_planner = services.learning_outcome_action_planner
 
 
         self.learning_engine_service = LearningEngineService(services)
@@ -1008,4 +1009,12 @@ class ByteBrain:
                 interpretation
             )
         return self.learning_outcome_decision_engine.format_report(report)
-    
+
+    def analyze_learning_outcome_action_plan(self, decision_report):
+        report = self.learning_outcome_action_planner.analyze(
+            decision_report
+        )
+
+        return self.learning_outcome_action_planner.format_report(
+            report
+        )
