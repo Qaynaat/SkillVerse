@@ -69,6 +69,7 @@ class ByteBrain:
         self.learning_outcome_interpreter = services.learning_outcome_interpreter
         self.learning_outcome_decision_engine =  services.learning_outcome_decision_engine
         self.learning_outcome_action_planner = services.learning_outcome_action_planner
+        self.certification_recommendation_engine = services.certification_recommendation_engine
 
         self.learning_engine_service = LearningEngineService(services)
         self.dashboard_service = DashboardService(services)
@@ -1103,4 +1104,26 @@ class ByteBrain:
             self.internship_recommendation_engine.format_report(
                 report
             )
+        )
+
+    def get_certification_recommendation(
+        self,
+        career_name=None
+    ) -> str:
+
+        if career_name is None:
+            career_name = self.memory.get_current_career()
+
+        if career_name is None:
+            return self._reply(
+                "🤔 I don't know which career "
+                "you want certification recommendations for yet."
+            )
+        report = (
+            self.certification_recommendation_engine
+            .analyze(career_name)
+        )
+        return self._reply(
+            self.certification_recommendation_engine
+            .format_report(report)
         )

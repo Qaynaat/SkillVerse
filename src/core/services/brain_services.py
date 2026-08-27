@@ -66,6 +66,7 @@ from src.core.career_roadmap_engine import CareerRoadmapEngine
 from src.core.career_readiness_score_engine import CareerReadinessScoreEngine
 from src.core.future_skills_recommendation_engine import FutureSkillsRecommendationEngine
 from src.core.internship_recommendation_engine import InternshipRecommendationEngine
+from src.core.certification_recommendation_engine import CertificationRecommendationEngine
 
 
 
@@ -84,6 +85,7 @@ class BrainServices:
     career_roadmap_engine:CareerRoadmapEngine
     career_readiness_score_engine:CareerReadinessScoreEngine
     future_skills_recommendation_engine:FutureSkillsRecommendationEngine
+    certification_recommendation_engine:CertificationRecommendationEngine
 
     # ==================================================
     # Mentor / Achievement Services
@@ -265,6 +267,11 @@ class BrainServices:
                 internship_recommendation_engine=InternshipRecommendationEngine(
             career_database
             ),
+            certification_recommendation_engine=CertificationRecommendationEngine(
+        career_database
+            ),
+
+
             # --------------------------------------------------
             # Achievement / Mentor
             # --------------------------------------------------
