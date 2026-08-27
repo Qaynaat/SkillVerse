@@ -28,6 +28,7 @@ class ByteBrain:
 
         self.career_responses = services.career_response_generator
         self.conversation_engine = services.conversation_engine
+        self.conversation_memory_upgrade = services.conversation_memory_upgrade
         self.achievement_engine = services.achievement_engine
         self.reward_engine = services.reward_engine
         self.mentor_engine = services.mentor_engine
@@ -1137,3 +1138,51 @@ class ByteBrain:
         return self.learning_health_score.format_report(
             report
         )
+    # ==========================================================
+    # MISSION 087 - CONVERSATION MEMORY UPGRADE
+    # ==========================================================
+
+    def remember_conversation_turn(
+        self,
+        user_message,
+        byte_response,
+        intent=None,
+        career=None
+    ):
+        """
+        Store the latest conversation turn in Byte's
+        short-term conversation memory.
+        """
+
+        self.conversation_memory_upgrade.record_turn(
+            user_message=user_message,
+            byte_response=byte_response,
+            intent=intent,
+            career=career
+        )
+
+
+    def get_conversation_history(self, limit=5):
+
+        return (
+            self.conversation_memory_upgrade
+            .get_recent_history(limit)
+        )
+
+
+    def get_conversation_context(self, limit=5):
+
+        return (
+            self.conversation_memory_upgrade
+            .get_recent_context(limit)
+        )
+
+
+    def get_conversation_memory_status(self):
+
+        return (
+            self.conversation_memory_upgrade
+            .get_status()
+        )
+
+        

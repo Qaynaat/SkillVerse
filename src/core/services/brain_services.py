@@ -68,8 +68,7 @@ from src.core.future_skills_recommendation_engine import FutureSkillsRecommendat
 from src.core.internship_recommendation_engine import InternshipRecommendationEngine
 from src.core.certification_recommendation_engine import CertificationRecommendationEngine
 from src.core.learning_health_score import LearningHealthScore
-
-
+from src.core.conversation_memory_upgrade import ConversationMemoryUpgrade
 
 
 @dataclass
@@ -87,6 +86,7 @@ class BrainServices:
     career_readiness_score_engine:CareerReadinessScoreEngine
     future_skills_recommendation_engine:FutureSkillsRecommendationEngine
     certification_recommendation_engine:CertificationRecommendationEngine
+    conversation_memory_upgrade: ConversationMemoryUpgrade
 
     # ==================================================
     # Mentor / Achievement Services
@@ -250,6 +250,8 @@ class BrainServices:
             ),
 
             conversation_engine=ConversationEngine(),
+
+            conversation_memory_upgrade=ConversationMemoryUpgrade(),
 
             career_comparison_engine=CareerComparisonEngine(
                 career_database
