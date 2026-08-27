@@ -70,6 +70,7 @@ class ByteBrain:
         self.learning_outcome_decision_engine =  services.learning_outcome_decision_engine
         self.learning_outcome_action_planner = services.learning_outcome_action_planner
         self.certification_recommendation_engine = services.certification_recommendation_engine
+        self.learning_health_score = services.learning_health_score
 
         self.learning_engine_service = LearningEngineService(services)
         self.dashboard_service = DashboardService(services)
@@ -1126,4 +1127,13 @@ class ByteBrain:
         return self._reply(
             self.certification_recommendation_engine
             .format_report(report)
+        )
+
+    def get_learning_health_score(self) -> str:
+        report = self.learning_health_score.analyze(
+            self.memory
+        )
+
+        return self.learning_health_score.format_report(
+            report
         )

@@ -67,6 +67,7 @@ from src.core.career_readiness_score_engine import CareerReadinessScoreEngine
 from src.core.future_skills_recommendation_engine import FutureSkillsRecommendationEngine
 from src.core.internship_recommendation_engine import InternshipRecommendationEngine
 from src.core.certification_recommendation_engine import CertificationRecommendationEngine
+from src.core.learning_health_score import LearningHealthScore
 
 
 
@@ -166,6 +167,7 @@ class BrainServices:
     learning_outcome_interpreter: LearningOutcomeInterpreter
     learning_outcome_decision_engine: LearningOutcomeDecisionEngine
     learning_outcome_action_planner: LearningOutcomeActionPlanner
+    learning_health_score: LearningHealthScore
     
 
     # ==================================================
@@ -317,6 +319,8 @@ class BrainServices:
             quote_engine=QuoteEngine(),
 
             learning_tip_engine=LearningTipEngine(),
+            
+            learning_health_score=LearningHealthScore(),
 
             success_prediction_engine=(
                 SuccessPredictionEngine()
