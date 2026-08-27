@@ -65,6 +65,7 @@ from src.core.career_comparison_engine import CareerComparisonEngine
 from src.core.career_roadmap_engine import CareerRoadmapEngine
 from src.core.career_readiness_score_engine import CareerReadinessScoreEngine
 from src.core.future_skills_recommendation_engine import FutureSkillsRecommendationEngine
+from src.core.internship_recommendation_engine import InternshipRecommendationEngine
 
 
 
@@ -147,6 +148,7 @@ class BrainServices:
     intervention_prioritizer: InterventionPrioritizer
     learning_decision_engine: LearningDecisionEngine
     learning_state_engine: LearningStateEngine
+    internship_recommendation_engine: InternshipRecommendationEngine
 
     # ==================================================
     # Unified Learner Intelligence
@@ -259,6 +261,9 @@ class BrainServices:
 
             future_skills_recommendation_engine=FutureSkillsRecommendationEngine(
                 career_database
+            ),
+                internship_recommendation_engine=InternshipRecommendationEngine(
+            career_database
             ),
             # --------------------------------------------------
             # Achievement / Mentor

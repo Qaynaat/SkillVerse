@@ -24,6 +24,7 @@ class ByteBrain:
         self.career_roadmap_engine = services.career_roadmap_engine
         self.career_readiness_score_engine = services.career_readiness_score_engine
         self.future_skills_recommendation_engine = services.future_skills_recommendation_engine
+        self.internship_recommendation_engine = services.internship_recommendation_engine
 
         self.career_responses = services.career_response_generator
         self.conversation_engine = services.conversation_engine
@@ -1078,4 +1079,28 @@ class ByteBrain:
 
         return self.future_skills_recommendation_engine.format_report(
             report
+        )
+
+    def get_internship_recommendation(
+        self,
+        career_name=None
+    ) -> str:
+
+        if career_name is None:
+            career_name = self.memory.get_current_career()
+
+        if career_name is None:
+            return self._reply(
+                "🤔 I don't know which career "
+                "you want internship recommendations for yet."
+            )
+
+        report = self.internship_recommendation_engine.analyze(
+            career_name
+        )
+
+        return self._reply(
+            self.internship_recommendation_engine.format_report(
+                report
+            )
         )
