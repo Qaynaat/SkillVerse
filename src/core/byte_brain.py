@@ -76,7 +76,7 @@ class ByteBrain:
         self.certification_recommendation_engine = services.certification_recommendation_engine
         self.learning_health_score = services.learning_health_score
         self.study_coaching_conversation_engine = services.study_coaching_conversation_engine
-
+        self.daily_check_in_engine = services.daily_check_in_engine
         self.learning_engine_service = LearningEngineService(services)
         self.dashboard_service = DashboardService(services)
         self.motivation_service = MotivationService(services)
@@ -1268,5 +1268,19 @@ class ByteBrain:
         )
 
         return self.study_coaching_conversation_engine.format_report(
+            result
+        )
+
+    def daily_check_in(
+        self,
+        message,
+        learning_context=None
+    ):
+        result = self.daily_check_in_engine.check_in(
+            message,
+            learning_context=learning_context
+        )
+
+        return self.daily_check_in_engine.format_report(
             result
         )

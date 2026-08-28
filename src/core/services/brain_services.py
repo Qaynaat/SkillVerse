@@ -74,7 +74,7 @@ from src.core.empathetic_response_engine import  EmpatheticResponseEngine
 from src.core.reflection_conversation_engine import ReflectionConversationEngine
 from src.core.career_conversation_engine import CareerConversationEngine
 from src.core.study_coaching_conversation_engine import StudyCoachingConversationEngine
-
+from src.core.daily_check_in_engine import DailyCheckInEngine
 
 @dataclass
 class BrainServices:
@@ -94,7 +94,7 @@ class BrainServices:
     certification_recommendation_engine:CertificationRecommendationEngine
     conversation_memory_upgrade: ConversationMemoryUpgrade
     context_awareness_engine: ContextAwarenessEngine
-
+    daily_check_in_engine:DailyCheckInEngine
     # ==================================================
     # Mentor / Achievement Services
     # ==================================================
@@ -290,6 +290,7 @@ class BrainServices:
             ),
             study_coaching_conversation_engine= StudyCoachingConversationEngine(),
 
+            daily_check_in_engine=DailyCheckInEngine(),
             # --------------------------------------------------
             # Achievement / Mentor
             # --------------------------------------------------
