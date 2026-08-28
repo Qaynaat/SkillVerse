@@ -73,6 +73,7 @@ from src.core.context_awareness_engine import ContextAwarenessEngine
 from src.core.empathetic_response_engine import  EmpatheticResponseEngine
 from src.core.reflection_conversation_engine import ReflectionConversationEngine
 from src.core.career_conversation_engine import CareerConversationEngine
+from src.core.study_coaching_conversation_engine import StudyCoachingConversationEngine
 
 
 @dataclass
@@ -176,7 +177,7 @@ class BrainServices:
     learning_outcome_action_planner: LearningOutcomeActionPlanner
     learning_health_score: LearningHealthScore
     empathetic_response_engine:EmpatheticResponseEngine
-    
+    study_coaching_conversation_engine:StudyCoachingConversationEngine
 
     # ==================================================
     # Default Service Factory
@@ -287,6 +288,7 @@ class BrainServices:
                 career_conversation_engine=CareerConversationEngine(
             career_database
             ),
+            study_coaching_conversation_engine= StudyCoachingConversationEngine(),
 
             # --------------------------------------------------
             # Achievement / Mentor

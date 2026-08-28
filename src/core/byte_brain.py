@@ -75,6 +75,7 @@ class ByteBrain:
         self.learning_outcome_action_planner = services.learning_outcome_action_planner
         self.certification_recommendation_engine = services.certification_recommendation_engine
         self.learning_health_score = services.learning_health_score
+        self.study_coaching_conversation_engine = services.study_coaching_conversation_engine
 
         self.learning_engine_service = LearningEngineService(services)
         self.dashboard_service = DashboardService(services)
@@ -1253,5 +1254,19 @@ class ByteBrain:
         )
 
         return self.career_conversation_engine.format_response(
+            result
+        )
+
+    def study_coaching_conversation(
+        self,
+        message,
+        learning_context=None
+    ):
+        result = self.study_coaching_conversation_engine.respond(
+            message,
+            learning_context=learning_context
+        )
+
+        return self.study_coaching_conversation_engine.format_report(
             result
         )
