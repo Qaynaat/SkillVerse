@@ -18,6 +18,7 @@ class ByteBrain:
         services: BrainServices,
         memory: Memory,
         save_system: SaveSystem,
+        long_term_memory=None,
     ):
         self.career_database = services.career_database
         self.career_comparison_engine = services.career_comparison_engine
@@ -39,6 +40,7 @@ class ByteBrain:
         self.consistency_analyzer = services.consistency_analyzer
         self.memory = memory
         self.save_system = save_system  
+        self.long_term_memory = long_term_memory        
         self.learning_service = LearningService(memory)
         self.progress_service = ProgressService(memory)
         self.profile_service = ProfileService(memory)
@@ -1284,3 +1286,15 @@ class ByteBrain:
         return self.daily_check_in_engine.format_report(
             result
         )
+
+    def remember_long_term(self, key, value):
+        return self.long_term_memory.remember(key, value)
+
+
+    def recall_long_term(self, key, default=None):
+        return self.long_term_memory.recall(
+            key,
+            default
+        )
+    def search_long_term(self, query):
+        return self.long_term_memory.search(query)

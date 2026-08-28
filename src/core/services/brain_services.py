@@ -75,6 +75,7 @@ from src.core.reflection_conversation_engine import ReflectionConversationEngine
 from src.core.career_conversation_engine import CareerConversationEngine
 from src.core.study_coaching_conversation_engine import StudyCoachingConversationEngine
 from src.core.daily_check_in_engine import DailyCheckInEngine
+from src.core.long_term_memory import LongTermMemory
 
 @dataclass
 class BrainServices:
@@ -82,7 +83,7 @@ class BrainServices:
     # ==================================================
     # Core / Career Services
     # ==================================================
-
+    long_term_memory:LongTermMemory
     career_database: CareerDatabase
     career_response_generator: CareerResponseGenerator
     conversation_engine: ConversationEngine
@@ -188,6 +189,7 @@ class BrainServices:
 
         personality = PersonalityEngine(BYTE_PERSONALITY)
         career_database = CareerDatabase()
+        long_term_memory = LongTermMemory()
         # ==================================================
         # Create Intelligence Engines Once
         # ==================================================
@@ -253,6 +255,9 @@ class BrainServices:
             # --------------------------------------------------
 
             career_database=career_database,
+            
+            long_term_memory=long_term_memory,
+
 
             career_response_generator=(
                 CareerResponseGenerator(personality)
