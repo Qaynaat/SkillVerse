@@ -71,6 +71,7 @@ from src.core.learning_health_score import LearningHealthScore
 from src.core.conversation_memory_upgrade import ConversationMemoryUpgrade
 from src.core.context_awareness_engine import ContextAwarenessEngine
 from src.core.empathetic_response_engine import  EmpatheticResponseEngine
+from src.core.reflection_conversation_engine import ReflectionConversationEngine
 
 
 
@@ -100,6 +101,7 @@ class BrainServices:
     reward_engine: RewardEngine
     mentor_engine: MentorEngine
     reflection_engine: ReflectionEngine
+    reflection_conversation_engine:ReflectionConversationEngine
 
     # ==================================================
     # Learning Services
@@ -296,6 +298,8 @@ class BrainServices:
             mentor_engine=MentorEngine(),
 
             reflection_engine=ReflectionEngine(),
+
+            reflection_conversation_engine = ReflectionConversationEngine(),
 
             # --------------------------------------------------
             # Learning

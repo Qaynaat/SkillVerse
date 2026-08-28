@@ -35,6 +35,7 @@ class ByteBrain:
         self.reward_engine = services.reward_engine
         self.mentor_engine = services.mentor_engine
         self.reflection_engine = services.reflection_engine
+        self.reflection_conversation_engine = services.reflection_conversation_engine
         self.consistency_analyzer = services.consistency_analyzer
         self.memory = memory
         self.save_system = save_system  
@@ -1223,4 +1224,12 @@ class ByteBrain:
             report
         )
 
-        
+    def reflect_on_learning(self, learner_state, reflection):
+        report = self.reflection_conversation_engine.analyze(
+            learner_state,
+            reflection
+        )
+
+        return self.reflection_conversation_engine.format_report(
+            report
+        )  
