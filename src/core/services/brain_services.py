@@ -72,7 +72,7 @@ from src.core.conversation_memory_upgrade import ConversationMemoryUpgrade
 from src.core.context_awareness_engine import ContextAwarenessEngine
 from src.core.empathetic_response_engine import  EmpatheticResponseEngine
 from src.core.reflection_conversation_engine import ReflectionConversationEngine
-
+from src.core.career_conversation_engine import CareerConversationEngine
 
 
 @dataclass
@@ -86,6 +86,7 @@ class BrainServices:
     career_response_generator: CareerResponseGenerator
     conversation_engine: ConversationEngine
     career_comparison_engine: CareerComparisonEngine
+    career_conversation_engine: CareerConversationEngine
     career_roadmap_engine:CareerRoadmapEngine
     career_readiness_score_engine:CareerReadinessScoreEngine
     future_skills_recommendation_engine:FutureSkillsRecommendationEngine
@@ -281,9 +282,11 @@ class BrainServices:
             career_database
             ),
             certification_recommendation_engine=CertificationRecommendationEngine(
-        career_database
+            career_database
             ),
-
+                career_conversation_engine=CareerConversationEngine(
+            career_database
+            ),
 
             # --------------------------------------------------
             # Achievement / Mentor

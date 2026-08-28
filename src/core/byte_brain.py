@@ -26,7 +26,7 @@ class ByteBrain:
         self.future_skills_recommendation_engine = services.future_skills_recommendation_engine
         self.internship_recommendation_engine = services.internship_recommendation_engine
         self.empathetic_response_engine =  services.empathetic_response_engine
-
+        self.career_conversation_engine = services.career_conversation_engine
         self.career_responses = services.career_response_generator
         self.conversation_engine = services.conversation_engine
         self.context_awareness_engine = services.context_awareness_engine
@@ -1233,3 +1233,25 @@ class ByteBrain:
         return self.reflection_conversation_engine.format_report(
             report
         )  
+
+    def career_conversation(
+        self,
+        message,
+        career_name=None,
+        previous_career=None
+    ):
+        """
+        Mission 091
+        Handle career-related conversations through
+        CareerConversationEngine.
+        """
+
+        result = self.career_conversation_engine.respond(
+            message=message,
+            career_name=career_name,
+            previous_career=previous_career
+        )
+
+        return self.career_conversation_engine.format_response(
+            result
+        )
