@@ -76,6 +76,7 @@ from src.core.career_conversation_engine import CareerConversationEngine
 from src.core.study_coaching_conversation_engine import StudyCoachingConversationEngine
 from src.core.daily_check_in_engine import DailyCheckInEngine
 from src.core.long_term_memory import LongTermMemory
+from src.core.conversation_analytics_engine import  ConversationAnalyticsEngine
 
 @dataclass
 class BrainServices:
@@ -85,6 +86,7 @@ class BrainServices:
     # ==================================================
     long_term_memory:LongTermMemory
     career_database: CareerDatabase
+    conversation_analytics_engine: ConversationAnalyticsEngine
     career_response_generator: CareerResponseGenerator
     conversation_engine: ConversationEngine
     career_comparison_engine: CareerComparisonEngine
@@ -432,4 +434,5 @@ class BrainServices:
             learning_outcome_decision_engine=LearningOutcomeDecisionEngine(),
             learning_outcome_action_planner=LearningOutcomeActionPlanner(),
             empathetic_response_engine=EmpatheticResponseEngine(),
+            conversation_analytics_engine=ConversationAnalyticsEngine(),
         )

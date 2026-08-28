@@ -39,6 +39,7 @@ class ByteBrain:
         self.reflection_conversation_engine = services.reflection_conversation_engine
         self.consistency_analyzer = services.consistency_analyzer
         self.memory = memory
+        self.services = services
         self.save_system = save_system  
         self.long_term_memory = long_term_memory        
         self.learning_service = LearningService(memory)
@@ -79,6 +80,7 @@ class ByteBrain:
         self.learning_health_score = services.learning_health_score
         self.study_coaching_conversation_engine = services.study_coaching_conversation_engine
         self.daily_check_in_engine = services.daily_check_in_engine
+        self.conversation_analytics_engine = services.conversation_analytics_engine
         self.learning_engine_service = LearningEngineService(services)
         self.dashboard_service = DashboardService(services)
         self.motivation_service = MotivationService(services)
@@ -1298,3 +1300,22 @@ class ByteBrain:
         )
     def search_long_term(self, query):
         return self.long_term_memory.search(query)
+
+    def get_conversation_analytics(self):
+        history = (
+            self.services
+            .conversation_memory_upgrade
+            .get_history()
+        )
+
+        return (
+            self.services
+            .conversation_analytics_engine
+            .analyze(history)
+        )
+
+
+    def analyze_conversations(self, conversations):
+        return self.services.conversation_analytics_engine.analyze(
+            conversations
+        )
