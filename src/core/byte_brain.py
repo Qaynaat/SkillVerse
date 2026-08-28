@@ -25,6 +25,7 @@ class ByteBrain:
         self.career_readiness_score_engine = services.career_readiness_score_engine
         self.future_skills_recommendation_engine = services.future_skills_recommendation_engine
         self.internship_recommendation_engine = services.internship_recommendation_engine
+        self.empathetic_response_engine =  services.empathetic_response_engine
 
         self.career_responses = services.career_response_generator
         self.conversation_engine = services.conversation_engine
@@ -1195,9 +1196,7 @@ class ByteBrain:
         """
 
         if conversation_history is None:
-
             conversation_history = []
-
             if hasattr(
                 self,
                 "conversation_memory_upgrade"
@@ -1208,13 +1207,19 @@ class ByteBrain:
                     conversation_history = (
                         memory.get_recent_context()
                     )
-
         report = self.context_awareness_engine.analyze(
             user_message,
             conversation_history
         )
-
         return self.context_awareness_engine.format_report(
+            report
+        )
+
+    def analyze_empathetic_response(self, learner_state):
+        report = self.empathetic_response_engine.analyze(
+            learner_state
+        )
+        return self.empathetic_response_engine.format_report(
             report
         )
 

@@ -70,6 +70,8 @@ from src.core.certification_recommendation_engine import CertificationRecommenda
 from src.core.learning_health_score import LearningHealthScore
 from src.core.conversation_memory_upgrade import ConversationMemoryUpgrade
 from src.core.context_awareness_engine import ContextAwarenessEngine
+from src.core.empathetic_response_engine import  EmpatheticResponseEngine
+
 
 
 @dataclass
@@ -170,6 +172,7 @@ class BrainServices:
     learning_outcome_decision_engine: LearningOutcomeDecisionEngine
     learning_outcome_action_planner: LearningOutcomeActionPlanner
     learning_health_score: LearningHealthScore
+    empathetic_response_engine:EmpatheticResponseEngine
     
 
     # ==================================================
@@ -413,4 +416,5 @@ class BrainServices:
             learning_outcome_interpreter=LearningOutcomeInterpreter(),
             learning_outcome_decision_engine=LearningOutcomeDecisionEngine(),
             learning_outcome_action_planner=LearningOutcomeActionPlanner(),
+            empathetic_response_engine=EmpatheticResponseEngine(),
         )
