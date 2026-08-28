@@ -69,6 +69,7 @@ from src.core.internship_recommendation_engine import InternshipRecommendationEn
 from src.core.certification_recommendation_engine import CertificationRecommendationEngine
 from src.core.learning_health_score import LearningHealthScore
 from src.core.conversation_memory_upgrade import ConversationMemoryUpgrade
+from src.core.context_awareness_engine import ContextAwarenessEngine
 
 
 @dataclass
@@ -87,6 +88,7 @@ class BrainServices:
     future_skills_recommendation_engine:FutureSkillsRecommendationEngine
     certification_recommendation_engine:CertificationRecommendationEngine
     conversation_memory_upgrade: ConversationMemoryUpgrade
+    context_awareness_engine: ContextAwarenessEngine
 
     # ==================================================
     # Mentor / Achievement Services
@@ -253,6 +255,8 @@ class BrainServices:
 
             conversation_memory_upgrade=ConversationMemoryUpgrade(),
 
+            context_awareness_engine=ContextAwarenessEngine(),
+
             career_comparison_engine=CareerComparisonEngine(
                 career_database
             ),
@@ -391,6 +395,7 @@ class BrainServices:
             learning_state_engine=(
                 learning_state_engine
             ),
+            
 
             # --------------------------------------------------
             # Unified Learner Intelligence

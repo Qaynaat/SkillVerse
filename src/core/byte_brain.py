@@ -28,6 +28,7 @@ class ByteBrain:
 
         self.career_responses = services.career_response_generator
         self.conversation_engine = services.conversation_engine
+        self.context_awareness_engine = services.context_awareness_engine
         self.conversation_memory_upgrade = services.conversation_memory_upgrade
         self.achievement_engine = services.achievement_engine
         self.reward_engine = services.reward_engine
@@ -1183,6 +1184,38 @@ class ByteBrain:
         return (
             self.conversation_memory_upgrade
             .get_status()
+        )
+
+    def analyze_context(self, user_message, conversation_history=None):
+        """
+        Mission 088
+
+        Analyze the current user message using
+        recent conversation context.
+        """
+
+        if conversation_history is None:
+
+            conversation_history = []
+
+            if hasattr(
+                self,
+                "conversation_memory_upgrade"
+            ):
+                memory = self.conversation_memory_upgrade
+
+                if hasattr(memory, "get_recent_context"):
+                    conversation_history = (
+                        memory.get_recent_context()
+                    )
+
+        report = self.context_awareness_engine.analyze(
+            user_message,
+            conversation_history
+        )
+
+        return self.context_awareness_engine.format_report(
+            report
         )
 
         
