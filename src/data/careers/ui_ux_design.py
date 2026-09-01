@@ -41,6 +41,12 @@ ui_ux_design = CareerProfile(
         "Photoshop",
         "Illustrator"
     ],
+    required_traits={
+        "creative_thinking": 5,
+        "curiosity": 4,
+        "patience": 4,
+        "designing": 5
+    },
 
     university_subjects=[
         "Human Computer Interaction",
@@ -95,5 +101,6 @@ ui_ux_design = CareerProfile(
         "Figma Learn",
         "Google UX Design",
         "Interaction Design Foundation"
-    ]
+    ],
+
 )

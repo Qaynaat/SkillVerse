@@ -13,7 +13,14 @@ cloud_engineering = CareerProfile(
         "People Interested in Infrastructure",
         "Technology Enthusiasts"
     ],
-
+    required_traits={
+        "logical_thinking": 5,
+        "analytical_thinking": 5,
+        "curiosity": 4,
+        "patience": 4,
+        "resilience": 5,
+        "building": 5
+    },
     daily_tasks=[
         "Deploy cloud services",
         "Manage servers",
@@ -102,5 +109,6 @@ cloud_engineering = CareerProfile(
         "AWS Skill Builder",
         "Microsoft Learn",
         "Google Cloud Skills Boost"
-    ]
+    ],
+
 )

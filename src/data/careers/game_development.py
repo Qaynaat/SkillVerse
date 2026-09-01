@@ -13,6 +13,14 @@ game_development = CareerProfile(
         "Gamers",
         "Problem Solvers"
     ],
+    required_traits={
+        "logical_thinking": 4,
+        "creative_thinking": 5,
+        "curiosity": 4,
+        "patience": 4,
+        "building": 5,
+        "designing": 5
+    },
 
     daily_tasks=[
         "Develop game mechanics",
@@ -98,5 +106,6 @@ game_development = CareerProfile(
         "Unity Learn",
         "Unreal Engine Learning",
         "Brackeys"
-    ]
+    ],
+
 )

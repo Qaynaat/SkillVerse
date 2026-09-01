@@ -14,6 +14,14 @@ data_science = CareerProfile(
         "People Who Enjoy Statistics"
     ],
 
+    required_traits={
+        "logical_thinking": 5,
+        "analytical_thinking": 5,
+        "curiosity": 5,
+        "patience": 5,
+        "creative_thinking":3
+    },
+
     daily_tasks=[
         "Analyze datasets",
         "Create visualizations",
@@ -100,5 +108,6 @@ data_science = CareerProfile(
         "DataCamp",
         "freeCodeCamp",
         "Google Colab"
-    ]
+    ],
+
 )

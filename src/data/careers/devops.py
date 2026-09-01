@@ -14,6 +14,15 @@ devops = CareerProfile(
         "Problem Solvers"
     ],
 
+    required_traits={
+    "logical_thinking": 5,
+    "analytical_thinking": 5,
+    "curiosity": 4,
+    "patience": 4,
+    "resilience": 5,
+    "building": 5
+},
+
     daily_tasks=[
         "Automate deployments",
         "Monitor systems",
@@ -98,5 +107,6 @@ devops = CareerProfile(
         "Docker Docs",
         "Kubernetes Docs",
         "AWS Skill Builder"
-    ]
+    ],
+
 )

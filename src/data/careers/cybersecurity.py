@@ -14,6 +14,13 @@ cybersecurity = CareerProfile(
         "Curious Learners",
         "People Interested in Security"
     ],
+    required_traits={
+        "logical_thinking": 5,
+        "analytical_thinking": 5,
+        "curiosity": 5,
+        "resilience": 4,
+        "protecting": 5
+    },
 
     daily_tasks=[
         "Monitor networks",
@@ -108,5 +115,6 @@ cybersecurity = CareerProfile(
         "Hack The Box",
         "OWASP",
         "Cisco Skills for All"
-    ]
+    ],
+
 )

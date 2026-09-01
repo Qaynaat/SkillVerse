@@ -13,6 +13,14 @@ mobile_development = CareerProfile(
         "Problem Solvers",
         "People Interested in Apps"
     ],
+    required_traits={
+        "logical_thinking": 5,
+        "analytical_thinking": 4,
+        "creative_thinking": 4,
+        "curiosity": 4,
+        "patience": 4,
+        "building": 5
+    },
 
     daily_tasks=[
         "Build mobile applications",
@@ -99,5 +107,6 @@ mobile_development = CareerProfile(
         "Flutter Documentation",
         "Android Developers",
         "Apple Developer"
-    ]
+    ],
+
 )

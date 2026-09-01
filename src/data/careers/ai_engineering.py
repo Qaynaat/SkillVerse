@@ -13,6 +13,14 @@ ai_engineering = CareerProfile(
         "Curious Minds",
         "People Interested in Innovation"
     ],
+    required_traits={
+        "logical_thinking": 5,
+        "analytical_thinking": 5,
+        "creative_thinking": 4,
+        "curiosity": 5,
+        "patience": 4,
+        "building": 5
+    },
 
     daily_tasks=[
         "Train AI models",
@@ -98,5 +106,6 @@ ai_engineering = CareerProfile(
         "Google Colab",
         "Fast.ai",
         "Coursera"
-    ]
+    ],
+
 )

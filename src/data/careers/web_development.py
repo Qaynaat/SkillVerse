@@ -14,6 +14,16 @@ web_development = CareerProfile(
         "People Interested in Websites"
     ],
 
+    required_traits={
+        "logical_thinking": 4,
+        "analytical_thinking": 4,
+        "creative_thinking": 4,
+        "curiosity": 4,
+        "patience": 4,
+        "building": 5,
+        "designing": 4
+    },
+
     daily_tasks=[
         "Build websites",
         "Develop web applications",
@@ -100,5 +110,6 @@ web_development = CareerProfile(
         "MDN Web Docs",
         "freeCodeCamp",
         "The Odin Project"
-    ]
+    ],
+
 )

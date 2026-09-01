@@ -15,6 +15,15 @@ software_engineering = CareerProfile(
         "People who enjoy technology",
         "Continuous Learners"
     ],
+    required_traits={
+        "logical_thinking": 5,
+        "analytical_thinking": 5,
+        "creative_thinking": 4,
+        "curiosity": 5,
+        "patience": 4,
+        "resilience": 4,
+        "building": 5
+    },
 
     daily_tasks=[
         "Write code",
@@ -150,5 +159,6 @@ software_engineering = CareerProfile(
         "Roadmap.sh",
         "GeeksforGeeks",
         "W3Schools"
-    ]
+    ],
+
 )
