@@ -34,7 +34,7 @@ careers = [
     FakeCareer(
         "UI/UX Design",
         {
-            "creative_thinking": 5,
+            "creativity": 5,
             "communication": 5
         }
     )
@@ -49,7 +49,7 @@ student = {
         "logical_thinking": 5,
         "analytical_thinking": 4,
         "communication": 3,
-        "creative_thinking": 2
+        "creativity": 2
 
     }
 

@@ -6,7 +6,7 @@ print("=" * 60)
 
 answers = {
     "logical_thinking": 5,
-    "creative_thinking": 3,
+    "creativity": 3,
     "communication": 4
 }
 

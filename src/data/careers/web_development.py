@@ -13,11 +13,34 @@ web_development = CareerProfile(
         "Problem Solvers",
         "People Interested in Websites"
     ],
+    ideal_profile={
+        "personality": {
+            "creativity": 4,
+            "curiosity": 4,
+            "detail_oriented": 5
+        },
+        "thinking_style": {
+            "logical_thinking": 5,
+            "analytical_thinking": 4,
+            "critical_thinking": 4
+        },
+        "work_style": {
+            "teamwork": 4,
+            "communication": 4,
+            "planning": 3,
+            "adaptability": 5
+        },
+        "interests": {
+            "building": 5,
+            "designing": 4,
+            "business": 3
+        }
+    },
 
     required_traits={
         "logical_thinking": 4,
         "analytical_thinking": 4,
-        "creative_thinking": 4,
+        "creativity": 4,
         "curiosity": 4,
         "patience": 4,
         "building": 5,
@@ -110,6 +133,6 @@ web_development = CareerProfile(
         "MDN Web Docs",
         "freeCodeCamp",
         "The Odin Project"
-    ],
+    ],   
 
 )

@@ -8,11 +8,11 @@ engine = AssessmentEngine()
 
 questions = [
     {
-        "id": "logical",
+        "id": "logical_thinking",
         "question": "Do you enjoy solving problems?"
     },
     {
-        "id": "creative",
+        "id": "creativity",
         "question": "Do you enjoy designing things?"
     }
 ]

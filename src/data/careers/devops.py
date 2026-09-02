@@ -14,6 +14,30 @@ devops = CareerProfile(
         "Problem Solvers"
     ],
 
+    ideal_profile={
+        "personality": {
+            "curiosity": 4,
+            "detail_oriented": 5,
+            "resilience": 5
+        },
+        "thinking_style": {
+            "logical_thinking": 5,
+            "analytical_thinking": 4,
+            "critical_thinking": 4
+        },
+        "work_style": {
+            "planning": 5,
+            "teamwork": 4,
+            "communication": 4,
+            "adaptability": 5
+        },
+        "interests": {
+            "automation": 5,
+            "building": 4,
+            "networking": 4
+        }
+    },
+
     required_traits={
     "logical_thinking": 5,
     "analytical_thinking": 5,
@@ -108,5 +132,4 @@ devops = CareerProfile(
         "Kubernetes Docs",
         "AWS Skill Builder"
     ],
-
 )

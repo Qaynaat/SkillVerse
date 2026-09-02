@@ -6,13 +6,34 @@ ui_ux_design = CareerProfile(
 
     description="UI/UX Design focuses on creating products that are visually appealing, easy to use, and provide excellent user experiences.",
 
-    recommendation_reason="You enjoy creativity, design, understanding users, and improving digital experiences.",
+    recommendation_reason="You enjoy creative_thinking, design, understanding users, and improving digital experiences.",
 
     ideal_for=[
         "Creative Thinkers",
         "Empathetic People",
         "Problem Solvers"
     ],
+    ideal_profile={
+        "personality": {
+            "empathy": 5,
+            "creativity": 5,
+            "curiosity": 4,
+            "patience": 4
+        },
+        "thinking_style": {
+            "analytical_thinking": 4,
+            "critical_thinking": 4
+        },
+        "work_style": {
+            "communication": 5,
+            "teamwork": 4,
+            "planning": 4
+        },
+        "interests": {
+            "designing": 5,
+            "business": 3
+        }
+    },
 
     daily_tasks=[
         "Create wireframes",
@@ -23,7 +44,7 @@ ui_ux_design = CareerProfile(
     ],
 
     skills=[
-        "Creativity",
+        "creativity",
         "Communication",
         "User Research",
         "Wireframing",
@@ -42,7 +63,7 @@ ui_ux_design = CareerProfile(
         "Illustrator"
     ],
     required_traits={
-        "creative_thinking": 5,
+        "creativity": 5,
         "curiosity": 4,
         "patience": 4,
         "designing": 5
@@ -76,7 +97,7 @@ ui_ux_design = CareerProfile(
     ],
 
     pros=[
-        "Creative career",
+        "creativity career",
         "Growing demand",
         "Remote opportunities"
     ],
@@ -102,5 +123,5 @@ ui_ux_design = CareerProfile(
         "Google UX Design",
         "Interaction Design Foundation"
     ],
-
+    
 )

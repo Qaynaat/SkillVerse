@@ -13,6 +13,30 @@ cloud_engineering = CareerProfile(
         "People Interested in Infrastructure",
         "Technology Enthusiasts"
     ],
+
+    ideal_profile={
+        "personality": {
+            "detail_oriented": 5,
+            "patience": 4,
+            "resilience": 5
+        },
+        "thinking_style": {
+            "logical_thinking": 4,
+            "analytical_thinking": 4,
+            "critical_thinking": 4
+        },
+        "work_style": {
+            "planning": 5,
+            "independent": 4,
+            "teamwork": 3,
+            "adaptability": 5
+        },
+        "interests": {
+            "networking": 5,
+            "automation": 4,
+            "protecting": 4
+        }
+    },
     required_traits={
         "logical_thinking": 5,
         "analytical_thinking": 5,
@@ -110,5 +134,4 @@ cloud_engineering = CareerProfile(
         "Microsoft Learn",
         "Google Cloud Skills Boost"
     ],
-
 )

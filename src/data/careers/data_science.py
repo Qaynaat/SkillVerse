@@ -13,13 +13,36 @@ data_science = CareerProfile(
         "Problem Solvers",
         "People Who Enjoy Statistics"
     ],
+    ideal_profile={
+        "personality": {
+            "curiosity": 5,
+            "patience": 4,
+            "detail_oriented": 4
+        },
+        "thinking_style": {
+            "logical_thinking": 4,
+            "analytical_thinking": 5,
+            "critical_thinking": 5,
+            "research": 5,
+            "mathematical_thinking": 5
+        },
+        "work_style": {
+            "communication": 5,
+            "planning": 4,
+            "teamwork": 4
+        },
+        "interests": {
+            "data": 5,
+            "business": 5
+        }
+    },
 
     required_traits={
         "logical_thinking": 5,
         "analytical_thinking": 5,
         "curiosity": 5,
         "patience": 5,
-        "creative_thinking":3
+        "creativity":3
     },
 
     daily_tasks=[
@@ -109,5 +132,4 @@ data_science = CareerProfile(
         "freeCodeCamp",
         "Google Colab"
     ],
-
 )

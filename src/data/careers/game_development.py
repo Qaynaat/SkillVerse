@@ -6,16 +6,40 @@ game_development = CareerProfile(
 
     description="Game Development is the process of creating video games for computers, mobile devices, and gaming consoles.",
 
-    recommendation_reason="You love games, creativity, storytelling, and programming interactive experiences.",
+    recommendation_reason="You love games, creative_thinking, storytelling, and programming interactive experiences.",
 
     ideal_for=[
         "Creative Thinkers",
         "Gamers",
         "Problem Solvers"
     ],
+
+    ideal_profile={
+        "personality": {
+            "creativity": 5,
+            "curiosity": 4,
+            "resilience": 4,
+            "detail_oriented": 4
+        },
+        "thinking_style": {
+            "logical_thinking": 4,
+            "analytical_thinking": 3,
+            "mathematical_thinking": 5
+        },
+        "work_style": {
+            "adaptability": 5,
+            "teamwork": 4,
+            "communication": 3
+        },
+        "interests": {
+            "gaming": 5,
+            "designing": 5,
+            "building": 5
+        }
+    },
     required_traits={
         "logical_thinking": 4,
-        "creative_thinking": 5,
+        "creativity": 5,
         "curiosity": 4,
         "patience": 4,
         "building": 5,
@@ -34,7 +58,7 @@ game_development = CareerProfile(
         "Programming",
         "Game Physics",
         "Problem Solving",
-        "Creativity",
+        "creativity",
         "Mathematics"
     ],
 
@@ -107,5 +131,5 @@ game_development = CareerProfile(
         "Unreal Engine Learning",
         "Brackeys"
     ],
-
+    
 )

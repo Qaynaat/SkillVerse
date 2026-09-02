@@ -13,10 +13,36 @@ mobile_development = CareerProfile(
         "Problem Solvers",
         "People Interested in Apps"
     ],
+
+    ideal_profile={
+        "personality": {
+            "creativity": 4,
+            "curiosity": 4,
+            "detail_oriented": 5,
+            "resilience": 4
+        },
+        "thinking_style": {
+            "logical_thinking": 5,
+            "analytical_thinking": 4,
+            "critical_thinking": 4
+        },
+        "work_style": {
+            "adaptability": 5,
+            "communication": 4,
+            "teamwork": 4,
+            "planning": 3
+        },
+        "interests": {
+            "building": 5,
+            "designing": 3,
+            "automation": 3
+        }
+    },
+
     required_traits={
         "logical_thinking": 5,
         "analytical_thinking": 4,
-        "creative_thinking": 4,
+        "creativity": 4,
         "curiosity": 4,
         "patience": 4,
         "building": 5
@@ -83,7 +109,7 @@ mobile_development = CareerProfile(
     pros=[
         "High demand",
         "Freelancing opportunities",
-        "Creative work"
+        "creativity work"
     ],
 
     challenges=[
@@ -107,6 +133,6 @@ mobile_development = CareerProfile(
         "Flutter Documentation",
         "Android Developers",
         "Apple Developer"
-    ],
+    ],   
 
 )

@@ -14,6 +14,30 @@ cybersecurity = CareerProfile(
         "Curious Learners",
         "People Interested in Security"
     ],
+    ideal_profile={
+        "personality": {
+            "curiosity": 5,
+            "detail_oriented": 5,
+            "patience": 5,
+            "resilience": 5
+        },
+        "thinking_style": {
+            "logical_thinking": 3,
+            "analytical_thinking": 3,
+            "critical_thinking": 5,
+            "research": 3
+        },
+        "work_style": {
+            "independent": 3,
+            "planning": 3,
+            "communication": 3,
+            "adaptability": 5
+        },
+        "interests": {
+            "protecting": 5,
+            "networking": 5
+        }
+    },
     required_traits={
         "logical_thinking": 5,
         "analytical_thinking": 5,
@@ -116,5 +140,4 @@ cybersecurity = CareerProfile(
         "OWASP",
         "Cisco Skills for All"
     ],
-
 )

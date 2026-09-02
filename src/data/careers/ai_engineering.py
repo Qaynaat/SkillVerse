@@ -13,10 +13,35 @@ ai_engineering = CareerProfile(
         "Curious Minds",
         "People Interested in Innovation"
     ],
+
+    ideal_profile={
+        "personality": {
+            "curiosity": 5,
+            "patience": 5,
+            "detail_oriented": 4
+        },
+        "thinking_style": {
+            "logical_thinking": 4,
+            "analytical_thinking": 5,
+            "critical_thinking": 5,
+            "research": 5,
+            "mathematical_thinking": 5
+        },
+        "work_style": {
+            "independent": 4,
+            "planning": 4,
+            "adaptability": 4
+        },
+        "interests": {
+            "data": 5,
+            "automation": 4,
+            "building": 4
+        }
+    },
     required_traits={
         "logical_thinking": 5,
         "analytical_thinking": 5,
-        "creative_thinking": 4,
+        "creativity": 4,
         "curiosity": 5,
         "patience": 4,
         "building": 5
@@ -107,5 +132,4 @@ ai_engineering = CareerProfile(
         "Fast.ai",
         "Coursera"
     ],
-
 )

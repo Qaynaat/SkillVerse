@@ -15,10 +15,34 @@ software_engineering = CareerProfile(
         "People who enjoy technology",
         "Continuous Learners"
     ],
+    ideal_profile={
+        "personality": {
+            "curiosity": 4,
+            "creativity": 4,
+            "detail_oriented": 5,
+            "resilience": 4
+        },
+        "thinking_style": {
+            "logical_thinking": 5,
+            "analytical_thinking": 4,
+            "critical_thinking": 4
+        },
+        "work_style": {
+            "independent": 4,
+            "teamwork": 3,
+            "communication": 3,
+            "planning": 3,
+            "adaptability": 4
+        },
+        "interests": {
+            "building": 5,
+            "automation": 5
+        }
+    },
     required_traits={
         "logical_thinking": 5,
         "analytical_thinking": 5,
-        "creative_thinking": 4,
+        "creativity": 4,
         "curiosity": 5,
         "patience": 4,
         "resilience": 4,
@@ -160,5 +184,6 @@ software_engineering = CareerProfile(
         "GeeksforGeeks",
         "W3Schools"
     ],
+    
 
 )

@@ -7,14 +7,14 @@ from src.core.engine.career_recommendation_engine import CareerRecommendationEng
 
 student_profile = {
     "personality": {
-        "curious": 5,
+        "curiosity": 5,
         "detail_oriented": 5,
-        "patient": 4,
-        "resilient": 4
+        "patience": 4,
+        "resilience": 4
     },
     "thinking_style": {
-        "logical": 4,
-        "analytical": 5,
+        "logical_thinking": 4,
+        "analytical_thinking": 5,
         "critical_thinking": 5,
         "research": 4
     },

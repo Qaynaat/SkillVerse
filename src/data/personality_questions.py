@@ -144,7 +144,7 @@ PERSONALITY_QUESTIONS = [
         "I enjoy working independently on my own tasks.",
 
     "trait":
-        "independent_work",
+        "independent",
 
     "category":
         "work_style",
