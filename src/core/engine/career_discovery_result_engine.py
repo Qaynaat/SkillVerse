@@ -29,7 +29,7 @@ class CareerDiscoveryResultEngine:
                 top_recommendation["career"],
 
             "top_match":
-                top_recommendation["match"],
+                top_recommendation["score"],
 
             "recommendations":
                 recommendations,

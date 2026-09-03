@@ -26,11 +26,11 @@ def test_discovery_result():
     recommendations = [
         {
             "career": "Cybersecurity",
-            "match": 88.5
+            "score": 88.5
         },
         {
             "career": "Software Engineering",
-            "match": 80.0
+            "score": 80.0
         }
     ]
 
