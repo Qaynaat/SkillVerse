@@ -8,22 +8,26 @@ class CareerMatchingEngine:
         total_score = 0
         maximum_score = 0
 
-        student_scores = student_profile.get_scores()
+        student_profile_data = student_profile.get_profile()
 
-        for trait, importance in career_profile.required_traits.items():
+        for category, career_traits in career_profile.ideal_profile.items():
 
-            student_score = student_scores.get(trait, 0)
+            student_traits = student_profile_data.get(category, {})
 
-            difference = abs(student_score - importance)
+            for trait, importance in career_traits.items():
 
-            trait_points = max(0, 5 - difference)
+                student_score = student_traits.get(trait, 0)
 
-            weighted_points = trait_points * importance
+                weighted_score = student_score * importance
 
-            total_score += weighted_points
+                maximum_trait_score = 5 * importance
 
-            maximum_score += 5 * importance
+                total_score += weighted_score
+                maximum_score += maximum_trait_score
 
-        percentage = round((total_score / maximum_score) * 100)
+        if maximum_score == 0:
+            return 0
 
-        return percentage
+        percentage = (total_score / maximum_score) * 100
+
+        return round(percentage, 2)

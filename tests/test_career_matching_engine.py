@@ -1,50 +1,41 @@
 from src.core.engine.career_matching_engine import CareerMatchingEngine
 from src.core.student_profile import StudentProfile
+from src.data.careers.cybersecurity import cybersecurity
 
-class FakeCareer:
-    def __init__(self):
-        self.required_traits = {
-            "logical_thinking": 5,
-            "analytical_thinking": 5,
-            "communication": 3
-        }
+# 1. Initialize Engine and Profile
+engine = CareerMatchingEngine()
 student = StudentProfile()
 
-student.set_scores({
-    "logical_thinking": 5,
-    "analytical_thinking": 4,
-    "communication": 3
-})
+# 2. Populate 4D Student Traits
+student.personality = {
+    "curiosity": 5,
+    "detail_oriented": 4,
+    "patience": 3,
+    "resilience": 5
+}
+student.thinking_style = {
+    "logical_thinking": 3,
+    "analytical_thinking": 3,
+    "critical_thinking": 4,
+    "research": 2
+}
+student.work_style = {
+    "independent": 4,
+    "planning": 3,
+    "communication": 3,
+    "adaptability": 5
+}
+student.interests = {
+    "protecting": 5,
+    "networking": 4
+}
 
-engine = CareerMatchingEngine()
+# 3. Calculate Match
+match_score = engine.calculate_match(student, cybersecurity)
 
-score = engine.calculate_match(student, FakeCareer())
-
-print("=" * 60)
-print("MISSION 022 - CAREER MATCHING ENGINE TEST")
-print("=" * 60)
-
-match_score = engine.calculate_match(student, FakeCareer())
-
-print()
-print("Student Traits")
-print("-" * 40)
-
-for trait, score in student.get_scores().items():
-    print(f"{trait}: {score}")
-
-print()
-print("Career")
-print("-" * 40)
-
-print("Cybersecurity")
-
-
-
-print()
-print(f"Career Match: {match_score}%")
-
-print()
-print("=" * 60)
-print("TEST FINISHED")
-print("=" * 60)
+print(f"\n==========================================")
+print(f"🎯 Mission 098 Test Results")
+print(f"==========================================")
+print(f"Career Target : {cybersecurity.name}")
+print(f"Match Score   : {match_score}%")
+print(f"==========================================\n")
