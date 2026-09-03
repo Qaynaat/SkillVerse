@@ -1,5 +1,5 @@
 from src.core.career_database import CareerDatabase
-from src.core.career_conversation_engine import (
+from src.core.engine.career_conversation_engine import (
     CareerConversationEngine
 )
 

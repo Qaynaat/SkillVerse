@@ -61,7 +61,7 @@ from src.core.learning_action_outcome_tracker import LearningActionOutcomeTracke
 from src.core.learning_outcome_interpreter import LearningOutcomeInterpreter
 from src.core.learning_outcome_decision_engine import LearningOutcomeDecisionEngine
 from src.core.learning_outcome_action_planner import LearningOutcomeActionPlanner
-from src.core.career_comparison_engine import CareerComparisonEngine
+from src.core.engine.career_comparison_engine import CareerComparisonEngine
 from src.core.career_roadmap_engine import CareerRoadmapEngine
 from src.core.career_readiness_score_engine import CareerReadinessScoreEngine
 from src.core.future_skills_recommendation_engine import FutureSkillsRecommendationEngine
@@ -72,7 +72,7 @@ from src.core.conversation_memory_upgrade import ConversationMemoryUpgrade
 from src.core.context_awareness_engine import ContextAwarenessEngine
 from src.core.empathetic_response_engine import  EmpatheticResponseEngine
 from src.core.reflection_conversation_engine import ReflectionConversationEngine
-from src.core.career_conversation_engine import CareerConversationEngine
+from src.core.engine.career_conversation_engine import CareerConversationEngine
 from src.core.study_coaching_conversation_engine import StudyCoachingConversationEngine
 from src.core.daily_check_in_engine import DailyCheckInEngine
 from src.core.long_term_memory import LongTermMemory

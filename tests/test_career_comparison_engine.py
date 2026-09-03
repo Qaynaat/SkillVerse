@@ -1,71 +1,57 @@
-from src.core.services.brain_services import BrainServices
+from src.core.engine.career_comparison_engine import (
+    CareerComparisonEngine
+)
 
-
-print("=" * 60)
-print("MISSION 080 - CAREER COMPARISON ENGINE TEST")
-print("=" * 60)
-
-
-services = BrainServices.default()
-
-engine = services.career_comparison_engine
-
-
-report = engine.analyze(
-    "Software Engineering",
-    "Cybersecurity"
+from src.data.careers.cybersecurity import cybersecurity
+from src.data.careers.software_engineering import (
+    software_engineering
 )
 
 
-print()
-print("⚖️ Career Comparison")
-print()
+engine = CareerComparisonEngine()
 
-print(
-    f"💻 Career 1: "
-    f"{report['career_one']['name']}"
-)
-
-print(
-    f"🛡️ Career 2: "
-    f"{report['career_two']['name']}"
-)
-
-print()
-print("📚 Shared Skills:")
-
-for skill in report["shared_skills"]:
-    print(f"• {skill}")
+comparison = engine.compare([
+    cybersecurity,
+    software_engineering
+])
 
 
-print()
-print("🎯 Career 1 Skills:")
-
-for skill in report["career_one"]["skills"]:
-    print(f"• {skill}")
-
-
-print()
-print("🎯 Career 2 Skills:")
-
-for skill in report["career_two"]["skills"]:
-    print(f"• {skill}")
-
-
-print()
-print("💡 Comparison:")
-print(report["comparison_summary"])
-
-
-assert report["career_one"]["name"]
-assert report["career_two"]["name"]
-assert "shared_skills" in report
-assert "career_one_unique_skills" in report
-assert "career_two_unique_skills" in report
-assert "comparison_summary" in report
-
-
-print()
 print("=" * 60)
-print("✅ Career Comparison Engine Test Completed Successfully!")
+print("MISSION 102 - CAREER COMPARISON ENGINE")
+print("=" * 60)
+
+print()
+
+for career_name, data in comparison.items():
+
+    print(f"Career: {career_name}")
+    print("-" * 40)
+
+    print("Skills:", data["skills"])
+    print("Languages:", data["programming_languages"])
+    print("Salary:", data["salary"])
+    print("Remote Work:", data["remote_work"])
+    print("Future Demand:", data["future_demand"])
+    print("Difficulty:", data["difficulty"])
+    print("Creativity:", data["creativity"])
+    print("Mathematics:", data["mathematics"])
+
+    print()
+
+
+assert "Cybersecurity" in comparison
+assert "Software Engineering" in comparison
+
+assert (
+    comparison["Cybersecurity"]["skills"]
+    == cybersecurity.skills
+)
+
+assert (
+    comparison["Software Engineering"]["skills"]
+    == software_engineering.skills
+)
+
+print("All Mission 102 Career Comparison tests passed.")
+
 print("=" * 60)
