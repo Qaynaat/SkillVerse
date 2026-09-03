@@ -10,19 +10,22 @@ class CareerRecommendationEngine:
         self.database = CareerDatabase()
         self.matching_engine = CareerMatchingEngine()
 
-    def recommend(self, student_profile, limit=5):
+    def recommend(self, student_profile, careers=None, top_k=5):
+
+        if careers is None:
+            careers = list(self.database.careers.values())
 
         recommendations = []
 
-        for career_name, career_profile in self.database.careers.items():
+        for career in careers:
 
             score = self.matching_engine.calculate_match(
                 student_profile,
-                career_profile
+                career
             )
 
             recommendations.append({
-                "career": career_name,
+                "career": career,
                 "score": score
             })
 
@@ -31,4 +34,4 @@ class CareerRecommendationEngine:
             reverse=True
         )
 
-        return recommendations[:limit]
+        return recommendations[:top_k]
