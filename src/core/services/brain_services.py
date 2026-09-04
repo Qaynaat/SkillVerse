@@ -62,7 +62,7 @@ from src.core.learning_outcome_interpreter import LearningOutcomeInterpreter
 from src.core.learning_outcome_decision_engine import LearningOutcomeDecisionEngine
 from src.core.learning_outcome_action_planner import LearningOutcomeActionPlanner
 from src.core.engine.career_comparison_engine import CareerComparisonEngine
-from src.core.career_roadmap_engine import CareerRoadmapEngine
+from src.core.engine.career_roadmap_engine import CareerRoadmapEngine
 from src.core.career_readiness_score_engine import CareerReadinessScoreEngine
 from src.core.future_skills_recommendation_engine import FutureSkillsRecommendationEngine
 from src.core.internship_recommendation_engine import InternshipRecommendationEngine

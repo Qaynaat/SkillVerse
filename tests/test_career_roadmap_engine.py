@@ -1,48 +1,54 @@
-from src.core.services.brain_services import BrainServices
+from src.core.engine.career_roadmap_engine import (
+    CareerRoadmapEngine
+)
 
 
-print("=" * 60)
-print("MISSION 081 - CAREER ROADMAP ENGINE TEST")
-print("=" * 60)
+def test_career_roadmap_engine():
 
-services = BrainServices.default()
+    engine = CareerRoadmapEngine()
 
-engine = services.career_roadmap_engine
-
-report = engine.analyze("Software Engineering")
-
-print("\n🗺️ Career Roadmap\n")
-
-print(f"🎯 Career: {report['career']}")
-
-print("\n📚 Skills:")
-for skill in report["skills"]:
-    print(f"• {skill}")
-
-print("\n🛣️ Career Paths:")
-for path in report["career_paths"]:
-    print(f"• {path}")
-
-print("\n📍 Roadmap Stages:")
-
-for stage in report["stages"]:
-    print(
-        f"\n🟢 Stage {stage['stage']} — "
-        f"{stage['title']}"
+    result = engine.build_roadmap(
+        career_name="Cybersecurity",
+        alignment=88.33,
+        strengths=[
+            "logical_thinking",
+            "curiosity"
+        ],
+        growth_areas=[
+            "communication"
+        ]
     )
 
-    for focus in stage["focus"]:
-        print(f"• {focus}")
+    assert result["career"] == "Cybersecurity"
 
-print("\n📊 Roadmap Summary:")
-print(report["roadmap_summary"])
+    assert result["alignment"] == 88.33
 
-assert report["career"] == "Software Engineering"
-assert report["total_skills"] == 7
-assert report["total_stages"] == 5
-assert len(report["career_paths"]) == 8
-assert len(report["stages"]) == 5
+    assert len(result["roadmap"]) == 3
 
-print("\n" + "=" * 60)
-print("✅ Career Roadmap Engine Test Completed Successfully!")
-print("=" * 60)
+    assert result["roadmap"][0]["phase"] == "Foundation"
+
+    assert result["roadmap"][1]["phase"] == "Growth"
+
+    assert result["roadmap"][2]["phase"] == "Career Preparation"
+
+    print("=" * 60)
+    print("MISSION 114 - CAREER ROADMAP ENGINE")
+    print("=" * 60)
+
+    print()
+
+    for phase in result["roadmap"]:
+
+        print(phase["phase"])
+        print("-" * 40)
+
+        print(phase["focus"])
+
+        print()
+
+    print("All Mission 114 Career Roadmap tests passed.")
+    print("=" * 60)
+
+
+if __name__ == "__main__":
+    test_career_roadmap_engine()
