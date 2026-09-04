@@ -1,26 +1,82 @@
-from src.core.engine.smart_reminder_engine import SmartReminderEngine
-from src.core.memory import Memory
+from src.core.engine.smart_reminder_engine import (
+    SmartReminderEngine
+)
 
-print("=" * 60)
-print("      SMART REMINDER ENGINE TEST")
-print("=" * 60)
 
-memory = Memory()
+class FakeMemory:
 
-memory.add_xp(180)
+    def __init__(self, xp, missions):
+        self.xp = xp
+        self.missions = missions
 
-engine = SmartReminderEngine()
+    def get_progress(self):
+        return {
+            "current": self.xp
+        }
 
-report = engine.generate_reminder(memory)
+    def get_completed_missions(self):
+        return self.missions
 
-print()
-print("⏰ Smart Reminder")
-print()
 
-print(f"⭐ XP: {report['xp']}")
-print()
-print(report["reminder"])
+def test_smart_reminder_engine():
 
-print()
-print("=" * 60)
-print("✅ Smart Reminder Engine Test Completed Successfully!")
+    engine = SmartReminderEngine()
+
+    new_student = FakeMemory(0, 0)
+
+    result = engine.generate_reminder(new_student)
+
+    assert result["xp"] == 0
+    assert result["priority"] == "high"
+    assert "first mission" in result["reminder"].lower()
+
+    growing_student = FakeMemory(150, 5)
+
+    result = engine.generate_reminder(growing_student)
+
+    assert result["priority"] == "medium"
+    assert "great progress" in result["reminder"].lower()
+
+    advanced_student = FakeMemory(700, 30)
+
+    result = engine.generate_reminder(advanced_student)
+
+    assert result["priority"] == "low"
+    assert "advanced mission" in result["reminder"].lower()
+
+    context_result = engine.generate_context_reminder(
+        growing_student,
+        "Become a Cybersecurity Engineer"
+    )
+
+    assert "Cybersecurity Engineer" in (
+        context_result["reminder"]
+    )
+
+    assert engine.should_send_reminder(
+        growing_student
+    ) is True
+
+    print("=" * 60)
+    print("MISSION 117 - SMART REMINDER ENGINE UPDATE")
+    print("=" * 60)
+
+    print()
+    print("XP:")
+    print(context_result["xp"])
+
+    print()
+    print("Priority:")
+    print(context_result["priority"])
+
+    print()
+    print("Reminder:")
+    print(context_result["reminder"])
+
+    print()
+    print("All Mission 117 Smart Reminder tests passed.")
+    print("=" * 60)
+
+
+if __name__ == "__main__":
+    test_smart_reminder_engine()
